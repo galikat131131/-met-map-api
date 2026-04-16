@@ -46,6 +46,12 @@
     </svg>
   </button>
 
+  <button id="highlights-btn" class="fab fab-left fab-left-2" aria-label="Must-see route">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2l2.9 6.9L22 10l-5.5 4.7L18.2 22 12 18.3 5.8 22l1.7-7.3L2 10l7.1-1.1L12 2z"/>
+    </svg>
+  </button>
+
   <div id="tour-bar" class="tour-bar" hidden>
     <div class="tour-bar-body">
       <div class="tour-bar-title"></div>
@@ -62,6 +68,21 @@
       <button id="tour-drawer-close" aria-label="Close">✕</button>
     </div>
     <div id="tour-list" class="tour-list"></div>
+  </div>
+
+  <div id="pick-backdrop" class="tour-backdrop" hidden></div>
+  <div id="pick-drawer" class="tour-drawer" role="dialog" aria-labelledby="pick-drawer-title" hidden>
+    <div class="tour-drawer-handle"></div>
+    <div class="tour-drawer-header">
+      <h2 id="pick-drawer-title">Must-see route</h2>
+      <button id="pick-drawer-close" aria-label="Close">✕</button>
+    </div>
+    <p class="pick-help">Pick the pieces you want to see. Highlights are pre-selected.</p>
+    <div id="pick-list" class="pick-list"></div>
+    <div class="pick-footer">
+      <div id="pick-count" class="pick-count">0 pieces selected</div>
+      <button id="pick-build" class="pick-build">Build my route</button>
+    </div>
   </div>
 
   <div id="tour-sheet" class="tour-sheet" hidden>

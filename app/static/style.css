@@ -342,6 +342,135 @@ html, body {
 }
 .fab-left:active { background: #fdecea; }
 
+.fab-left-2 {
+  bottom: calc(76px + env(safe-area-inset-bottom));
+  color: #b8860b;
+}
+.fab-left-2:active { background: #fef6e0; }
+
+/* ---------- Highlights picker drawer ---------- */
+
+.pick-help {
+  margin: 2px 0 10px;
+  font-size: 13px;
+  color: #5f6368;
+}
+
+.pick-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 72px;  /* space for sticky footer */
+}
+
+.pick-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: white;
+  border: 1px solid #e8eaed;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: #202124;
+  width: 100%;
+}
+
+.pick-item.selected {
+  border-color: #b8860b;
+  background: #fef6e0;
+}
+
+.pick-item-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #f1f3f4;
+}
+
+.pick-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.pick-item-title {
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pick-item-meta {
+  font-size: 12px;
+  color: #5f6368;
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pick-item-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #dadce0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+}
+
+.pick-item.selected .pick-item-check {
+  background: #b8860b;
+  border-color: #b8860b;
+}
+
+.pick-item-star {
+  font-size: 11px;
+  color: #b8860b;
+  margin-left: 4px;
+}
+
+.pick-footer {
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(to top, white 70%, rgba(255,255,255,0));
+  padding: 12px 0 calc(4px + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pick-count {
+  flex: 1;
+  font-size: 12px;
+  color: #5f6368;
+}
+
+.pick-build {
+  padding: 10px 18px;
+  background: #b8860b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pick-build:disabled {
+  background: #dadce0;
+  color: #9aa0a6;
+  cursor: not-allowed;
+}
+
 .tour-bar {
   position: absolute;
   top: calc(72px + env(safe-area-inset-top));

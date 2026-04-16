@@ -16,10 +16,14 @@ from shapely.geometry import shape
 
 from .models import (
     Amenity,
+    Artwork,
     EdgeCount,
     Floor,
     Gallery,
     GalleryVisitCount,
+    HighlightRouteRequest,
+    HighlightRouteResponse,
+    HighlightRouteStop,
     LocateResponse,
     QuietRouteResponse,
     QuietRouteStop,
@@ -32,6 +36,7 @@ from .models import (
 DATA_PATH = Path(__file__).parent.parent / "data" / "asian_art.json"
 TRANSITIONS_PATH = Path(__file__).parent.parent / "data" / "transitions.jsonl"
 ADJACENCY_PATH = Path(__file__).parent.parent / "data" / "adjacency.json"
+OBJECTS_PATH = Path(__file__).parent.parent / "data" / "asian_art_objects.json"
 LIVINGMAP_ROUTE_URL = "https://map-api.prod.livingmap.com/v2/route"
 
 # In-process lock for JSONL appends. Fine for single-worker uvicorn (Render default).
@@ -92,6 +97,7 @@ app = FastAPI(
     openapi_tags=[
         {"name": "meta", "description": "Venue-level metadata: floors, amenity type counts."},
         {"name": "galleries", "description": "Gallery lookup, browse, and search."},
+        {"name": "artworks", "description": "Met Open Access artworks, joined to galleries by `GalleryNumber`."},
         {"name": "spatial", "description": "GPS-driven endpoints. **Floor must be supplied by the client.**"},
         {"name": "routing", "description": "Multi-floor wayfinding between galleries."},
         {"name": "tracking", "description": "Anonymous route heat-map: record gallery-to-gallery transitions and aggregate counts."},
@@ -123,6 +129,21 @@ AMENITY_TYPES_AVAILABLE = sorted({a.type for a in AMENITIES})
 _poly_galleries = [g for g in GALLERIES if g.polygon]
 _poly_geoms = [shape(g.polygon) for g in _poly_galleries]
 POLYGON_TREE = shapely.STRtree(_poly_geoms) if _poly_geoms else None
+
+# Artwork index. Built from scrape_objects.py output; absent file is non-fatal.
+if OBJECTS_PATH.exists():
+    with OBJECTS_PATH.open() as f:
+        _OBJECTS_DATA = json.load(f)
+    ARTWORKS = [Artwork(**o) for o in _OBJECTS_DATA["objects"]]
+else:
+    ARTWORKS = []
+ARTWORKS_BY_ID = {a.object_id: a for a in ARTWORKS}
+ARTWORKS_BY_GALLERY: dict[int, list[Artwork]] = {}
+for _a in ARTWORKS:
+    ARTWORKS_BY_GALLERY.setdefault(_a.gallery_number, []).append(_a)
+# Highlights first within a gallery, then stable by object_id.
+for _lst in ARTWORKS_BY_GALLERY.values():
+    _lst.sort(key=lambda a: (not a.is_highlight, a.object_id))
 
 
 def haversine_m(lat1, lon1, lat2, lon2):
@@ -817,6 +838,158 @@ def heatmap_galleries():
     for t in _read_transitions():
         counts[t["to_gallery"]] += 1
     return [GalleryVisitCount(gallery=g, visits=c) for g, c in counts.most_common()]
+
+
+# -------- Artworks (Met Open Access) --------
+
+@app.get(
+    "/objects",
+    response_model=List[Artwork],
+    tags=["artworks"],
+    summary="List artworks in the Asian Art wing",
+    description=(
+        "Artworks sourced from the Met Open Access API, filtered to `GalleryNumber` "
+        "in 200–253. Filter by `gallery`, `highlights_only`, or `floor`."
+    ),
+)
+def list_objects(
+    gallery: Optional[int] = Query(None, description="Gallery number (200–253)"),
+    floor: Optional[str] = Query(None, description="Floor short name (`2` or `3`)"),
+    highlights_only: bool = Query(False, description="Only Met-curated must-see objects"),
+    limit: int = Query(100, ge=1, le=500),
+):
+    out = ARTWORKS
+    if gallery is not None:
+        out = [a for a in out if a.gallery_number == gallery]
+    if floor is not None:
+        galleries_on_floor = {g.number for g in GALLERIES if g.floor == floor}
+        out = [a for a in out if a.gallery_number in galleries_on_floor]
+    if highlights_only:
+        out = [a for a in out if a.is_highlight]
+    return out[:limit]
+
+
+@app.get(
+    "/objects/{object_id}",
+    response_model=Artwork,
+    tags=["artworks"],
+    summary="Get one artwork by Met objectID",
+    responses={404: {"description": "Object not in the Asian Art dataset."}},
+)
+def get_object(object_id: int):
+    a = ARTWORKS_BY_ID.get(object_id)
+    if a is None:
+        raise HTTPException(404, f"Object {object_id} not in Asian Art dataset.")
+    return a
+
+
+@app.get(
+    "/galleries/{number}/objects",
+    response_model=List[Artwork],
+    tags=["artworks"],
+    summary="Artworks in one gallery",
+    description="Convenience endpoint: same as `/objects?gallery={number}`, with highlights ranked first.",
+    responses={404: {"description": "Gallery not in Asian Art range."}},
+)
+def get_gallery_objects(number: int, highlights_only: bool = Query(False)):
+    if number not in GALLERIES_BY_NUMBER:
+        raise HTTPException(404, f"Gallery {number} not in Asian Art range.")
+    lst = ARTWORKS_BY_GALLERY.get(number, [])
+    if highlights_only:
+        lst = [a for a in lst if a.is_highlight]
+    return lst
+
+
+def _order_galleries_greedy(start_num: int, targets: list[int]) -> list[int]:
+    """Greedy nearest-neighbor ordering of `targets` starting from `start_num`.
+    Distance = haversine between centroids + a 5m floor-change penalty."""
+    if not targets:
+        return []
+    remaining = list(set(targets))
+    current = GALLERIES_BY_NUMBER[start_num]
+    ordered: list[int] = []
+    while remaining:
+        def cost(n: int) -> float:
+            g = GALLERIES_BY_NUMBER[n]
+            d = haversine_m(current.lat, current.lon, g.lat, g.lon)
+            if g.floor != current.floor:
+                d += 5  # tiny penalty so same-floor neighbours win ties
+            return d
+        nxt = min(remaining, key=cost)
+        ordered.append(nxt)
+        current = GALLERIES_BY_NUMBER[nxt]
+        remaining.remove(nxt)
+    return ordered
+
+
+@app.post(
+    "/route/highlights",
+    response_model=HighlightRouteResponse,
+    tags=["routing"],
+    summary="Choice-piece route through must-see objects",
+    description=(
+        "Builds a 'see the best stuff' walking route.\n\n"
+        "- If `object_ids` is given, visits those objects in an order chosen by greedy "
+        "nearest-neighbor from `from_gallery`.\n"
+        "- If omitted, uses the Met's `isHighlight=true` artworks in the Asian Art wing "
+        "(capped by `limit`).\n\n"
+        "Response is shaped to match the existing curated-tour structure so the PWA can "
+        "drop it straight into the tour renderer."
+    ),
+    responses={404: {"description": "`from_gallery` not in Asian Art range, or one of the `object_ids` isn't in the dataset."}},
+)
+def route_highlights(req: HighlightRouteRequest):
+    if req.from_gallery not in GALLERIES_BY_NUMBER:
+        raise HTTPException(404, f"Gallery {req.from_gallery} not in Asian Art range.")
+
+    if req.object_ids:
+        picks: list[Artwork] = []
+        missing: list[int] = []
+        for oid in req.object_ids:
+            a = ARTWORKS_BY_ID.get(oid)
+            if a is None:
+                missing.append(oid)
+            else:
+                picks.append(a)
+        if missing:
+            raise HTTPException(404, f"Objects not in dataset: {missing}")
+    else:
+        picks = [a for a in ARTWORKS if a.is_highlight]
+
+    picks = picks[: req.limit]
+    if not picks:
+        return HighlightRouteResponse(
+            summary="No must-see artworks in the dataset yet.",
+            stops=[],
+            total_distance_m=0.0,
+        )
+
+    # One representative artwork per gallery (pick the first — highlights already rank first).
+    by_gallery: dict[int, Artwork] = {}
+    for a in picks:
+        by_gallery.setdefault(a.gallery_number, a)
+
+    ordered_galleries = _order_galleries_greedy(req.from_gallery, list(by_gallery.keys()))
+
+    stops = [
+        HighlightRouteStop(gallery=g, artwork=by_gallery[g])
+        for g in ordered_galleries
+    ]
+
+    total = 0.0
+    prev = GALLERIES_BY_NUMBER[req.from_gallery]
+    for g in ordered_galleries:
+        cur = GALLERIES_BY_NUMBER[g]
+        total += haversine_m(prev.lat, prev.lon, cur.lat, cur.lon)
+        prev = cur
+
+    source = "your picks" if req.object_ids else "Met-curated highlights"
+    return HighlightRouteResponse(
+        title=f"Must-see: {len(stops)} stops",
+        summary=f"Starting from Gallery {req.from_gallery}. Greedy order through {source}.",
+        stops=stops,
+        total_distance_m=round(total, 1),
+    )
 
 
 app.mount("/map", StaticFiles(directory="app/static", html=True), name="map")

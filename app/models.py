@@ -108,3 +108,53 @@ class QuietRouteResponse(BaseModel):
     total_distance_m: float = Field(..., description="Straight-line sum of centroid-to-centroid distances. A proxy for walking distance.")
     avg_visits_per_stop: float = Field(..., description="Average visit count across the recommended stops. Compare to the wing-wide average shown in `baseline_avg_visits`.")
     baseline_avg_visits: float = Field(..., description="Average visit count across all galleries that have been visited at least once. Lets the client say 'these stops see ~X% less traffic than average'.")
+
+
+class Artwork(BaseModel):
+    object_id: int
+    gallery_number: int = Field(..., description="Met gallery number, 200–253 for Asian Art.")
+    title: str
+    artist: str = ""
+    artist_bio: str = ""
+    culture: str = ""
+    period: str = ""
+    dynasty: str = ""
+    reign: str = ""
+    date: str = ""
+    date_begin: Optional[int] = None
+    date_end: Optional[int] = None
+    medium: str = ""
+    classification: str = ""
+    object_name: str = ""
+    credit_line: str = ""
+    accession_number: str = ""
+    image_small: Optional[str] = None
+    image: Optional[str] = None
+    is_highlight: bool = False
+    is_public_domain: bool = False
+    object_url: Optional[str] = None
+
+
+class HighlightRouteRequest(BaseModel):
+    from_gallery: int = Field(..., description="Starting gallery number.")
+    object_ids: Optional[List[int]] = Field(
+        None,
+        description="Optional list of Met objectIDs to visit. If omitted, uses all Asian Art highlights on view.",
+    )
+    limit: int = Field(10, ge=1, le=30, description="Cap on number of stops.")
+
+
+class HighlightRouteStop(BaseModel):
+    gallery: int
+    artwork: Artwork
+    note: str = ""
+
+
+class HighlightRouteResponse(BaseModel):
+    """Shaped to match the PWA's tour data structure so the client can reuse its tour renderer."""
+    id: str = "highlights"
+    title: str = "Must-see route"
+    summary: str = ""
+    duration_min: Optional[int] = None
+    stops: List[HighlightRouteStop]
+    total_distance_m: float

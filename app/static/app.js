@@ -61,6 +61,10 @@ window.initMap = async function () {
     });
   });
   document.getElementById("tours-btn").addEventListener("click", openTourDrawer);
+  document.getElementById("highlights-btn").addEventListener("click", openPickDrawer);
+  document.getElementById("pick-drawer-close").addEventListener("click", closePickDrawer);
+  document.getElementById("pick-backdrop").addEventListener("click", closePickDrawer);
+  document.getElementById("pick-build").addEventListener("click", buildHighlightsRoute);
   document.getElementById("tour-drawer-close").addEventListener("click", closeTourDrawer);
   document.getElementById("tour-backdrop").addEventListener("click", closeTourDrawer);
   document.getElementById("tour-bar-close").addEventListener("click", clearActiveTour);
@@ -818,6 +822,181 @@ function clearTourOverlays() {
   tourPolylines = [];
   tourMarkers.forEach((m) => m.setMap(null));
   tourMarkers = [];
+}
+
+// Artwork picker: user chooses which pieces to route through.
+let ALL_ARTWORKS = [];
+let selectedObjectIds = new Set();
+
+async function ensureArtworksLoaded() {
+  if (ALL_ARTWORKS.length) return;
+  const res = await fetch("/objects?limit=500");
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  ALL_ARTWORKS = await res.json();
+  // Default selection: Met-curated highlights.
+  if (!selectedObjectIds.size) {
+    ALL_ARTWORKS.forEach((a) => {
+      if (a.is_highlight) selectedObjectIds.add(a.object_id);
+    });
+  }
+}
+
+async function openPickDrawer() {
+  const backdrop = document.getElementById("pick-backdrop");
+  const drawer = document.getElementById("pick-drawer");
+  backdrop.hidden = false;
+  drawer.hidden = false;
+  requestAnimationFrame(() => {
+    drawer.classList.add("open");
+    backdrop.classList.add("visible");
+  });
+
+  try {
+    await ensureArtworksLoaded();
+  } catch (err) {
+    console.error("Failed to load artworks", err);
+    setStatus("Couldn't load artworks.", 3000);
+    closePickDrawer();
+    return;
+  }
+
+  renderPickList();
+}
+
+function closePickDrawer() {
+  const backdrop = document.getElementById("pick-backdrop");
+  const drawer = document.getElementById("pick-drawer");
+  drawer.classList.remove("open");
+  backdrop.classList.remove("visible");
+  setTimeout(() => {
+    drawer.hidden = true;
+    backdrop.hidden = true;
+  }, 220);
+}
+
+function renderPickList() {
+  const list = document.getElementById("pick-list");
+  // Highlights first, then by gallery.
+  const sorted = ALL_ARTWORKS.slice().sort((a, b) => {
+    if (a.is_highlight !== b.is_highlight) return a.is_highlight ? -1 : 1;
+    return a.gallery_number - b.gallery_number;
+  });
+  list.innerHTML = sorted
+    .map((a) => {
+      const selected = selectedObjectIds.has(a.object_id);
+      const thumb = a.image_small || a.image;
+      const thumbHtml = thumb
+        ? `<img class="pick-item-thumb" src="${escapeHtml(thumb)}" alt="" loading="lazy">`
+        : `<div class="pick-item-thumb"></div>`;
+      const meta = [
+        `Gallery ${a.gallery_number}`,
+        a.culture,
+        a.date,
+      ].filter(Boolean).join(" · ");
+      const star = a.is_highlight ? `<span class="pick-item-star">★ highlight</span>` : "";
+      return `
+        <button type="button" class="pick-item ${selected ? "selected" : ""}" data-oid="${a.object_id}">
+          ${thumbHtml}
+          <div class="pick-item-body">
+            <div class="pick-item-title">${escapeHtml(a.title)}${star}</div>
+            <div class="pick-item-meta">${escapeHtml(meta)}</div>
+          </div>
+          <div class="pick-item-check">${selected ? "✓" : ""}</div>
+        </button>`;
+    })
+    .join("");
+
+  list.querySelectorAll(".pick-item").forEach((el) => {
+    el.addEventListener("click", () => {
+      const oid = Number(el.dataset.oid);
+      if (selectedObjectIds.has(oid)) selectedObjectIds.delete(oid);
+      else selectedObjectIds.add(oid);
+      el.classList.toggle("selected");
+      el.querySelector(".pick-item-check").textContent = selectedObjectIds.has(oid) ? "✓" : "";
+      updatePickCount();
+    });
+  });
+  updatePickCount();
+}
+
+function updatePickCount() {
+  const n = selectedObjectIds.size;
+  document.getElementById("pick-count").textContent =
+    `${n} piece${n === 1 ? "" : "s"} selected`;
+  document.getElementById("pick-build").disabled = n === 0;
+}
+
+async function buildHighlightsRoute() {
+  if (!selectedObjectIds.size) return;
+  const buildBtn = document.getElementById("pick-build");
+  buildBtn.disabled = true;
+  setStatus("Building must-see route…");
+
+  const fromGallery =
+    resolvedGalleryNumber ||
+    (ALL_GALLERIES.find((g) => g.floor === activeFloor)?.number) ||
+    200;
+
+  let route;
+  try {
+    const res = await fetch("/route/highlights", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        from_gallery: fromGallery,
+        object_ids: [...selectedObjectIds],
+        limit: 30,
+      }),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    route = await res.json();
+  } catch (err) {
+    console.error(err);
+    setStatus("Couldn't build highlights route.", 3000);
+    buildBtn.disabled = false;
+    return;
+  }
+  buildBtn.disabled = false;
+
+  if (!route.stops?.length) {
+    setStatus("No artworks selected.", 3000);
+    return;
+  }
+
+  // Reshape into the in-memory tour structure so activateTour renders it as-is.
+  // The renderer expects artwork.image_url; the API returns image + image_small.
+  const tour = {
+    id: `highlights-from-${fromGallery}-${[...selectedObjectIds].sort().join("-")}`,
+    title: route.title || "Must-see route",
+    summary: route.summary || "",
+    duration_min: null,
+    stops: route.stops.map((s) => ({
+      gallery: s.gallery,
+      note: s.note || "",
+      artwork: {
+        object_id: s.artwork.object_id,
+        title: s.artwork.title,
+        artist: s.artwork.artist,
+        date: s.artwork.date,
+        medium: s.artwork.medium,
+        culture: s.artwork.culture,
+        classification: s.artwork.classification,
+        image_url: s.artwork.image || s.artwork.image_small || null,
+        object_url: s.artwork.object_url || null,
+      },
+    })),
+    _from: fromGallery,
+    _distance_m: route.total_distance_m,
+  };
+
+  // Insert/replace it in ALL_TOURS so activateTour can find it by id.
+  const idx = ALL_TOURS.findIndex((t) => t.id === tour.id);
+  if (idx >= 0) ALL_TOURS[idx] = tour;
+  else ALL_TOURS.push(tour);
+
+  closePickDrawer();
+  await activateTour(tour.id);
+  setStatus("");
 }
 
 function renderTourOverlays() {
