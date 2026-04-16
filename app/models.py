@@ -24,6 +24,10 @@ class Gallery(BaseModel):
     image_url: Optional[str] = None
     is_closed: bool = False
     distance_m: Optional[float] = Field(None, description="Populated by /nearby and /locate responses.")
+    polygon: Optional[dict] = Field(
+        None,
+        description="GeoJSON Polygon/MultiPolygon outlining the gallery. Use for map rendering.",
+    )
 
 
 class Amenity(BaseModel):
@@ -41,7 +45,11 @@ class Amenity(BaseModel):
 
 class LocateResponse(BaseModel):
     gallery: Gallery
-    note: str = "Nearest-centroid estimate on the given floor. Accuracy depends on GPS and gallery size."
+    method: str = Field(
+        ...,
+        description="`polygon` = user is inside the gallery boundary. `nearest-centroid` = fallback (user was outside all polygons, e.g. in a corridor).",
+    )
+    note: str = "If method is 'polygon' the point is inside the gallery; 'nearest-centroid' is a best-guess fallback."
 
 
 class RouteRequest(BaseModel):

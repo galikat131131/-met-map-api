@@ -117,6 +117,7 @@ async function search(q) {
   image_url: string | null;// hero image from Met CDN
   is_closed: boolean;      // temporarily closed flag
   distance_m: number | null; // populated only on /nearby and /locate responses
+  polygon: GeoJSONPolygon | null; // GeoJSON outline of the gallery for map rendering
 }
 ```
 
@@ -142,7 +143,7 @@ async function search(q) {
 ## Gotchas
 
 - **Floor must come from the UI.** Every `/locate`, `/nearby`, and most `/nearest-amenity` calls require `floor=`. GPS will not tell you.
-- **Indoor GPS is noisy** (20–50 m error). A "nearest gallery" result isn't ground truth.
+- **Indoor GPS is noisy** (20–50 m error). `/locate` now does real point-in-polygon containment (`method: "polygon"`) when possible, falling back to nearest-centroid (`method: "nearest-centroid"`) when the point lies in a corridor or outside the building. Treat `polygon` results as trustworthy.
 - **Free tier cold start.** If the API has been idle for 15 min, the first request takes ~30 s. Run `./keepalive.sh` locally or set up [UptimeRobot](https://uptimerobot.com) with a 5 min HTTP check.
 - **`/route` fallback.** The `steps` array always works; the `upstream` polyline depends on Living Map's routing service being reachable and may be `null`.
 - **Dataset is a snapshot.** Re-run `scrape.py` to refresh it.

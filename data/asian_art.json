@@ -70,7 +70,50 @@
       "name": "Chinese Ceramics & More!",
       "summary": "Gallery 200",
       "description": "The Great Hall Balcony (Gallery 200 through Gallery 205) traces the development of Chinese ceramics, including the creation of vibrant green and blue (or celadon) glazes of the tenth to the thirteenth century and the flowering of porcelains painted in underglaze cobalt blue in the fourteenth. Also presented here are the interchanges between Chinese ceramics and those in other parts of the world. Among the works on view, highlights include a group of ceramics illustrating the transformation of Chinese ceramics, in part due to the rise of global trade, from the late sixteenth to the seventeenth century and Japanese trade ceramics in the seventeenth and eighteenth centuries.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/6d050c91946da650788f52930e62179d903901fc-720x399.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/6d050c91946da650788f52930e62179d903901fc-720x399.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96331369876862,
+              40.779342099282225
+            ],
+            [
+              -73.96302670240402,
+              40.77922125205379
+            ],
+            [
+              -73.96305486559868,
+              40.77918215442105
+            ],
+            [
+              -73.96307833492756,
+              40.77919180188887
+            ],
+            [
+              -73.96308436989784,
+              40.77918316994398
+            ],
+            [
+              -73.96310850977898,
+              40.77919332517326
+            ],
+            [
+              -73.96310180425644,
+              40.77920195711815
+            ],
+            [
+              -73.96334186196327,
+              40.779303001649495
+            ],
+            [
+              -73.96331369876862,
+              40.779342099282225
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "4052f20521fff4b865ccfb674fe5f6b3",
@@ -83,7 +126,42 @@
       "name": "Chinese Ceramics",
       "summary": "Gallery 201",
       "description": "The Great Hall Balcony (Gallery 200 through Gallery 205) traces the development of Chinese ceramics, including the creation of vibrant green and blue (or celadon) glazes of the tenth to the thirteenth century and the flowering of porcelains painted in underglaze cobalt blue in the fourteenth. Also presented here are the interchanges between Chinese ceramics and those in other parts of the world. Among the works on view, highlights include a group of ceramics illustrating the transformation of Chinese ceramics, in part due to the rise of global trade, from the late sixteenth to the seventeenth century and Japanese trade ceramics in the seventeenth and eighteenth centuries.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/079d00d61d82aa49194e521917beb1e9ba277a66-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/079d00d61d82aa49194e521917beb1e9ba277a66-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96324262022972,
+              40.77943908172186
+            ],
+            [
+              -73.96301463246346,
+              40.77934311480516
+            ],
+            [
+              -73.96299049258232,
+              40.779332959575875
+            ],
+            [
+              -73.96295562386513,
+              40.77931823449342
+            ],
+            [
+              -73.96298445761204,
+              40.77927913686069
+            ],
+            [
+              -73.96327145397663,
+              40.779400491850595
+            ],
+            [
+              -73.96324262022972,
+              40.77943908172186
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "2a82a1274ed544ed5f536e70b5d5dbf5",
@@ -96,7 +174,86 @@
       "name": "Gallery 202",
       "summary": "Gallery 202",
       "description": "The Great Hall Balcony (Gallery 200 through Gallery 205) traces the development of Chinese ceramics, including the creation of vibrant green and blue (or celadon) glazes of the tenth to the thirteenth century and the flowering of porcelains painted in underglaze cobalt blue in the fourteenth. Also presented here are the interchanges between Chinese ceramics and those in other parts of the world. Among the works on view, highlights include a group of ceramics illustrating the transformation of Chinese ceramics, in part due to the rise of global trade, from the late sixteenth to the seventeenth century and Japanese trade ceramics in the seventeenth and eighteenth centuries.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/b662a2c63ed13c51493716101963470fea5a44ac-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/b662a2c63ed13c51493716101963470fea5a44ac-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96283090114594,
+              40.77948985786826
+            ],
+            [
+              -73.96281078457832,
+              40.77948122592338
+            ],
+            [
+              -73.96278664469719,
+              40.77947157845556
+            ],
+            [
+              -73.96277859807014,
+              40.779468024125315
+            ],
+            [
+              -73.96279737353325,
+              40.77944263605211
+            ],
+            [
+              -73.96310985088348,
+              40.77901408537645
+            ],
+            [
+              -73.96312862634659,
+              40.77898869730325
+            ],
+            [
+              -73.96313667297363,
+              40.7789922516335
+            ],
+            [
+              -73.96316014230251,
+              40.77900189910132
+            ],
+            [
+              -73.96318025887012,
+              40.779010531046204
+            ],
+            [
+              -73.96305486559868,
+              40.77918215442105
+            ],
+            [
+              -73.96302670240402,
+              40.77922125205379
+            ],
+            [
+              -73.96298445761204,
+              40.77927913686069
+            ],
+            [
+              -73.96295562386513,
+              40.77931823449342
+            ],
+            [
+              -73.96285571157932,
+              40.77945533008871
+            ],
+            [
+              -73.96284833550453,
+              40.77946548531799
+            ],
+            [
+              -73.96283827722073,
+              40.77947970263899
+            ],
+            [
+              -73.96283090114594,
+              40.77948985786826
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "c3af1c35681ce9ad8fde087a464dfd10",
@@ -109,7 +266,34 @@
       "name": "Chinese Ceramics",
       "summary": "Gallery 203",
       "description": "The Great Hall Balcony (Gallery 200 through Gallery 205) traces the development of Chinese ceramics, including the creation of vibrant green and blue (or celadon) glazes of the tenth to the thirteenth century and the flowering of porcelains painted in underglaze cobalt blue in the fourteenth. Also presented here are the interchanges between Chinese ceramics and those in other parts of the world. Among the works on view, highlights include a group of ceramics illustrating the transformation of Chinese ceramics, in part due to the rise of global trade, from the late sixteenth to the seventeenth century and Japanese trade ceramics in the seventeenth and eighteenth centuries.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/c421cc662f4594792b391b5a2ea55bb0ff3a6eec-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/c421cc662f4594792b391b5a2ea55bb0ff3a6eec-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96310985088348,
+              40.77901408537645
+            ],
+            [
+              -73.96291472017765,
+              40.778931828019275
+            ],
+            [
+              -73.9629328250885,
+              40.77890643994607
+            ],
+            [
+              -73.96312862634659,
+              40.77898869730325
+            ],
+            [
+              -73.96310985088348,
+              40.77901408537645
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "92dc4f7c4a2f9614f58ecedd8f89bf5b",
@@ -122,7 +306,46 @@
       "name": "Chinese Ceramics",
       "summary": "Gallery 204",
       "description": "The Great Hall Balcony (Gallery 200 through Gallery 205) traces the development of Chinese ceramics, including the creation of vibrant green and blue (or celadon) glazes of the tenth to the thirteenth century and the flowering of porcelains painted in underglaze cobalt blue in the fourteenth. Also presented here are the interchanges between Chinese ceramics and those in other parts of the world. Among the works on view, highlights include a group of ceramics illustrating the transformation of Chinese ceramics, in part due to the rise of global trade, from the late sixteenth to the seventeenth century and Japanese trade ceramics in the seventeenth and eighteenth centuries.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/784fa4b72c8cb81adc59c6a94887485e45ccb61a-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/784fa4b72c8cb81adc59c6a94887485e45ccb61a-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96266460418701,
+              40.779275074768975
+            ],
+            [
+              -73.96266460418701,
+              40.7791801233752
+            ],
+            [
+              -73.96288052201271,
+              40.77888409844166
+            ],
+            [
+              -73.96290063858032,
+              40.778892730386545
+            ],
+            [
+              -73.96292477846146,
+              40.77890288561582
+            ],
+            [
+              -73.9629328250885,
+              40.77890643994607
+            ],
+            [
+              -73.96291472017765,
+              40.778931828019275
+            ],
+            [
+              -73.96266460418701,
+              40.779275074768975
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "c86d6d201424fbbc8c94a14418224f56",
@@ -135,7 +358,34 @@
       "name": "Chinese Ceramics",
       "summary": "Gallery 205",
       "description": "Adele and Stanley Herzman Collection\n\nThe Great Hall Balcony (Gallery 200 through Gallery 205) traces the development of Chinese ceramics, including the creation of vibrant green and blue (or celadon) glazes of the tenth to the thirteenth century and the flowering of porcelains painted in underglaze cobalt blue in the fourteenth. Also presented here are the interchanges between Chinese ceramics and those in other parts of the world. Among the works on view, highlights include a group of ceramics illustrating the transformation of Chinese ceramics, in part due to the rise of global trade, from the late sixteenth to the seventeenth century and Japanese trade ceramics in the seventeenth and eighteenth centuries.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/881397e6e369688fb909653f7420949eb8a53dc4-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/881397e6e369688fb909653f7420949eb8a53dc4-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96277859807014,
+              40.779468024125315
+            ],
+            [
+              -73.96266460418701,
+              40.77942029454769
+            ],
+            [
+              -73.96266460418701,
+              40.77938678229106
+            ],
+            [
+              -73.96279737353325,
+              40.77944263605211
+            ],
+            [
+              -73.96277859807014,
+              40.779468024125315
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "c99b1369034ee54fce5e29136ecceb7c",
@@ -148,7 +398,62 @@
       "name": "Chinese Buddhist Art",
       "summary": "Gallery 206",
       "description": "The Arthur M. Sackler Gallery\nFlorence and Herbert Irving Asian Wing\n\nThe Arthur M. Sackler Gallery houses part of the Museum's holdings of Chinese Buddhist sculpture, the largest collection of its kind in the West. (Additional examples are featured in Gallery 208.) Elegant bronze icons, monumental stone sculptures, and colorful sculptures made of wood, clay, and lacquer illustrate China's complicated adaptation of the Indian religion of Buddhism. Early Chinese Buddhist sculpture often shows ties to Indian and Central Asian traditions; after the twelfth century, however, when Buddhism disappeared in India, Chinese sculptures often illustrate exchanges with artistic traditions from Nepal and Tibet.\n\nHighlights of the collection include several monumental stone sculptures, a nearly lifesize gilt-bronze sculpture of Buddha Maitreya\u00a0dated 486, an example of a seventh-century piece made using the dry lacquer technique, and rare and important wood sculptures with inscriptions dating to 1282 and 1385.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/c3059900324e68f601a50ab54dc9920ec014e13d-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/c3059900324e68f601a50ab54dc9920ec014e13d-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96274238824844,
+              40.77961070509671
+            ],
+            [
+              -73.96271958947182,
+              40.779601057628895
+            ],
+            [
+              -73.96273367106915,
+              40.779582270454725
+            ],
+            [
+              -73.9627155661583,
+              40.7795741462713
+            ],
+            [
+              -73.96270148456097,
+              40.779593441206934
+            ],
+            [
+              -73.96266460418701,
+              40.77957820836301
+            ],
+            [
+              -73.96266460418701,
+              40.77942029454769
+            ],
+            [
+              -73.96277859807014,
+              40.779468024125315
+            ],
+            [
+              -73.96278664469719,
+              40.77947157845556
+            ],
+            [
+              -73.96281078457832,
+              40.77948122592338
+            ],
+            [
+              -73.96283090114594,
+              40.77948985786826
+            ],
+            [
+              -73.96274238824844,
+              40.77961070509671
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "2a62ca6323b611deb13316a39293fb02",
@@ -161,7 +466,46 @@
       "name": "Celebrating the Year of the Horse",
       "summary": "Gallery 207",
       "description": "The traditional East Asian lunar calendar marks time through a twelve-year cycle, each year represented by the animals of the Chinese zodiac: rat, ox, tiger, rabbit, dragon, snake, horse, ram, monkey, rooster, dog, and pig. First associated with the Chinese calendar in the third century BCE and firmly established by the first century CE, these symbolic creatures are believed to embody certain traits that are manifested in the personalities of people born in that animal\u2019s year. February 17, 2026, marks the beginning of the Year of the Horse, a creature symbolizing power, strength, and vitality.\n\n\n\nCelebrating the Year of the Horse brings together works from The Met collection to explore the horse\u2019s enduring nature and vital place in Chinese civilization. Domesticated in prehistoric times, this animal has shaped nearly every facet of life\u2014from agriculture and transportation to trade, warfare, sport, and entertainment. In ancient China, horse-drawn chariots transported military commanders and the social elite, while in the Tang dynasty (618\u2013907), tall and robust horses came to embody the strength of the state and cosmopolitan spirit of the empire. In Chinese popular culture, horses are among the most celebrated animals, and in the spiritual realm they serve as noble mounts for divine guardians believed to bring joy, protection, and prosperity to the household. This presentation, featuring a range of expressive works in ceramics, glass, jade, and metal, and woodblock prints, illuminates these roles while celebrating the horse\u2019s power, vitality, and spirit.\n  \nExhibition Open: Through January 26, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/82e093409956b6a2475e01e6fcc90fe30fed12db-5120x2880.jpg?rect=10,0,5110,2880&w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/82e093409956b6a2475e01e6fcc90fe30fed12db-5120x2880.jpg?rect=10,0,5110,2880&w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96266460418701,
+              40.77971784276563
+            ],
+            [
+              -73.96266460418701,
+              40.77957820836301
+            ],
+            [
+              -73.96270148456097,
+              40.779593441206934
+            ],
+            [
+              -73.96269544959068,
+              40.77960156539036
+            ],
+            [
+              -73.96271355450153,
+              40.77960918181232
+            ],
+            [
+              -73.96271958947182,
+              40.779601057628895
+            ],
+            [
+              -73.96274238824844,
+              40.77961070509671
+            ],
+            [
+              -73.96266460418701,
+              40.77971784276563
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "df3204cbbffb83e51b304b68d415dec8",
@@ -174,7 +518,46 @@
       "name": "Chinese Buddhist Art",
       "summary": "Gallery 208",
       "description": "Charlotte C. Weber Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe largest in the West, the Museum's collection of Chinese Buddhist sculpture is featured in\u00a0Gallery 206\u00a0and Gallery 208. Elegant bronze icons, monumental stone sculptures, and colorful sculptures made of wood, clay, and lacquer illustrate China's complicated adaptation of the Indian religion of Buddhism. Early Chinese Buddhist sculpture often shows ties to Indian and Central Asian traditions; after the twelfth century, however, when Buddhism disappeared in India, Chinese sculptures often illustrate exchanges with artistic traditions from Nepal and Tibet.\n\nHighlights of the collection include several monumental stone sculptures, a nearly lifesize gilt-bronze sculpture of Buddha Maitreya\u00a0dated 486, an example of a seventh-century piece made using the dry lacquer technique, and rare and important wood sculptures with inscriptions dating to 1282 and 1385.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/eb634546250ad5062da563e8b6b5099c7dbf4416-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/eb634546250ad5062da563e8b6b5099c7dbf4416-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96251171827316,
+              40.77981584072818
+            ],
+            [
+              -73.96249428391457,
+              40.77980873206769
+            ],
+            [
+              -73.96235480904579,
+              40.77974983173786
+            ],
+            [
+              -73.96241649985313,
+              40.779665035573366
+            ],
+            [
+              -73.96244466304779,
+              40.77962644570209
+            ],
+            [
+              -73.96258480846882,
+              40.779685346031926
+            ],
+            [
+              -73.96260157227516,
+              40.77969245469242
+            ],
+            [
+              -73.96251171827316,
+              40.77981584072818
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "8e49fe7d55152cc4581d0275ddc768dd",
@@ -187,7 +570,74 @@
       "name": "The Astor Forecourt",
       "summary": "Gallery 209",
       "description": "Florence and Herbert Irving Asian Wing\n\nThe most distinctive feature of the Astor forecourt is the round \"moon gate\" that forms the entrance to The\u00a0Court and its adjoining reception room displaying Ming dynasty hardwood furniture. Located at the heart of the Asian Art galleries, the forecourt is a crossroads that links the galleries for the arts of China, Japan, and South and Southeast Asia.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/bb568dbd22e75f5095122c865ebc19913c6e36bd-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/bb568dbd22e75f5095122c865ebc19913c6e36bd-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96238297224045,
+              40.78010424923977
+            ],
+            [
+              -73.96230451762676,
+              40.780071244744605
+            ],
+            [
+              -73.9622025936842,
+              40.780028592781626
+            ],
+            [
+              -73.96218448877335,
+              40.780020468598195
+            ],
+            [
+              -73.96216370165348,
+              40.78001183665331
+            ],
+            [
+              -73.96208256483078,
+              40.77997781663522
+            ],
+            [
+              -73.96212950348854,
+              40.779913838690746
+            ],
+            [
+              -73.96221064031124,
+              40.77994785870884
+            ],
+            [
+              -73.962257578969,
+              40.77996766140594
+            ],
+            [
+              -73.96230317652225,
+              40.779986956341574
+            ],
+            [
+              -73.96235011518002,
+              40.78000675903867
+            ],
+            [
+              -73.96242924034595,
+              40.7800402712953
+            ],
+            [
+              -73.96241582930088,
+              40.780058550708006
+            ],
+            [
+              -73.96239437162876,
+              40.780088000872915
+            ],
+            [
+              -73.96238297224045,
+              40.78010424923977
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "cc40269d37c8080642bd412e80e15204",
@@ -200,7 +650,46 @@
       "name": "Chinese Painting and Calligraphy: Selections from the Collection",
       "summary": "Gallery 210",
       "description": "The Met acquired its first Chinese painting in 1902. Since then, the Museum has added more than two thousand works of painting and calligraphy, building one of the most comprehensive collections in the world. Spanning fifteen hundred years of cultural production and featuring a variety of genres, techniques, and styles, The Met's collection\u00a0has become a key resource for the study of Chinese painting and calligraphy. This exhibition presents a rich selection of works from the collection arranged in a largely chronological display.\n\n\n\nThe final gallery tells the story of Wen C. Fong (1930\u20132018), chairman of the Museum\u2019s Department of Asian Art from 1971 to 2000, and his teacher Li Jian (1881\u20131956). As a young calligraphy prodigy in Shanghai in the 1940s, Fong studied brush arts with Li. The display centers on a group of fans, painted and written by Li, that were intended to transmit the canonical models of the classical tradition from teacher to student. Brought to the United States in 1949 and treasured by the Fong family since then, these fans are presented publicly for the first time.\n  \nExhibition Open: Through May 10, 2026",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96220058202744,
+              40.78035356011861
+            ],
+            [
+              -73.96217979490757,
+              40.780344928173726
+            ],
+            [
+              -73.96212212741375,
+              40.780320555623454
+            ],
+            [
+              -73.96217174828053,
+              40.780253023348735
+            ],
+            [
+              -73.96228104829788,
+              40.78010323371684
+            ],
+            [
+              -73.96230451762676,
+              40.780071244744605
+            ],
+            [
+              -73.96238297224045,
+              40.78010424923977
+            ],
+            [
+              -73.96220058202744,
+              40.78035356011861
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "2fb49a77643aca18539e5a5ccca39e3f",
@@ -213,7 +702,46 @@
       "name": "Chinese Painting and Calligraphy: Selections from the Collection",
       "summary": "Gallery 211",
       "description": "The Met acquired its first Chinese painting in 1902. Since then, the Museum has added more than two thousand works of painting and calligraphy, building one of the most comprehensive collections in the world. Spanning fifteen hundred years of cultural production and featuring a variety of genres, techniques, and styles, The Met's collection\u00a0has become a key resource for the study of Chinese painting and calligraphy. This exhibition presents a rich selection of works from the collection arranged in a largely chronological display.\n\n\n\nThe final gallery tells the story of Wen C. Fong (1930\u20132018), chairman of the Museum\u2019s Department of Asian Art from 1971 to 2000, and his teacher Li Jian (1881\u20131956). As a young calligraphy prodigy in Shanghai in the 1940s, Fong studied brush arts with Li. The display centers on a group of fans, painted and written by Li, that were intended to transmit the canonical models of the classical tradition from teacher to student. Brought to the United States in 1949 and treasured by the Fong family since then, these fans are presented publicly for the first time.\n  \nExhibition Open: Through May 10, 2026",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96211206912994,
+              40.78043835628311
+            ],
+            [
+              -73.96204769611359,
+              40.780410937164056
+            ],
+            [
+              -73.96211542189121,
+              40.78031750905467
+            ],
+            [
+              -73.96212212741375,
+              40.780320555623454
+            ],
+            [
+              -73.96217979490757,
+              40.780344928173726
+            ],
+            [
+              -73.962167724967,
+              40.78036219206351
+            ],
+            [
+              -73.9621489495039,
+              40.780387580136704
+            ],
+            [
+              -73.96211206912994,
+              40.78043835628311
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "15da0b9a6d75af45f018e55085262da4",
@@ -226,7 +754,38 @@
       "name": "Chinese Painting and Calligraphy: Selections from the Collection",
       "summary": "Gallery 212",
       "description": "The Met acquired its first Chinese painting in 1902. Since then, the Museum has added more than two thousand works of painting and calligraphy, building one of the most comprehensive collections in the world. Spanning fifteen hundred years of cultural production and featuring a variety of genres, techniques, and styles, The Met's collection\u00a0has become a key resource for the study of Chinese painting and calligraphy. This exhibition presents a rich selection of works from the collection arranged in a largely chronological display.\n\n\n\nThe final gallery tells the story of Wen C. Fong (1930\u20132018), chairman of the Museum\u2019s Department of Asian Art from 1971 to 2000, and his teacher Li Jian (1881\u20131956). As a young calligraphy prodigy in Shanghai in the 1940s, Fong studied brush arts with Li. The display centers on a group of fans, painted and written by Li, that were intended to transmit the canonical models of the classical tradition from teacher to student. Brought to the United States in 1949 and treasured by the Fong family since then, these fans are presented publicly for the first time.\n  \nExhibition Open: Through May 10, 2026",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96215096116066,
+              40.78045460464996
+            ],
+            [
+              -73.96211206912994,
+              40.78043835628311
+            ],
+            [
+              -73.9621489495039,
+              40.780387580136704
+            ],
+            [
+              -73.96216571331024,
+              40.78039418103574
+            ],
+            [
+              -73.96218784153461,
+              40.78040382850356
+            ],
+            [
+              -73.96215096116066,
+              40.78045460464996
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "92fb71651ab42ad9b25e6d7f0b9923f1",
@@ -239,7 +798,42 @@
       "name": "Chinese Painting and Calligraphy: Selections from the Collection",
       "summary": "Gallery 213",
       "description": "The Met acquired its first Chinese painting in 1902. Since then, the Museum has added more than two thousand works of painting and calligraphy, building one of the most comprehensive collections in the world. Spanning fifteen hundred years of cultural production and featuring a variety of genres, techniques, and styles, The Met's collection\u00a0has become a key resource for the study of Chinese painting and calligraphy. This exhibition presents a rich selection of works from the collection arranged in a largely chronological display.\n\n\n\nThe final gallery tells the story of Wen C. Fong (1930\u20132018), chairman of the Museum\u2019s Department of Asian Art from 1971 to 2000, and his teacher Li Jian (1881\u20131956). As a young calligraphy prodigy in Shanghai in the 1940s, Fong studied brush arts with Li. The display centers on a group of fans, painted and written by Li, that were intended to transmit the canonical models of the classical tradition from teacher to student. Brought to the United States in 1949 and treasured by the Fong family since then, these fans are presented publicly for the first time.\n  \nExhibition Open: Through May 10, 2026",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96204769611359,
+              40.780410937164056
+            ],
+            [
+              -73.96187871694565,
+              40.78033985055909
+            ],
+            [
+              -73.96191090345383,
+              40.78029567531171
+            ],
+            [
+              -73.96194644272327,
+              40.7802464224497
+            ],
+            [
+              -73.96198198199272,
+              40.78026165529362
+            ],
+            [
+              -73.96211542189121,
+              40.78031750905467
+            ],
+            [
+              -73.96204769611359,
+              40.780410937164056
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "2e59eba94593ed17533c9217a503cf16",
@@ -252,7 +846,46 @@
       "name": "Chinese Painting and Calligraphy: Selections from the Collection",
       "summary": "Gallery 214",
       "description": "The Met acquired its first Chinese painting in 1902. Since then, the Museum has added more than two thousand works of painting and calligraphy, building one of the most comprehensive collections in the world. Spanning fifteen hundred years of cultural production and featuring a variety of genres, techniques, and styles, The Met's collection\u00a0has become a key resource for the study of Chinese painting and calligraphy. This exhibition presents a rich selection of works from the collection arranged in a largely chronological display.\n\n\n\nThe final gallery tells the story of Wen C. Fong (1930\u20132018), chairman of the Museum\u2019s Department of Asian Art from 1971 to 2000, and his teacher Li Jian (1881\u20131956). As a young calligraphy prodigy in Shanghai in the 1940s, Fong studied brush arts with Li. The display centers on a group of fans, painted and written by Li, that were intended to transmit the canonical models of the classical tradition from teacher to student. Brought to the United States in 1949 and treasured by the Fong family since then, these fans are presented publicly for the first time.\n  \nExhibition Open: Through May 10, 2026",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96198198199272,
+              40.78026165529362
+            ],
+            [
+              -73.96194644272327,
+              40.7802464224497
+            ],
+            [
+              -73.96190084517002,
+              40.78022712751407
+            ],
+            [
+              -73.96193973720074,
+              40.780174320321805
+            ],
+            [
+              -73.96194778382778,
+              40.780163149569596
+            ],
+            [
+              -73.96194979548454,
+              40.78016010300081
+            ],
+            [
+              -73.96203093230724,
+              40.7801941230189
+            ],
+            [
+              -73.96198198199272,
+              40.78026165529362
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "91af51c706974262fdfb9fcf3377fcfc",
@@ -265,7 +898,38 @@
       "name": "Chinese Painting and Calligraphy: Selections from the Collection",
       "summary": "Gallery 215",
       "description": "The Met acquired its first Chinese painting in 1902. Since then, the Museum has added more than two thousand works of painting and calligraphy, building one of the most comprehensive collections in the world. Spanning fifteen hundred years of cultural production and featuring a variety of genres, techniques, and styles, The Met's collection\u00a0has become a key resource for the study of Chinese painting and calligraphy. This exhibition presents a rich selection of works from the collection arranged in a largely chronological display.\n\n\n\nThe final gallery tells the story of Wen C. Fong (1930\u20132018), chairman of the Museum\u2019s Department of Asian Art from 1971 to 2000, and his teacher Li Jian (1881\u20131956). As a young calligraphy prodigy in Shanghai in the 1940s, Fong studied brush arts with Li. The display centers on a group of fans, painted and written by Li, that were intended to transmit the canonical models of the classical tradition from teacher to student. Brought to the United States in 1949 and treasured by the Fong family since then, these fans are presented publicly for the first time.\n  \nExhibition Open: Through May 10, 2026",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96203093230724,
+              40.7801941230189
+            ],
+            [
+              -73.96194979548454,
+              40.78016010300081
+            ],
+            [
+              -73.96195515990257,
+              40.78015248657885
+            ],
+            [
+              -73.96199204027653,
+              40.78010221819391
+            ],
+            [
+              -73.96207317709923,
+              40.780136745973465
+            ],
+            [
+              -73.96203093230724,
+              40.7801941230189
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "d89308841ecd29c3a0f9251c46271426",
@@ -278,7 +942,50 @@
       "name": "Chinese Painting and Calligraphy: Selections from the Collection",
       "summary": "Gallery 216",
       "description": "The Met acquired its first Chinese painting in 1902. Since then, the Museum has added more than two thousand works of painting and calligraphy, building one of the most comprehensive collections in the world. Spanning fifteen hundred years of cultural production and featuring a variety of genres, techniques, and styles, The Met's collection\u00a0has become a key resource for the study of Chinese painting and calligraphy. This exhibition presents a rich selection of works from the collection arranged in a largely chronological display.\n\n\n\nThe final gallery tells the story of Wen C. Fong (1930\u20132018), chairman of the Museum\u2019s Department of Asian Art from 1971 to 2000, and his teacher Li Jian (1881\u20131956). As a young calligraphy prodigy in Shanghai in the 1940s, Fong studied brush arts with Li. The display centers on a group of fans, painted and written by Li, that were intended to transmit the canonical models of the classical tradition from teacher to student. Brought to the United States in 1949 and treasured by the Fong family since then, these fans are presented publicly for the first time.\n  \nExhibition Open: Through May 10, 2026",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/02c0c3d1686eba5ed920775dc39d7fe77c34a7ed-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96207317709923,
+              40.780136745973465
+            ],
+            [
+              -73.96199204027653,
+              40.78010221819391
+            ],
+            [
+              -73.96199807524681,
+              40.78009358624902
+            ],
+            [
+              -73.96204367280006,
+              40.780031639350405
+            ],
+            [
+              -73.96207585930824,
+              40.77998746410304
+            ],
+            [
+              -73.96208256483078,
+              40.77997781663522
+            ],
+            [
+              -73.96216370165348,
+              40.78001183665331
+            ],
+            [
+              -73.9621402323246,
+              40.78004433338701
+            ],
+            [
+              -73.96207317709923,
+              40.780136745973465
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "638389ebf8907fe6cd0c08cc93801541",
@@ -291,7 +998,46 @@
       "name": "Chinese Courtyard in the Style of the Ming Dynasty",
       "summary": "Gallery 217",
       "description": "The Astor Court\n\nFlorence and Herbert Irving Asian Wing\n\nInspired by Brooke Russell Astor, who spent part of her childhood in China, The Astor Court and its adjoining reception room (Gallery 218) featuring Ming dynasty hardwood furniture opened to the public in 1981, a gift of the Vincent Astor Foundation.\n\nModeled on a seventeenth-century courtyard in the Garden of the Master of the Fishing Nets in Suzhou, the court was entirely constructed using traditional tools and techniques. An eighteenth-century imperial kiln was reopened to fire the ceramic tiles; rare nan wood was hand-planed into columns; specimen Taihu rocks were used for the rockeries, and a granite terrace was hand chiseled from a Suzhou quarry.\n\nA team of twenty-six Chinese craftsmen (along with a chef) spent six months in New York assembling the components.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/ec95200e6212806037a839264b18344bb00f46da-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/ec95200e6212806037a839264b18344bb00f46da-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96217174828053,
+              40.780253023348735
+            ],
+            [
+              -73.96203093230724,
+              40.7801941230189
+            ],
+            [
+              -73.96207317709923,
+              40.780136745973465
+            ],
+            [
+              -73.9621402323246,
+              40.78004433338701
+            ],
+            [
+              -73.96216101944447,
+              40.7800529653319
+            ],
+            [
+              -73.96217912435532,
+              40.78006058175386
+            ],
+            [
+              -73.96228104829788,
+              40.78010323371684
+            ],
+            [
+              -73.96217174828053,
+              40.780253023348735
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "1195ffabadc12bc35940259dc82d09f2",
@@ -304,7 +1050,38 @@
       "name": "Chinese Courtyard in the Style of the Ming Dynasty",
       "summary": "Gallery 218",
       "description": "Florence and Herbert Irving Asian Wing\n\nInspired by Brooke Russell Astor, who spent part of her childhood in China, The Astor Court (Gallery 217) and this adjoining reception room featuring Ming dynasty hardwood furniture opened to the public in 1981, a gift of the Vincent Astor Foundation.\n\nModeled on a seventeenth-century courtyard in the Garden of the Master of the Fishing Nets in Suzhou, the court was entirely constructed using traditional tools and techniques. An eighteenth-century imperial kiln was reopened to fire the ceramic tiles; rare nan wood was hand-planed into columns; specimen Taihu rocks were used for the rockeries, and a granite terrace was hand chiseled from a Suzhou quarry.\n\nA team of twenty-six Chinese craftsmen (along with a chef) spent six months in New York assembling the components.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/ca24ff6e65fe4aac6735d162102f6d34ac8add70-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/ca24ff6e65fe4aac6735d162102f6d34ac8add70-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96212212741375,
+              40.780320555623454
+            ],
+            [
+              -73.96211542189121,
+              40.78031750905467
+            ],
+            [
+              -73.96198198199272,
+              40.78026165529362
+            ],
+            [
+              -73.96203093230724,
+              40.7801941230189
+            ],
+            [
+              -73.96217174828053,
+              40.780253023348735
+            ],
+            [
+              -73.96212212741375,
+              40.780320555623454
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "909afb5b21c6acc664f01ecc77c839aa",
@@ -317,7 +1094,38 @@
       "name": "Chinese Treasury",
       "summary": "Gallery 219",
       "description": "Florence and Herbert Irving Galleries for Chinese Decorative Arts\n\nFlorence and Herbert Irving Asian Wing\n\nOpened on May 19, 2014, the Chinese Treasury re-creates the type of collecting and display found in the treasure cabinets (duo bao ge) assembled throughout the late Ming (1368\u20131644) and Qing (1644\u20131911) dynasties. Extraordinary works in ivory, rhinoceros horn, glass, porcelain, and jade and other hard stones celebrate the skill and imagination of Chinese artists in designing and crafting these materials. Touchpads allow viewers to read introductory texts for all of the objects and to explore further by grouping the works of art by material and by themes.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/8a765ec0af9bb7e04035df29836f3ef7e0564b43-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/8a765ec0af9bb7e04035df29836f3ef7e0564b43-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96215096116066,
+              40.78045460464996
+            ],
+            [
+              -73.96209932863712,
+              40.780432770907005
+            ],
+            [
+              -73.96213620901108,
+              40.7803819947606
+            ],
+            [
+              -73.96216973662376,
+              40.780395704320135
+            ],
+            [
+              -73.96218851208687,
+              40.78040382850356
+            ],
+            [
+              -73.96215096116066,
+              40.78045460464996
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "0bb2539545bd6e7ede1e430455e27f3b",
@@ -330,7 +1138,42 @@
       "name": "Embracing Color: Enamel in Chinese Decorative Arts, 1300\u20131900",
       "summary": "Gallery 220",
       "description": "Enamel decoration is a significant element of Chinese decorative arts that has long been overlooked. This exhibition reveals the aesthetic, technical, and cultural achievement of Chinese enamel wares by demonstrating the transformative role of enamel during the Ming (1368\u20131644) and Qing (1644\u20131911) dynasties. The first transformational moment occurred in the late 14th to 15th century, when the introduction of cloisonn\u00e9 enamel from the West, along with the development of porcelain with overglaze enamels, led to a shift away from a monochromatic palette to colorful works. The second transformation occurred in the late 17th to 18th century, when European enameling materials and techniques were brought to the Qing court and more subtle and varied color tones were developed on enamels applied over porcelain, metal, glass, and other mediums. In both moments, Chinese artists did not simply adopt or copy foreign techniques; they actively created new colors and styles that reflected their own taste. The more than 100 objects on view are drawn mainly from The Met collection.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: July 4, 2022\u2013April 30, 2023\nRotation 2: May 20, 2023\u2013March 24, 2024 \nRotation 3: April 13, 2024\u2013February 16, 2025\nRotation 4: March 1, 2025\u2013January 20, 2026\nRotation 5: January 22\u2013June 28, 2026\n\n\n\nThis exhibition is made possible by the Florence and Herbert Irving Fund for Asian Art Exhibitions.\n\nUnknown block type \"image\", specify a component for it in the `components.types` optionThis exhibition is part of Festival of New York, a citywide celebration featuring 200+ diverse organizations with events and exhibitions from Memorial Day to Labor Day 2022.\n  \nExhibition Open: Through June 28, 2026",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/e928ba5d5b0fd6419850a02e250a83da148dc75b-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/e928ba5d5b0fd6419850a02e250a83da148dc75b-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96209932863712,
+              40.780432770907005
+            ],
+            [
+              -73.96201953291893,
+              40.78039925865038
+            ],
+            [
+              -73.96208725869656,
+              40.780305830540996
+            ],
+            [
+              -73.96216705441475,
+              40.780339342797625
+            ],
+            [
+              -73.96215699613094,
+              40.78035356011861
+            ],
+            [
+              -73.96213620901108,
+              40.7803819947606
+            ],
+            [
+              -73.96209932863712,
+              40.780432770907005
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "4ab914dfd1f7d345f971c72a97fd1bff",
@@ -343,7 +1186,34 @@
       "name": "Embracing Color: Enamel in Chinese Decorative Arts, 1300\u20131900",
       "summary": "Gallery 221",
       "description": "Enamel decoration is a significant element of Chinese decorative arts that has long been overlooked. This exhibition reveals the aesthetic, technical, and cultural achievement of Chinese enamel wares by demonstrating the transformative role of enamel during the Ming (1368\u20131644) and Qing (1644\u20131911) dynasties. The first transformational moment occurred in the late 14th to 15th century, when the introduction of cloisonn\u00e9 enamel from the West, along with the development of porcelain with overglaze enamels, led to a shift away from a monochromatic palette to colorful works. The second transformation occurred in the late 17th to 18th century, when European enameling materials and techniques were brought to the Qing court and more subtle and varied color tones were developed on enamels applied over porcelain, metal, glass, and other mediums. In both moments, Chinese artists did not simply adopt or copy foreign techniques; they actively created new colors and styles that reflected their own taste. The more than 100 objects on view are drawn mainly from The Met collection.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: July 4, 2022\u2013April 30, 2023\nRotation 2: May 20, 2023\u2013March 24, 2024 \nRotation 3: April 13, 2024\u2013February 16, 2025\nRotation 4: March 1, 2025\u2013January 20, 2026\nRotation 5: January 22\u2013June 28, 2026\n\n\n\nThis exhibition is made possible by the Florence and Herbert Irving Fund for Asian Art Exhibitions.\n\nUnknown block type \"image\", specify a component for it in the `components.types` optionThis exhibition is part of Festival of New York, a citywide celebration featuring 200+ diverse organizations with events and exhibitions from Memorial Day to Labor Day 2022.\n  \nExhibition Open: Through June 28, 2026",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/e928ba5d5b0fd6419850a02e250a83da148dc75b-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/e928ba5d5b0fd6419850a02e250a83da148dc75b-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96201953291893,
+              40.78039925865038
+            ],
+            [
+              -73.96191827952862,
+              40.7803566066874
+            ],
+            [
+              -73.9619866758585,
+              40.78026317857802
+            ],
+            [
+              -73.96208725869656,
+              40.780305830540996
+            ],
+            [
+              -73.96201953291893,
+              40.78039925865038
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "1af1e9aa03f4f0c45b2e4eeffed930a8",
@@ -356,7 +1226,38 @@
       "name": "A Passion for Jade: The Bishop Collection",
       "summary": "Gallery 222",
       "description": "More than a hundred remarkable objects from the Heber Bishop collection, including carvings of jade, the most esteemed stone in China, and many other hardstones, are on view in this focused presentation. The refined works represent the sophisticated art of Chinese gemstone carvers during the Qing dynasty (1644\u20131911) as well as the highly accomplished skills of Mogul Indian (1526\u20131857) craftsmen, which provided an exotic inspiration to their Chinese counterparts. Also on view are a set of Chinese stone-working tools and illustrations of jade workshops, which will introduce the traditional method of working jade.\n\nThe exhibition is made possible by the Florence and Herbert Irving Fund for Asian Art Exhibitions.\n  \nExhibition Open: Through June 28, 2026",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/8a74fa97cc00d08a3ea26a042bab5bc6dfb4e2a8-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/8a74fa97cc00d08a3ea26a042bab5bc6dfb4e2a8-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96191895008087,
+              40.7803566066874
+            ],
+            [
+              -73.96185591816902,
+              40.78033020309127
+            ],
+            [
+              -73.96191291511059,
+              40.78025200782581
+            ],
+            [
+              -73.96192364394665,
+              40.78023677498189
+            ],
+            [
+              -73.9619866758585,
+              40.78026317857802
+            ],
+            [
+              -73.96191895008087,
+              40.7803566066874
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "9b12e74658a251d5218b04eeee017041",
@@ -369,7 +1270,46 @@
       "name": "The Infinite Artistry of Japanese Ceramics",
       "summary": "Gallery 223",
       "description": "From the earliest hand-built figurines rooted in spiritual beliefs to the vibrant works that define today\u2019s contemporary ceramic art scene, Japanese pottery reflects exceptional creativity and a refined sense of beauty. Its distinctiveness arises from the ingenuity and mastery of the potters, as well as the wide range of wares that have long supported daily life. This exhibition explores Japan\u2019s extensive and rich history of ceramic art through approximately 350 extraordinary works presented in themes that offer fresh perspectives on the diverse forms and functions, from everyday tableware to vessels created for tea masters and elite households to modern sculptural compositions.\n\nJapan\u2019s earliest pottery dates back more than 12,000 years, when makers shaped and fired clay vessels for cooking and storage\u2014objects that bear the traces of these early potters\u2019 hands. Expertise transmitted from China and Korea in medieval times facilitated the development of new Japanese techniques and wares. Over time, the reverence for prized ceramics led to finding beauty even through damage. Japanese artisans developed kintsugi, the art of repairing broken ceramics with gold lacquer, restoring the damaged object\u2019s function while making it even more precious and valuable. Japanese cuisine and dining aesthetics inspired vessels designed to harmonize with the color and texture of food. Many porcelains from the Edo period (1615\u20131868) are embellished with motifs drawn from the natural world or symbols of happiness, longevity, and good fortune.\n\nFeaturing refined ceramics and other artworks from the Museum\u2019s Harry G. C. Packard Collection, this exhibition celebrates the 50th anniversary of this landmark acquisition that established the foundation of The Met\u2019s Japanese art holdings. By placing ceramics in dialogue with related art forms\u2014including lacquers, textiles, paintings, and woodblock prints\u2014the display inspires curiosity about the multiverse of Japanese ceramics and its broader cultural contexts.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 19\u2013May 12, 2026\nRotation 2: May 14\u2013August 16, 2026\nRotation 3: August 29\u2013December 8, 2026\nRotation 4: December 10, 2026\u2013March 28, 2027\nRotation 5: April 10\u2013August 8, 2027\n  \nExhibition Open: Through August 8, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9625097066164,
+              40.780170765991556
+            ],
+            [
+              -73.9624909311533,
+              40.78016264180813
+            ],
+            [
+              -73.96245136857033,
+              40.780146393441285
+            ],
+            [
+              -73.96247014403343,
+              40.78012049760662
+            ],
+            [
+              -73.96243259310722,
+              40.78010424923977
+            ],
+            [
+              -73.96247416734695,
+              40.780047379955796
+            ],
+            [
+              -73.96257072687149,
+              40.780088000872915
+            ],
+            [
+              -73.9625097066164,
+              40.780170765991556
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "5be1513d9b2f4bc7c97d2bf6c81c2c9b",
@@ -382,7 +1322,34 @@
       "name": "The Infinite Artistry of Japanese Ceramics",
       "summary": "Gallery 224",
       "description": "From the earliest hand-built figurines rooted in spiritual beliefs to the vibrant works that define today\u2019s contemporary ceramic art scene, Japanese pottery reflects exceptional creativity and a refined sense of beauty. Its distinctiveness arises from the ingenuity and mastery of the potters, as well as the wide range of wares that have long supported daily life. This exhibition explores Japan\u2019s extensive and rich history of ceramic art through approximately 350 extraordinary works presented in themes that offer fresh perspectives on the diverse forms and functions, from everyday tableware to vessels created for tea masters and elite households to modern sculptural compositions.\n\nJapan\u2019s earliest pottery dates back more than 12,000 years, when makers shaped and fired clay vessels for cooking and storage\u2014objects that bear the traces of these early potters\u2019 hands. Expertise transmitted from China and Korea in medieval times facilitated the development of new Japanese techniques and wares. Over time, the reverence for prized ceramics led to finding beauty even through damage. Japanese artisans developed kintsugi, the art of repairing broken ceramics with gold lacquer, restoring the damaged object\u2019s function while making it even more precious and valuable. Japanese cuisine and dining aesthetics inspired vessels designed to harmonize with the color and texture of food. Many porcelains from the Edo period (1615\u20131868) are embellished with motifs drawn from the natural world or symbols of happiness, longevity, and good fortune.\n\nFeaturing refined ceramics and other artworks from the Museum\u2019s Harry G. C. Packard Collection, this exhibition celebrates the 50th anniversary of this landmark acquisition that established the foundation of The Met\u2019s Japanese art holdings. By placing ceramics in dialogue with related art forms\u2014including lacquers, textiles, paintings, and woodblock prints\u2014the display inspires curiosity about the multiverse of Japanese ceramics and its broader cultural contexts.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 19\u2013May 12, 2026\nRotation 2: May 14\u2013August 16, 2026\nRotation 3: August 29\u2013December 8, 2026\nRotation 4: December 10, 2026\u2013March 28, 2027\nRotation 5: April 10\u2013August 8, 2027\n  \nExhibition Open: Through August 8, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96262638270855,
+              40.78022001885357
+            ],
+            [
+              -73.9625097066164,
+              40.780170765991556
+            ],
+            [
+              -73.96257072687149,
+              40.780088000872915
+            ],
+            [
+              -73.96268673241138,
+              40.780136745973465
+            ],
+            [
+              -73.96262638270855,
+              40.78022001885357
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "0c67ba145794b33870cdde29a503951a",
@@ -395,7 +1362,38 @@
       "name": "The Infinite Artistry of Japanese Ceramics",
       "summary": "Gallery 225",
       "description": "From the earliest hand-built figurines rooted in spiritual beliefs to the vibrant works that define today\u2019s contemporary ceramic art scene, Japanese pottery reflects exceptional creativity and a refined sense of beauty. Its distinctiveness arises from the ingenuity and mastery of the potters, as well as the wide range of wares that have long supported daily life. This exhibition explores Japan\u2019s extensive and rich history of ceramic art through approximately 350 extraordinary works presented in themes that offer fresh perspectives on the diverse forms and functions, from everyday tableware to vessels created for tea masters and elite households to modern sculptural compositions.\n\nJapan\u2019s earliest pottery dates back more than 12,000 years, when makers shaped and fired clay vessels for cooking and storage\u2014objects that bear the traces of these early potters\u2019 hands. Expertise transmitted from China and Korea in medieval times facilitated the development of new Japanese techniques and wares. Over time, the reverence for prized ceramics led to finding beauty even through damage. Japanese artisans developed kintsugi, the art of repairing broken ceramics with gold lacquer, restoring the damaged object\u2019s function while making it even more precious and valuable. Japanese cuisine and dining aesthetics inspired vessels designed to harmonize with the color and texture of food. Many porcelains from the Edo period (1615\u20131868) are embellished with motifs drawn from the natural world or symbols of happiness, longevity, and good fortune.\n\nFeaturing refined ceramics and other artworks from the Museum\u2019s Harry G. C. Packard Collection, this exhibition celebrates the 50th anniversary of this landmark acquisition that established the foundation of The Met\u2019s Japanese art holdings. By placing ceramics in dialogue with related art forms\u2014including lacquers, textiles, paintings, and woodblock prints\u2014the display inspires curiosity about the multiverse of Japanese ceramics and its broader cultural contexts.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 19\u2013May 12, 2026\nRotation 2: May 14\u2013August 16, 2026\nRotation 3: August 29\u2013December 8, 2026\nRotation 4: December 10, 2026\u2013March 28, 2027\nRotation 5: April 10\u2013August 8, 2027\n  \nExhibition Open: Through August 8, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96275512874126,
+              40.780288566651215
+            ],
+            [
+              -73.96266460418701,
+              40.78025048454141
+            ],
+            [
+              -73.96266460418701,
+              40.78016771942277
+            ],
+            [
+              -73.96267332136631,
+              40.780155533147635
+            ],
+            [
+              -73.96281011402607,
+              40.780213417954535
+            ],
+            [
+              -73.96275512874126,
+              40.780288566651215
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "01995d01ca1dbe66c812d33be72d21a4",
@@ -408,7 +1406,62 @@
       "name": "The Infinite Artistry of Japanese Ceramics",
       "summary": "Gallery 226",
       "description": "From the earliest hand-built figurines rooted in spiritual beliefs to the vibrant works that define today\u2019s contemporary ceramic art scene, Japanese pottery reflects exceptional creativity and a refined sense of beauty. Its distinctiveness arises from the ingenuity and mastery of the potters, as well as the wide range of wares that have long supported daily life. This exhibition explores Japan\u2019s extensive and rich history of ceramic art through approximately 350 extraordinary works presented in themes that offer fresh perspectives on the diverse forms and functions, from everyday tableware to vessels created for tea masters and elite households to modern sculptural compositions.\n\nJapan\u2019s earliest pottery dates back more than 12,000 years, when makers shaped and fired clay vessels for cooking and storage\u2014objects that bear the traces of these early potters\u2019 hands. Expertise transmitted from China and Korea in medieval times facilitated the development of new Japanese techniques and wares. Over time, the reverence for prized ceramics led to finding beauty even through damage. Japanese artisans developed kintsugi, the art of repairing broken ceramics with gold lacquer, restoring the damaged object\u2019s function while making it even more precious and valuable. Japanese cuisine and dining aesthetics inspired vessels designed to harmonize with the color and texture of food. Many porcelains from the Edo period (1615\u20131868) are embellished with motifs drawn from the natural world or symbols of happiness, longevity, and good fortune.\n\nFeaturing refined ceramics and other artworks from the Museum\u2019s Harry G. C. Packard Collection, this exhibition celebrates the 50th anniversary of this landmark acquisition that established the foundation of The Met\u2019s Japanese art holdings. By placing ceramics in dialogue with related art forms\u2014including lacquers, textiles, paintings, and woodblock prints\u2014the display inspires curiosity about the multiverse of Japanese ceramics and its broader cultural contexts.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 19\u2013May 12, 2026\nRotation 2: May 14\u2013August 16, 2026\nRotation 3: August 29\u2013December 8, 2026\nRotation 4: December 10, 2026\u2013March 28, 2027\nRotation 5: April 10\u2013August 8, 2027\n  \nExhibition Open: Through August 8, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9628054201603,
+              40.78030989263271
+            ],
+            [
+              -73.96275512874126,
+              40.780288566651215
+            ],
+            [
+              -73.96277256309986,
+              40.78026368633948
+            ],
+            [
+              -73.9627792686224,
+              40.78025505439459
+            ],
+            [
+              -73.96281011402607,
+              40.780213417954535
+            ],
+            [
+              -73.96281816065311,
+              40.780216972284784
+            ],
+            [
+              -73.96283626556396,
+              40.780224588706744
+            ],
+            [
+              -73.96293349564075,
+              40.78026520962387
+            ],
+            [
+              -73.96290332078934,
+              40.78030684606392
+            ],
+            [
+              -73.96283023059368,
+              40.78027638037608
+            ],
+            [
+              -73.96282352507114,
+              40.78028501232097
+            ],
+            [
+              -73.9628054201603,
+              40.78030989263271
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "bc4a59bfd69fce1d47076984d0c4321e",
@@ -421,7 +1474,34 @@
       "name": "The Infinite Artistry of Japanese Ceramics",
       "summary": "Gallery 227",
       "description": "From the earliest hand-built figurines rooted in spiritual beliefs to the vibrant works that define today\u2019s contemporary ceramic art scene, Japanese pottery reflects exceptional creativity and a refined sense of beauty. Its distinctiveness arises from the ingenuity and mastery of the potters, as well as the wide range of wares that have long supported daily life. This exhibition explores Japan\u2019s extensive and rich history of ceramic art through approximately 350 extraordinary works presented in themes that offer fresh perspectives on the diverse forms and functions, from everyday tableware to vessels created for tea masters and elite households to modern sculptural compositions.\n\nJapan\u2019s earliest pottery dates back more than 12,000 years, when makers shaped and fired clay vessels for cooking and storage\u2014objects that bear the traces of these early potters\u2019 hands. Expertise transmitted from China and Korea in medieval times facilitated the development of new Japanese techniques and wares. Over time, the reverence for prized ceramics led to finding beauty even through damage. Japanese artisans developed kintsugi, the art of repairing broken ceramics with gold lacquer, restoring the damaged object\u2019s function while making it even more precious and valuable. Japanese cuisine and dining aesthetics inspired vessels designed to harmonize with the color and texture of food. Many porcelains from the Edo period (1615\u20131868) are embellished with motifs drawn from the natural world or symbols of happiness, longevity, and good fortune.\n\nFeaturing refined ceramics and other artworks from the Museum\u2019s Harry G. C. Packard Collection, this exhibition celebrates the 50th anniversary of this landmark acquisition that established the foundation of The Met\u2019s Japanese art holdings. By placing ceramics in dialogue with related art forms\u2014including lacquers, textiles, paintings, and woodblock prints\u2014the display inspires curiosity about the multiverse of Japanese ceramics and its broader cultural contexts.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 19\u2013May 12, 2026\nRotation 2: May 14\u2013August 16, 2026\nRotation 3: August 29\u2013December 8, 2026\nRotation 4: December 10, 2026\u2013March 28, 2027\nRotation 5: April 10\u2013August 8, 2027\n  \nExhibition Open: Through August 8, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96297708153725,
+              40.78044952703532
+            ],
+            [
+              -73.9629153907299,
+              40.780423631200655
+            ],
+            [
+              -73.96298445761204,
+              40.78032867980688
+            ],
+            [
+              -73.96304614841938,
+              40.780354575641546
+            ],
+            [
+              -73.96297708153725,
+              40.78044952703532
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "a9476db6fe49df05431e057082944cc3",
@@ -434,7 +1514,46 @@
       "name": "The Infinite Artistry of Japanese Ceramics",
       "summary": "Gallery 228",
       "description": "From the earliest hand-built figurines rooted in spiritual beliefs to the vibrant works that define today\u2019s contemporary ceramic art scene, Japanese pottery reflects exceptional creativity and a refined sense of beauty. Its distinctiveness arises from the ingenuity and mastery of the potters, as well as the wide range of wares that have long supported daily life. This exhibition explores Japan\u2019s extensive and rich history of ceramic art through approximately 350 extraordinary works presented in themes that offer fresh perspectives on the diverse forms and functions, from everyday tableware to vessels created for tea masters and elite households to modern sculptural compositions.\n\nJapan\u2019s earliest pottery dates back more than 12,000 years, when makers shaped and fired clay vessels for cooking and storage\u2014objects that bear the traces of these early potters\u2019 hands. Expertise transmitted from China and Korea in medieval times facilitated the development of new Japanese techniques and wares. Over time, the reverence for prized ceramics led to finding beauty even through damage. Japanese artisans developed kintsugi, the art of repairing broken ceramics with gold lacquer, restoring the damaged object\u2019s function while making it even more precious and valuable. Japanese cuisine and dining aesthetics inspired vessels designed to harmonize with the color and texture of food. Many porcelains from the Edo period (1615\u20131868) are embellished with motifs drawn from the natural world or symbols of happiness, longevity, and good fortune.\n\nFeaturing refined ceramics and other artworks from the Museum\u2019s Harry G. C. Packard Collection, this exhibition celebrates the 50th anniversary of this landmark acquisition that established the foundation of The Met\u2019s Japanese art holdings. By placing ceramics in dialogue with related art forms\u2014including lacquers, textiles, paintings, and woodblock prints\u2014the display inspires curiosity about the multiverse of Japanese ceramics and its broader cultural contexts.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 19\u2013May 12, 2026\nRotation 2: May 14\u2013August 16, 2026\nRotation 3: August 29\u2013December 8, 2026\nRotation 4: December 10, 2026\u2013March 28, 2027\nRotation 5: April 10\u2013August 8, 2027\n  \nExhibition Open: Through August 8, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9629153907299,
+              40.780423631200655
+            ],
+            [
+              -73.96276786923409,
+              40.780361684302044
+            ],
+            [
+              -73.9628054201603,
+              40.78030989263271
+            ],
+            [
+              -73.96287851035595,
+              40.78034035832055
+            ],
+            [
+              -73.96293349564075,
+              40.78026520962387
+            ],
+            [
+              -73.96300792694092,
+              40.78029669083464
+            ],
+            [
+              -73.96298445761204,
+              40.78032867980688
+            ],
+            [
+              -73.9629153907299,
+              40.780423631200655
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "cd234217d914c5dcb0d74cc1243688a1",
@@ -447,7 +1566,34 @@
       "name": "The Infinite Artistry of Japanese Ceramics",
       "summary": "Gallery 229",
       "description": "From the earliest hand-built figurines rooted in spiritual beliefs to the vibrant works that define today\u2019s contemporary ceramic art scene, Japanese pottery reflects exceptional creativity and a refined sense of beauty. Its distinctiveness arises from the ingenuity and mastery of the potters, as well as the wide range of wares that have long supported daily life. This exhibition explores Japan\u2019s extensive and rich history of ceramic art through approximately 350 extraordinary works presented in themes that offer fresh perspectives on the diverse forms and functions, from everyday tableware to vessels created for tea masters and elite households to modern sculptural compositions.\n\nJapan\u2019s earliest pottery dates back more than 12,000 years, when makers shaped and fired clay vessels for cooking and storage\u2014objects that bear the traces of these early potters\u2019 hands. Expertise transmitted from China and Korea in medieval times facilitated the development of new Japanese techniques and wares. Over time, the reverence for prized ceramics led to finding beauty even through damage. Japanese artisans developed kintsugi, the art of repairing broken ceramics with gold lacquer, restoring the damaged object\u2019s function while making it even more precious and valuable. Japanese cuisine and dining aesthetics inspired vessels designed to harmonize with the color and texture of food. Many porcelains from the Edo period (1615\u20131868) are embellished with motifs drawn from the natural world or symbols of happiness, longevity, and good fortune.\n\nFeaturing refined ceramics and other artworks from the Museum\u2019s Harry G. C. Packard Collection, this exhibition celebrates the 50th anniversary of this landmark acquisition that established the foundation of The Met\u2019s Japanese art holdings. By placing ceramics in dialogue with related art forms\u2014including lacquers, textiles, paintings, and woodblock prints\u2014the display inspires curiosity about the multiverse of Japanese ceramics and its broader cultural contexts.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 19\u2013May 12, 2026\nRotation 2: May 14\u2013August 16, 2026\nRotation 3: August 29\u2013December 8, 2026\nRotation 4: December 10, 2026\u2013March 28, 2027\nRotation 5: April 10\u2013August 8, 2027\n  \nExhibition Open: Through August 8, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96276786923409,
+              40.780361684302044
+            ],
+            [
+              -73.9627169072628,
+              40.78034035832055
+            ],
+            [
+              -73.96275512874126,
+              40.780288566651215
+            ],
+            [
+              -73.9628054201603,
+              40.78030989263271
+            ],
+            [
+              -73.96276786923409,
+              40.780361684302044
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "6f0ca676e4a44b5b5b335ceb02a2cc37",
@@ -460,7 +1606,34 @@
       "name": "The Infinite Artistry of Japanese Ceramics",
       "summary": "Gallery 230",
       "description": "From the earliest hand-built figurines rooted in spiritual beliefs to the vibrant works that define today\u2019s contemporary ceramic art scene, Japanese pottery reflects exceptional creativity and a refined sense of beauty. Its distinctiveness arises from the ingenuity and mastery of the potters, as well as the wide range of wares that have long supported daily life. This exhibition explores Japan\u2019s extensive and rich history of ceramic art through approximately 350 extraordinary works presented in themes that offer fresh perspectives on the diverse forms and functions, from everyday tableware to vessels created for tea masters and elite households to modern sculptural compositions.\n\nJapan\u2019s earliest pottery dates back more than 12,000 years, when makers shaped and fired clay vessels for cooking and storage\u2014objects that bear the traces of these early potters\u2019 hands. Expertise transmitted from China and Korea in medieval times facilitated the development of new Japanese techniques and wares. Over time, the reverence for prized ceramics led to finding beauty even through damage. Japanese artisans developed kintsugi, the art of repairing broken ceramics with gold lacquer, restoring the damaged object\u2019s function while making it even more precious and valuable. Japanese cuisine and dining aesthetics inspired vessels designed to harmonize with the color and texture of food. Many porcelains from the Edo period (1615\u20131868) are embellished with motifs drawn from the natural world or symbols of happiness, longevity, and good fortune.\n\nFeaturing refined ceramics and other artworks from the Museum\u2019s Harry G. C. Packard Collection, this exhibition celebrates the 50th anniversary of this landmark acquisition that established the foundation of The Met\u2019s Japanese art holdings. By placing ceramics in dialogue with related art forms\u2014including lacquers, textiles, paintings, and woodblock prints\u2014the display inspires curiosity about the multiverse of Japanese ceramics and its broader cultural contexts.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 19\u2013May 12, 2026\nRotation 2: May 14\u2013August 16, 2026\nRotation 3: August 29\u2013December 8, 2026\nRotation 4: December 10, 2026\u2013March 28, 2027\nRotation 5: April 10\u2013August 8, 2027\n  \nExhibition Open: Through August 8, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9627169072628,
+              40.78034035832055
+            ],
+            [
+              -73.96266460418701,
+              40.780318524577595
+            ],
+            [
+              -73.96266460418701,
+              40.78025048454141
+            ],
+            [
+              -73.96275512874126,
+              40.780288566651215
+            ],
+            [
+              -73.9627169072628,
+              40.78034035832055
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "6dacedd19227fe781d296df84680a711",
@@ -473,7 +1646,42 @@
       "name": "The Infinite Artistry of Japanese Ceramics",
       "summary": "Gallery 231",
       "description": "From the earliest hand-built figurines rooted in spiritual beliefs to the vibrant works that define today\u2019s contemporary ceramic art scene, Japanese pottery reflects exceptional creativity and a refined sense of beauty. Its distinctiveness arises from the ingenuity and mastery of the potters, as well as the wide range of wares that have long supported daily life. This exhibition explores Japan\u2019s extensive and rich history of ceramic art through approximately 350 extraordinary works presented in themes that offer fresh perspectives on the diverse forms and functions, from everyday tableware to vessels created for tea masters and elite households to modern sculptural compositions.\n\nJapan\u2019s earliest pottery dates back more than 12,000 years, when makers shaped and fired clay vessels for cooking and storage\u2014objects that bear the traces of these early potters\u2019 hands. Expertise transmitted from China and Korea in medieval times facilitated the development of new Japanese techniques and wares. Over time, the reverence for prized ceramics led to finding beauty even through damage. Japanese artisans developed kintsugi, the art of repairing broken ceramics with gold lacquer, restoring the damaged object\u2019s function while making it even more precious and valuable. Japanese cuisine and dining aesthetics inspired vessels designed to harmonize with the color and texture of food. Many porcelains from the Edo period (1615\u20131868) are embellished with motifs drawn from the natural world or symbols of happiness, longevity, and good fortune.\n\nFeaturing refined ceramics and other artworks from the Museum\u2019s Harry G. C. Packard Collection, this exhibition celebrates the 50th anniversary of this landmark acquisition that established the foundation of The Met\u2019s Japanese art holdings. By placing ceramics in dialogue with related art forms\u2014including lacquers, textiles, paintings, and woodblock prints\u2014the display inspires curiosity about the multiverse of Japanese ceramics and its broader cultural contexts.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 19\u2013May 12, 2026\nRotation 2: May 14\u2013August 16, 2026\nRotation 3: August 29\u2013December 8, 2026\nRotation 4: December 10, 2026\u2013March 28, 2027\nRotation 5: April 10\u2013August 8, 2027\n  \nExhibition Open: Through August 8, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96258011460304,
+              40.78028247351365
+            ],
+            [
+              -73.96244533360004,
+              40.78022560422968
+            ],
+            [
+              -73.9624909311533,
+              40.78016264180813
+            ],
+            [
+              -73.9625097066164,
+              40.780170765991556
+            ],
+            [
+              -73.96262638270855,
+              40.78022001885357
+            ],
+            [
+              -73.9626183360815,
+              40.780230681844316
+            ],
+            [
+              -73.96258011460304,
+              40.78028247351365
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "eef4818ee4423f66928a7be6bf20a7a6",
@@ -486,7 +1694,42 @@
       "name": "The Infinite Artistry of Japanese Ceramics",
       "summary": "Gallery 232",
       "description": "From the earliest hand-built figurines rooted in spiritual beliefs to the vibrant works that define today\u2019s contemporary ceramic art scene, Japanese pottery reflects exceptional creativity and a refined sense of beauty. Its distinctiveness arises from the ingenuity and mastery of the potters, as well as the wide range of wares that have long supported daily life. This exhibition explores Japan\u2019s extensive and rich history of ceramic art through approximately 350 extraordinary works presented in themes that offer fresh perspectives on the diverse forms and functions, from everyday tableware to vessels created for tea masters and elite households to modern sculptural compositions.\n\nJapan\u2019s earliest pottery dates back more than 12,000 years, when makers shaped and fired clay vessels for cooking and storage\u2014objects that bear the traces of these early potters\u2019 hands. Expertise transmitted from China and Korea in medieval times facilitated the development of new Japanese techniques and wares. Over time, the reverence for prized ceramics led to finding beauty even through damage. Japanese artisans developed kintsugi, the art of repairing broken ceramics with gold lacquer, restoring the damaged object\u2019s function while making it even more precious and valuable. Japanese cuisine and dining aesthetics inspired vessels designed to harmonize with the color and texture of food. Many porcelains from the Edo period (1615\u20131868) are embellished with motifs drawn from the natural world or symbols of happiness, longevity, and good fortune.\n\nFeaturing refined ceramics and other artworks from the Museum\u2019s Harry G. C. Packard Collection, this exhibition celebrates the 50th anniversary of this landmark acquisition that established the foundation of The Met\u2019s Japanese art holdings. By placing ceramics in dialogue with related art forms\u2014including lacquers, textiles, paintings, and woodblock prints\u2014the display inspires curiosity about the multiverse of Japanese ceramics and its broader cultural contexts.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 19\u2013May 12, 2026\nRotation 2: May 14\u2013August 16, 2026\nRotation 3: August 29\u2013December 8, 2026\nRotation 4: December 10, 2026\u2013March 28, 2027\nRotation 5: April 10\u2013August 8, 2027\n  \nExhibition Open: Through August 8, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/861d263b0db12828f9094b10fd6d89972f3b8c50-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96244533360004,
+              40.78022560422968
+            ],
+            [
+              -73.96236754953861,
+              40.780193107495975
+            ],
+            [
+              -73.96243259310722,
+              40.78010424923977
+            ],
+            [
+              -73.96247014403343,
+              40.78012049760662
+            ],
+            [
+              -73.96245136857033,
+              40.780146393441285
+            ],
+            [
+              -73.9624909311533,
+              40.78016264180813
+            ],
+            [
+              -73.96244533360004,
+              40.78022560422968
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "b70d60f5b8620dbf42e13b6b5aa84f3d",
@@ -499,7 +1742,38 @@
       "name": "Flip Sides: Seeing Korean Art Anew",
       "summary": "Gallery 233",
       "description": "Most objects are displayed to show their \u201cbest\u201d angle meant to impress, sometimes hiding intriguing details. Flip Sides: Seeing Korean Art Anew invites close looking and offers multiple views of the inside, reverse, or hard-to-see aspects of objects.\n\n\n\nBringing together approximately 50 objects from The Met collection, with more than half displayed for the first time, this exhibition, with a rotation, shows treasured Korean traditions. By presenting them in ways that give us a fuller picture into each object\u2019s unique form, Flip Sides provides insight into the construction and function of works in metal, wood, ceramic, textiles, and lacquer. A Buddhist sculpture that held offerings inside, a porcelain jar of striking openwork that conceals an inner chamber, a bronze mirror with a delicately incised image, and a king\u2019s lacquer letter box with linings featuring impressive calligraphy are among the featured objects in Flip Sides.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: March 16\u2013October 18, 2026\nRotation 2: October 31, 2026\u2013May 31, 2027\n  \nExhibition Open: Through May 31, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/8251f03391a97b2fe7f34d58c6adfa1cb5c56eab-5120x2880.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/8251f03391a97b2fe7f34d58c6adfa1cb5c56eab-5120x2880.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96258480846882,
+              40.779685346031926
+            ],
+            [
+              -73.96244466304779,
+              40.77962644570209
+            ],
+            [
+              -73.96247819066048,
+              40.77958074717033
+            ],
+            [
+              -73.96252378821373,
+              40.779518292510254
+            ],
+            [
+              -73.9626632630825,
+              40.77957719284008
+            ],
+            [
+              -73.96258480846882,
+              40.779685346031926
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "d298443ec59e0e09d365f8349e1fa049",
@@ -512,7 +1786,50 @@
       "name": "South Asian Hindu-Buddhist and Jain Sculpture",
       "summary": "Gallery 234",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving South Asian Galleries (Gallery 234 through Gallery 243) represent India, Pakistan, Bangladesh, and Sri Lanka. They primarily trace the development of the sculptural arts associated with the temples and shrines of Hinduism, Buddhism, and Jainism. The arts of the Indian subcontinent are represented from early centuries B.C. up to around the sixteenth century, and encompass all the major regional and dynastic styles. Highlight areas include early arts of Shunga India, Buddhist art of the Gandharan and Amaravati regions, the Kushan and Gupta dynasties of northern India, the Kashmiri kingdoms, Pala eastern India, Pandyan and Chola south India, and medieval northern India.\n\nNote: Islamic arts of South Asia are displayed in the galleries overseen by the Department of Islamic Art.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/0350c1964e579a0201d2eab235cb8afed58b00a9-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/0350c1964e579a0201d2eab235cb8afed58b00a9-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96247819066048,
+              40.77958074717033
+            ],
+            [
+              -73.96239705383778,
+              40.77954672715224
+            ],
+            [
+              -73.96244265139103,
+              40.77948427249216
+            ],
+            [
+              -73.96246545016766,
+              40.779493919959975
+            ],
+            [
+              -73.96245941519737,
+              40.779502044143406
+            ],
+            [
+              -73.96247752010822,
+              40.77950966056537
+            ],
+            [
+              -73.9624835550785,
+              40.77950153638194
+            ],
+            [
+              -73.96252378821373,
+              40.779518292510254
+            ],
+            [
+              -73.96247819066048,
+              40.77958074717033
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "4cd9446a52406738953daf0d11178a74",
@@ -525,7 +1842,34 @@
       "name": "South Asian Hindu-Buddhist and Jain Sculpture",
       "summary": "Gallery 235",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving South Asian Galleries (Gallery 234 through Gallery 243) represent India, Pakistan, Bangladesh, and Sri Lanka. They primarily trace the development of the sculptural arts associated with the temples and shrines of Hinduism, Buddhism, and Jainism. The arts of the Indian subcontinent are represented from early centuries B.C. up to around the sixteenth century, and encompass all the major regional and dynastic styles. Highlight areas include early arts of Shunga India, Buddhist art of the Gandharan and Amaravati regions, the Kushan and Gupta dynasties of northern India, the Kashmiri kingdoms, Pala eastern India, Pandyan and Chola south India, and medieval northern India.\n\nNote: Islamic arts of South Asia are displayed in the galleries overseen by the Department of Islamic Art.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/9c56ead88f28182baa731632cbc6cf5b967d1451-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/9c56ead88f28182baa731632cbc6cf5b967d1451-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96241649985313,
+              40.779665035573366
+            ],
+            [
+              -73.96233536303043,
+              40.779631015555275
+            ],
+            [
+              -73.96239705383778,
+              40.77954672715224
+            ],
+            [
+              -73.96247819066048,
+              40.77958074717033
+            ],
+            [
+              -73.96241649985313,
+              40.779665035573366
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "54e87ea0467a5aea3f0733831699ad81",
@@ -538,7 +1882,34 @@
       "name": "South Asian Hindu-Buddhist and Jain Sculpture",
       "summary": "Gallery 236",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving South Asian Galleries (Gallery 234 through Gallery 243) represent India, Pakistan, Bangladesh, and Sri Lanka. They primarily trace the development of the sculptural arts associated with the temples and shrines of Hinduism, Buddhism, and Jainism. The arts of the Indian subcontinent are represented from early centuries B.C. up to around the sixteenth century, and encompass all the major regional and dynastic styles.\n\nHighlight areas include early arts of Shunga India, Buddhist art of the Gandharan and Amaravati regions, the Kushan and Gupta dynasties of northern India, the Kashmiri kingdoms, Pala eastern India, Pandyan and Chola south India, and medieval northern India.\n\nNote: Islamic arts of South Asia are displayed in the galleries overseen by the Department of Islamic Art.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/0e6668942a3fca176e97c8f85d7aec78cf0a7e3c-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/0e6668942a3fca176e97c8f85d7aec78cf0a7e3c-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96235480904579,
+              40.77974983173786
+            ],
+            [
+              -73.96227367222309,
+              40.77971581171977
+            ],
+            [
+              -73.96233536303043,
+              40.779631015555275
+            ],
+            [
+              -73.96241649985313,
+              40.779665035573366
+            ],
+            [
+              -73.96235480904579,
+              40.77974983173786
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "07abde110ed9c15eef770fccc03b73a2",
@@ -551,7 +1922,34 @@
       "name": "South Asian Hindu-Buddhist and Jain Sculpture",
       "summary": "Gallery 237",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving South Asian Galleries (Gallery 234 through Gallery 243) represent India, Pakistan, Bangladesh, and Sri Lanka. They primarily trace the development of the sculptural arts associated with the temples and shrines of Hinduism, Buddhism, and Jainism. The arts of the Indian subcontinent are represented from early centuries B.C. up to around the sixteenth century, and encompass all the major regional and dynastic styles.\n\nHighlight areas include early arts of Shunga India, Buddhist art of the Gandharan and Amaravati regions, the Kushan and Gupta dynasties of northern India, the Kashmiri kingdoms, Pala eastern India, Pandyan and Chola south India, and medieval northern India.\n\nNote: Islamic arts of South Asia are displayed in the galleries overseen by the Department of Islamic Art.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/b766e4c8959da86ffa88ddd50a2b4842cc8c1860-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/b766e4c8959da86ffa88ddd50a2b4842cc8c1860-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96231524646282,
+              40.77980466997598
+            ],
+            [
+              -73.96223410964012,
+              40.77977064995789
+            ],
+            [
+              -73.96227367222309,
+              40.77971581171977
+            ],
+            [
+              -73.96235480904579,
+              40.77974983173786
+            ],
+            [
+              -73.96231524646282,
+              40.77980466997598
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "97f8a3b43e9dbb25c364ed692fa2418f",
@@ -564,7 +1962,42 @@
       "name": "South Asian Hindu-Buddhist and Jain Sculpture",
       "summary": "Gallery 238",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving South Asian Galleries (Gallery 234 through Gallery 243) represent India, Pakistan, Bangladesh, and Sri Lanka. They primarily trace the development of the sculptural arts associated with the temples and shrines of Hinduism, Buddhism, and Jainism. The arts of the Indian subcontinent are represented from early centuries B.C. up to around the sixteenth century, and encompass all the major regional and dynastic styles.\n\nHighlight areas include early arts of Shunga India, Buddhist art of the Gandharan and Amaravati regions, the Kushan and Gupta dynasties of northern India, the Kashmiri kingdoms, Pala eastern India, Pandyan and Chola south India, and medieval northern India.\n\nNote: Islamic arts of South Asia are displayed in the galleries overseen by the Department of Islamic Art.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/9b167d22729a184e079e91d0a8c89d062dab4f23-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/9b167d22729a184e079e91d0a8c89d062dab4f23-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96225824952126,
+              40.77988286524144
+            ],
+            [
+              -73.96217711269855,
+              40.77984884522335
+            ],
+            [
+              -73.96218985319138,
+              40.77983056581064
+            ],
+            [
+              -73.96223410964012,
+              40.77977064995789
+            ],
+            [
+              -73.96231524646282,
+              40.77980466997598
+            ],
+            [
+              -73.96227099001408,
+              40.77986458582873
+            ],
+            [
+              -73.96225824952126,
+              40.77988286524144
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "331162acf5fad0a96edb8cbe528309f1",
@@ -577,7 +2010,34 @@
       "name": "South Asian Hindu-Buddhist and Jain Sculpture",
       "summary": "Gallery 239",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving South Asian Galleries (Gallery 234 through Gallery 243) represent India, Pakistan, Bangladesh, and Sri Lanka. They primarily trace the development of the sculptural arts associated with the temples and shrines of Hinduism, Buddhism, and Jainism. The arts of the Indian subcontinent are represented from early centuries B.C. up to around the sixteenth century, and encompass all the major regional and dynastic styles.\n\nHighlight areas include early arts of Shunga India, Buddhist art of the Gandharan and Amaravati regions, the Kushan and Gupta dynasties of northern India, the Kashmiri kingdoms, Pala eastern India, Pandyan and Chola south India, and medieval northern India.\n\nNote: Islamic arts of South Asia are displayed in the galleries overseen by the Department of Islamic Art.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/6b9355a37ae97a42e0eb5f1e20b8ff1f7b632866-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/6b9355a37ae97a42e0eb5f1e20b8ff1f7b632866-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96221064031124,
+              40.77994785870884
+            ],
+            [
+              -73.96212950348854,
+              40.779913838690746
+            ],
+            [
+              -73.96217711269855,
+              40.77984884522335
+            ],
+            [
+              -73.96225824952126,
+              40.77988286524144
+            ],
+            [
+              -73.96221064031124,
+              40.77994785870884
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "2f9218c19aebcae34d11029bbabb7a3a",
@@ -590,7 +2050,42 @@
       "name": "South Asian Hindu-Buddhist and Jain Sculpture",
       "summary": "Gallery 240",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving South Asian Galleries (Gallery 234 through Gallery 243) represent India, Pakistan, Bangladesh, and Sri Lanka. They primarily trace the development of the sculptural arts associated with the temples and shrines of Hinduism, Buddhism, and Jainism. The arts of the Indian subcontinent are represented from early centuries B.C. up to around the sixteenth century, and encompass all the major regional and dynastic styles. Highlight areas include early arts of Shunga India, Buddhist art of the Gandharan and Amaravati regions, the Kushan and Gupta dynasties of northern India, the Kashmiri kingdoms, Pala eastern India, Pandyan and Chola south India, and medieval northern India.\n\nNote: Islamic arts of South Asia are displayed in the galleries overseen by the Department of Islamic Art.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/29b13c865a379c91da316cf39e1e14e22846dd5d-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/29b13c865a379c91da316cf39e1e14e22846dd5d-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96214358508587,
+              40.77989454375511
+            ],
+            [
+              -73.96205976605415,
+              40.779859508214095
+            ],
+            [
+              -73.96202154457569,
+              40.77984325984725
+            ],
+            [
+              -73.96206848323345,
+              40.779779281902776
+            ],
+            [
+              -73.96218985319138,
+              40.77983056581064
+            ],
+            [
+              -73.96217711269855,
+              40.77984884522335
+            ],
+            [
+              -73.96214358508587,
+              40.77989454375511
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "08eae33a972b3198c657b101a09c355e",
@@ -603,7 +2098,58 @@
       "name": "Indian Medieval Sculpture Gallery",
       "summary": "Gallery 241",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving South Asian Galleries (Gallery 234 through Gallery 243) represent India, Pakistan, Bangladesh, and Sri Lanka. They primarily trace the development of the sculptural arts associated with the temples and shrines of Hinduism, Buddhism, and Jainism. The arts of the Indian subcontinent are represented from early centuries B.C. up to around the sixteenth century, and encompass all the major regional and dynastic styles.\n\nHighlight areas include early arts of Shunga India, Buddhist art of the Gandharan and Amaravati regions, the Kushan and Gupta dynasties of northern India, the Kashmiri kingdoms, Pala eastern India, Pandyan and Chola south India, and medieval northern India.\n\nNote: Islamic arts of South Asia are displayed in the galleries overseen by the Department of Islamic Art.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/54b916d17a1a480b68dfc791ef7c695c9ace9065-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/54b916d17a1a480b68dfc791ef7c695c9ace9065-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96207585930824,
+              40.77998746410304
+            ],
+            [
+              -73.96201148629189,
+              40.77996055274544
+            ],
+            [
+              -73.96199204027653,
+              40.77995242856202
+            ],
+            [
+              -73.96199874579906,
+              40.7799427810942
+            ],
+            [
+              -73.96200880408287,
+              40.77992907153467
+            ],
+            [
+              -73.96203629672527,
+              40.779890989424864
+            ],
+            [
+              -73.96205976605415,
+              40.779859508214095
+            ],
+            [
+              -73.96214358508587,
+              40.77989454375511
+            ],
+            [
+              -73.96212950348854,
+              40.779913838690746
+            ],
+            [
+              -73.96208256483078,
+              40.77997781663522
+            ],
+            [
+              -73.96207585930824,
+              40.77998746410304
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "a2bd993af1a1d4df511e3cea9a639a53",
@@ -616,7 +2162,34 @@
       "name": "South Asian Hindu-Buddhist and Jain Sculpture",
       "summary": "Gallery 242",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving South Asian Galleries (Gallery 234 through Gallery 243) represent India, Pakistan, Bangladesh, and Sri Lanka. They primarily trace the development of the sculptural arts associated with the temples and shrines of Hinduism, Buddhism, and Jainism. The arts of the Indian subcontinent are represented from early centuries B.C. up to around the sixteenth century, and encompass all the major regional and dynastic styles.\n\nHighlight areas include early arts of Shunga India, Buddhist art of the Gandharan and Amaravati regions, the Kushan and Gupta dynasties of northern India, the Kashmiri kingdoms, Pala eastern India, Pandyan and Chola south India, and medieval northern India.\n\nNote: Islamic arts of South Asia are displayed in the galleries overseen by the Department of Islamic Art.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/9bc35f7ff8c9ea66f58c06ec78131a5c015be05f-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/9bc35f7ff8c9ea66f58c06ec78131a5c015be05f-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96203629672527,
+              40.779890989424864
+            ],
+            [
+              -73.96199807524681,
+              40.77987524881948
+            ],
+            [
+              -73.96202154457569,
+              40.77984325984725
+            ],
+            [
+              -73.96205976605415,
+              40.779859508214095
+            ],
+            [
+              -73.96203629672527,
+              40.779890989424864
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "b6f2c73e289ec1dec04206e47a16601d",
@@ -629,7 +2202,42 @@
       "name": "South Asian Hindu-Buddhist and Jain Sculpture",
       "summary": "Gallery 243",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving South Asian Galleries (Gallery 234 through Gallery 243) represent India, Pakistan, Bangladesh, and Sri Lanka. They primarily trace the development of the sculptural arts associated with the temples and shrines of Hinduism, Buddhism, and Jainism. The arts of the Indian subcontinent are represented from early centuries B.C. up to around the sixteenth century, and encompass all the major regional and dynastic styles.\n\nHighlight areas include early arts of Shunga India, Buddhist art of the Gandharan and Amaravati regions, the Kushan and Gupta dynasties of northern India, the Kashmiri kingdoms, Pala eastern India, Pandyan and Chola south India, and medieval northern India.\n\nNote: Islamic arts of South Asia are displayed in the galleries overseen by the Department of Islamic Art.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/7d5f62cc49d0b9332e60d76402a110dbdbccbdc4-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/7d5f62cc49d0b9332e60d76402a110dbdbccbdc4-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96200880408287,
+              40.77992907153467
+            ],
+            [
+              -73.96198600530624,
+              40.779919424066854
+            ],
+            [
+              -73.96199405193329,
+              40.779908253314645
+            ],
+            [
+              -73.96197862923145,
+              40.77990165241561
+            ],
+            [
+              -73.96199807524681,
+              40.77987524881948
+            ],
+            [
+              -73.96203629672527,
+              40.779890989424864
+            ],
+            [
+              -73.96200880408287,
+              40.77992907153467
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "1dfccc28b567962c2efdd333cb91f4f0",
@@ -642,7 +2250,34 @@
       "name": "Southeast Asian Art",
       "summary": "Gallery 244",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving Southeast Asian galleries (Gallery 244 through Gallery 250) are devoted to the early bronze cultures, spanning from the early centuries B.C. to the first millenium A.D. and to the sculpture of the Hindu-Buddhist period, eighth to eighteenth century. The latter encompass the arts of Burma (Myanmar), Thailand, Cambodia, Vietnam, and Indonesia. Major strengths include pre\u2013Angkorian Khmer and related stone and bronze sculpture, Javanese gold jewelry and bronze sculpture, and glazed ceramics from Thailand and Vietnam.\n\nNote: The arts of the non\u2013Hindu-Buddhist cultures from Indonesia and the Philippines are exhibited in Gallery 355, within the galleries for the Arts of Africa, Oceania, and the Americas.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/28506ea2f1af6f1d78050e57c2aac06a85521901-720x440.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/28506ea2f1af6f1d78050e57c2aac06a85521901-720x440.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96204367280006,
+              40.780031639350405
+            ],
+            [
+              -73.9619792997837,
+              40.78000472799281
+            ],
+            [
+              -73.96201148629189,
+              40.77996055274544
+            ],
+            [
+              -73.96207585930824,
+              40.77998746410304
+            ],
+            [
+              -73.96204367280006,
+              40.780031639350405
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "0fd210319ca9409cb9d997bffc6c2ba6",
@@ -655,7 +2290,34 @@
       "name": "Southeast Asian Art",
       "summary": "Gallery 245",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving Southeast Asian galleries (Gallery 244 through Gallery 250) are devoted to the early bronze cultures, spanning from the early centuries B.C. to the first millenium A.D. and to the sculpture of the Hindu-Buddhist period, eighth to eighteenth century. The latter encompass the arts of Burma (Myanmar), Thailand, Cambodia, Vietnam, and Indonesia. Major strengths include pre\u2013Angkorian Khmer and related stone and bronze sculpture, Javanese gold jewelry and bronze sculpture, and glazed ceramics from Thailand and Vietnam.\n\nNote: The arts of the non\u2013Hindu-Buddhist cultures from Indonesia and the Philippines are exhibited in Gallery 355, within the galleries for the Arts of Africa, Oceania, and the Americas.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/4c53916ac5f0f5f5227403ed89e7530353d381bd-720x440.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/4c53916ac5f0f5f5227403ed89e7530353d381bd-720x440.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96199807524681,
+              40.78009358624902
+            ],
+            [
+              -73.96193437278271,
+              40.78006667489143
+            ],
+            [
+              -73.9619792997837,
+              40.78000472799281
+            ],
+            [
+              -73.96204367280006,
+              40.780031639350405
+            ],
+            [
+              -73.96199807524681,
+              40.78009358624902
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "27ca106e18464952d234445053465cb6",
@@ -668,7 +2330,42 @@
       "name": "Southeast Asian Art",
       "summary": "Gallery 246",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving Southeast Asian galleries (Gallery 244 through Gallery 250) are devoted to the early bronze cultures, spanning from the early centuries B.C. to the first millenium A.D. and to the sculpture of the Hindu-Buddhist period, eighth to eighteenth century. The latter encompass the arts of Burma (Myanmar), Thailand, Cambodia, Vietnam, and Indonesia. Major strengths include pre\u2013Angkorian Khmer and related stone and bronze sculpture, Javanese gold jewelry and bronze sculpture, and glazed ceramics from Thailand and Vietnam.\n\nNote: The arts of the non\u2013Hindu-Buddhist cultures from Indonesia and the Philippines are exhibited in Gallery 355, within the galleries for the Arts of Africa, Oceania, and the Americas.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/01e99feb4abdda59f14467bd8925ea71af295d5b-720x440.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/01e99feb4abdda59f14467bd8925ea71af295d5b-720x440.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96195515990257,
+              40.78015248657885
+            ],
+            [
+              -73.96192029118538,
+              40.78013776149639
+            ],
+            [
+              -73.96189145743847,
+              40.780125575221255
+            ],
+            [
+              -73.96193437278271,
+              40.78006667489143
+            ],
+            [
+              -73.96199807524681,
+              40.78009358624902
+            ],
+            [
+              -73.96199204027653,
+              40.78010221819391
+            ],
+            [
+              -73.96195515990257,
+              40.78015248657885
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "130c0601f37db9f749146d3e18cd20aa",
@@ -681,7 +2378,46 @@
       "name": "Southeast Asian Art",
       "summary": "Gallery 247",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving Southeast Asian galleries (Gallery 244 through Gallery 250) are devoted to the early bronze cultures, spanning from the early centuries B.C. to the first millenium A.D. and to the sculpture of the Hindu-Buddhist period, eighth to eighteenth century. The latter encompass the arts of Burma (Myanmar), Thailand, Cambodia, Vietnam, and Indonesia. Major strengths include pre\u2013Angkorian Khmer and related stone and bronze sculpture, Javanese gold jewelry and bronze sculpture, and glazed ceramics from Thailand and Vietnam.\n\nNote: The arts of the non\u2013Hindu-Buddhist cultures from Indonesia and the Philippines are exhibited in Gallery 355, within the galleries for the Arts of Africa, Oceania, and the Americas.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/aa8b376a6da5f8ffc0fa7657a8564c094055b8fd-720x440.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/aa8b376a6da5f8ffc0fa7657a8564c094055b8fd-720x440.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96189145743847,
+              40.780125575221255
+            ],
+            [
+              -73.96185524761677,
+              40.780110342377334
+            ],
+            [
+              -73.96183378994465,
+              40.780101202670984
+            ],
+            [
+              -73.96195381879807,
+              40.779936180195165
+            ],
+            [
+              -73.96201148629189,
+              40.77996055274544
+            ],
+            [
+              -73.9619792997837,
+              40.78000472799281
+            ],
+            [
+              -73.96193437278271,
+              40.78006667489143
+            ],
+            [
+              -73.96189145743847,
+              40.780125575221255
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "1e7dbcc9311c9ddb3121410147d6750e",
@@ -694,7 +2430,38 @@
       "name": "Southeast Asian Art",
       "summary": "Gallery 248",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving Southeast Asian galleries (Gallery 244 through Gallery 250) are devoted to the early bronze cultures, spanning from the early centuries B.C. to the first millennium\u00a0A.D. and to the sculpture of the Hindu-Buddhist period, eighth to eighteenth century. The latter encompass the arts of Burma (Myanmar), Thailand, Cambodia, Vietnam, and Indonesia. Major strengths include pre\u2013Angkorian Khmer and related stone and bronze sculpture, Javanese gold jewelry and bronze sculpture, and glazed ceramics from Thailand and Vietnam.\n\nNote: The arts of the Hindu-Buddhist cultures from Indonesia and the Philippines are exhibited in Gallery 355, within the galleries for the Arts of Africa, Oceania, and the Americas.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/faa4973751fe2e300f1caac66733d7d5ef6c3c4a-720x440.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/faa4973751fe2e300f1caac66733d7d5ef6c3c4a-720x440.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96190486848354,
+              40.78015959523935
+            ],
+            [
+              -73.96183915436268,
+              40.78013166835883
+            ],
+            [
+              -73.96185524761677,
+              40.780110342377334
+            ],
+            [
+              -73.96192029118538,
+              40.78013776149639
+            ],
+            [
+              -73.96191224455833,
+              40.78014842448714
+            ],
+            [
+              -73.96190486848354,
+              40.78015959523935
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "b0ee32c0eff4ab466e0e29f845dba2b7",
@@ -707,7 +2474,50 @@
       "name": "Southeast Asian Art",
       "summary": "Gallery 249",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving Southeast Asian galleries (Gallery 244 through Gallery 250) are devoted to the early bronze cultures, spanning from the early centuries B.C. to the first millenium A.D. and to the sculpture of the Hindu-Buddhist period, eighth to eighteenth century. The latter encompass the arts of Burma (Myanmar), Thailand, Cambodia, Vietnam, and Indonesia. Major strengths include pre\u2013Angkorian Khmer and related stone and bronze sculpture, Javanese gold jewelry and bronze sculpture, and glazed ceramics from Thailand and Vietnam.\n\nNote: The arts of the non\u2013Hindu-Buddhist cultures from Indonesia and the Philippines are exhibited in Gallery 355, within the galleries for the Arts of Africa, Oceania, and the Americas.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/7a872143a599eff866e3fabd69bdc78f958944fe-720x440.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/7a872143a599eff866e3fabd69bdc78f958944fe-720x440.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96186463534832,
+              40.78027688813754
+            ],
+            [
+              -73.96174259483814,
+              40.78022509646821
+            ],
+            [
+              -73.96181769669056,
+              40.78012303641394
+            ],
+            [
+              -73.96183915436268,
+              40.78013166835883
+            ],
+            [
+              -73.96190486848354,
+              40.78015959523935
+            ],
+            [
+              -73.96191895008087,
+              40.78016568837692
+            ],
+            [
+              -73.96187536418438,
+              40.78022560422968
+            ],
+            [
+              -73.96189548075199,
+              40.780234236174564
+            ],
+            [
+              -73.96186463534832,
+              40.78027688813754
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "b9f6654dc77c4756d1f62922febe38b7",
@@ -720,7 +2530,34 @@
       "name": "Southeast Asian Art",
       "summary": "Gallery 250",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe Florence and Herbert Irving Southeast Asian galleries (Gallery 244 through Gallery 250) are devoted to the early bronze cultures, spanning from the early centuries B.C. to the first millenium A.D. and to the sculpture of the Hindu-Buddhist period, eighth to eighteenth century. The latter encompass the arts of Burma (Myanmar), Thailand, Cambodia, Vietnam, and Indonesia. Major strengths include pre\u2013Angkorian Khmer and related stone and bronze sculpture, Javanese gold jewelry and bronze sculpture, and glazed ceramics from Thailand and Vietnam.\n\nNote: The arts of the non\u2013Hindu-Buddhist cultures from Indonesia and the Philippines are exhibited in Gallery 355, within the galleries for the Arts of Africa, Oceania, and the Americas.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/ced06b964037158d97c6cef6f8d498a6f22a593d-720x440.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/ced06b964037158d97c6cef6f8d498a6f22a593d-720x440.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9618331193924,
+              40.780320555623454
+            ],
+            [
+              -73.96171107888222,
+              40.78026927171558
+            ],
+            [
+              -73.96174259483814,
+              40.78022509646821
+            ],
+            [
+              -73.96186463534832,
+              40.78027688813754
+            ],
+            [
+              -73.9618331193924,
+              40.780320555623454
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "2a940f7a6177b4027c476d1d3c64e886",
@@ -733,7 +2570,54 @@
       "name": "Household Gods: Hindu Devotional Prints, 1860\u20131930",
       "summary": "Gallery 251",
       "description": "In Hinduism, the act of darshan, or \u201cseeing god,\u201d is central to worship. This intimate exchange between deity and devotee traditionally takes place in the temple. But within each home is also a shrine, dedicated to that householder\u2019s chosen deity. The need to display an image of the divine in the home was traditionally fulfilled by small icons made of clay or metal. In the mid-19th century, new technologies were introduced into India, first photography and then the chromolithographic press. The latter permitted the production of inexpensive prints of the Hindu gods for mass consumption. These proved immensely popular and for the first time in India, even the humblest home could afford a colorful icon of their chosen god to display in the household shrine.\n\nHousehold Gods: Hindu Devotional Prints, 1860\u20131930 presents the first encyclopedic exhibition of these chromolithographic prints from the pioneering studio presses of Calcutta (Kolkata), Poona (Pune), and Bombay (Mumbai). These mass-produced prints became a powerful means of expressing Indian religious identity at a time when the country was experiencing the first stirrings of the Independence movement.\n\nFeaturing approximately 120 works, shown in four rotations, from The Met\u2019s collection of chromolithographic prints, along with paintings and portable triptych shrines, Household Gods provides a unique window on the vibrant tradition of Indian devotional imagery on the cusp of modernity.\n\nDuring the exhibition, a selection of artworks will come off view and be replaced by new works:\nRotation 1: January 24\u2013May 25, 2026\nRotation 2: May 30\u2013October 11, 2026\nRotation 3: October 17, 2026\u2013February 21, 2027\nRotation 4: February 27\u2013June 27, 2027\n  \nExhibition Open: Through June 27, 2027",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/d28b5b803c217bbe685e150c4da150452e4c99cb-1200x674.jpg?rect=2,0,1198,674&w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/d28b5b803c217bbe685e150c4da150452e4c99cb-1200x674.jpg?rect=2,0,1198,674&w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96204367280006,
+              40.780031639350405
+            ],
+            [
+              -73.96202355623245,
+              40.78002351516698
+            ],
+            [
+              -73.9619792997837,
+              40.78000472799281
+            ],
+            [
+              -73.96194510161877,
+              40.77999051067182
+            ],
+            [
+              -73.96192699670792,
+              40.77998289424986
+            ],
+            [
+              -73.96192163228989,
+              40.77998035544254
+            ],
+            [
+              -73.96195381879807,
+              40.7799356724337
+            ],
+            [
+              -73.96199271082878,
+              40.77995192080055
+            ],
+            [
+              -73.96207585930824,
+              40.779986956341574
+            ],
+            [
+              -73.96204367280006,
+              40.780031639350405
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "1574c6f5df6bec6536e0ee4ba7b65df1",
@@ -746,7 +2630,58 @@
       "name": "Arts of Tibet and Nepal",
       "summary": "Gallery 252",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe religious arts of Tibet and Nepal are represented in Gallery 252 and Gallery 253 by important early cloth paintings (tangkas), including rare portrait paintings, and by Vajrayana Buddhist sculptures. The early Nepalese metal, stone, and wood sculptures form a major ensemble, as do the Buddhist and Hindu painted book covers. Ritual utensils such as crowns, weapons, and libation implements form another important aspect of the displays. The tangkas and manuscript objects are rotated periodically.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/4391fa6b982e246bda4517c158f0243095360197-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/4391fa6b982e246bda4517c158f0243095360197-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96189145743847,
+              40.780125575221255
+            ],
+            [
+              -73.96188274025917,
+              40.780121513129544
+            ],
+            [
+              -73.96185524761677,
+              40.780110342377334
+            ],
+            [
+              -73.96183378994465,
+              40.780101202670984
+            ],
+            [
+              -73.96192163228989,
+              40.77998035544254
+            ],
+            [
+              -73.96192699670792,
+              40.77998289424986
+            ],
+            [
+              -73.96194510161877,
+              40.77999051067182
+            ],
+            [
+              -73.9619792997837,
+              40.78000472799281
+            ],
+            [
+              -73.96192096173763,
+              40.78008495430414
+            ],
+            [
+              -73.96190218627453,
+              40.780110342377334
+            ],
+            [
+              -73.96189145743847,
+              40.780125575221255
+            ]
+          ]
+        ]
+      }
     },
     {
       "id": "789d6032f48e915dfd60f0eec6aea190",
@@ -759,7 +2694,58 @@
       "name": "Arts of Tibet and Nepal",
       "summary": "Gallery 253",
       "description": "Florence and Herbert Irving Galleries\n\nFlorence and Herbert Irving Asian Wing\n\nThe religious arts of Tibet and Nepal are represented in Gallery 252 and Gallery 253 by important early cloth paintings (tangkas), including rare portrait paintings, and by Vajrayana Buddhist sculptures. The early Nepalese metal, stone, and wood sculptures form a major ensemble, as do the Buddhist and Hindu painted book covers. Ritual utensils such as crowns, weapons, and libation implements form another important aspect of the displays. The tangkas and manuscript objects are rotated periodically.",
-      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/e595b33d0fe70e85aa74b96bd8da5920d6a05451-720x400.jpg?w=720"
+      "image_url": "https://cdn.sanity.io/images/cctd4ker/production/e595b33d0fe70e85aa74b96bd8da5920d6a05451-720x400.jpg?w=720",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96195515990257,
+              40.78015248657885
+            ],
+            [
+              -73.96192029118538,
+              40.78013776149639
+            ],
+            [
+              -73.96190017461777,
+              40.780129129551504
+            ],
+            [
+              -73.96189145743847,
+              40.780125575221255
+            ],
+            [
+              -73.96190218627453,
+              40.780110342377334
+            ],
+            [
+              -73.96192096173763,
+              40.78008495430414
+            ],
+            [
+              -73.9619792997837,
+              40.78000472799281
+            ],
+            [
+              -73.96202355623245,
+              40.78002351516698
+            ],
+            [
+              -73.96204367280006,
+              40.780031639350405
+            ],
+            [
+              -73.96198466420174,
+              40.780112373423194
+            ],
+            [
+              -73.96195515990257,
+              40.78015248657885
+            ]
+          ]
+        ]
+      }
     }
   ],
   "amenities": [

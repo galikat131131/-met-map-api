@@ -1,11 +1,17 @@
-"""Scrape Living Map's Met endpoint → filter to Asian Art galleries + amenities → save clean JSON."""
+"""Scrape Living Map's Met endpoint → filter to Asian Art galleries + amenities → save clean JSON.
+
+Also decodes vector tiles to attach gallery polygon geometry for point-in-polygon /locate.
+"""
 import json
 import re
 from pathlib import Path
 
 import httpx
+import mapbox_vector_tile
+import mercantile
 
 BASE = "https://map-api.prod.livingmap.com/v1/maps/the_met"
+TILE_BASE = "https://prod.cdn.livingmap.com/tiles/the_met"
 LANG = "en-GB"
 OUT = Path(__file__).parent / "data" / "asian_art.json"
 
@@ -15,10 +21,10 @@ AMENITY_SUBCATS = {
     "cafe", "restaurant", "bar", "shop", "information",
     "cloakroom", "defibrillator", "tickets",
 }
+TILE_ZOOM = 17
 
 
 def flatten_lang(field, lang=LANG):
-    """Living Map fields are [{lang, text}, ...]. Return the matching text or ''."""
     if not field:
         return ""
     if isinstance(field, list):
@@ -36,15 +42,69 @@ def extract_gallery_number(summary_text):
     return int(m.group(1)) if m else None
 
 
-def fetch():
+def fetch_api():
     with httpx.Client(timeout=30) as client:
         venue = client.get(f"{BASE}/", params={"lang": LANG}).json()
         features = client.get(f"{BASE}/features", params={"limit": 1000, "lang": LANG}).json()
     return venue, features["data"]
 
 
+def _tile_coord_transformer(tile):
+    b = mercantile.bounds(tile)
+    west, south, east, north = b.west, b.south, b.east, b.north
+    xr, yr = east - west, north - south
+
+    def pt(x, y, extent):
+        return [west + (x / extent) * xr, south + (y / extent) * yr]
+
+    def walk(coords, extent):
+        if isinstance(coords[0], (int, float)):
+            return pt(*coords, extent=extent)
+        return [walk(c, extent) for c in coords]
+
+    return walk
+
+
+def fetch_polygons(galleries):
+    """For each gallery in the input list, attach a polygon key by fetching MVTs."""
+    lats = [g["lat"] for g in galleries]
+    lons = [g["lon"] for g in galleries]
+    north, south = max(lats) + 0.0005, min(lats) - 0.0005
+    east, west = max(lons) + 0.0005, min(lons) - 0.0005
+
+    want = {g["id"] for g in galleries}
+    polys = {}
+
+    tiles = list(mercantile.tiles(west, south, east, north, TILE_ZOOM))
+    with httpx.Client(timeout=30) as client:
+        for t in tiles:
+            url = f"{TILE_BASE}/{t.z}/{t.x}/{t.y}.pbf?lang={LANG}"
+            r = client.get(url)
+            if r.status_code != 200:
+                continue
+            dec = mapbox_vector_tile.decode(r.content)
+            layer = dec.get("indoor", {})
+            extent = layer.get("extent", 4096)
+            walk = _tile_coord_transformer(t)
+            for f in layer.get("features", []):
+                p = f["properties"]
+                if p.get("type") != "gallery":
+                    continue
+                if p.get("lm_id") not in want:
+                    continue
+                if f["geometry"]["type"] not in ("Polygon", "MultiPolygon"):
+                    continue
+                if p["lm_id"] in polys:
+                    continue
+                polys[p["lm_id"]] = {
+                    "type": f["geometry"]["type"],
+                    "coordinates": walk(f["geometry"]["coordinates"], extent),
+                }
+    return polys
+
+
 def build():
-    venue, raw = fetch()
+    venue, raw = fetch_api()
 
     floors = [
         {
@@ -107,6 +167,12 @@ def build():
 
     galleries.sort(key=lambda g: g["number"])
 
+    print("Fetching gallery polygons from vector tiles…")
+    polys = fetch_polygons(galleries)
+    for g in galleries:
+        g["polygon"] = polys.get(g["id"])
+    with_poly = sum(1 for g in galleries if g["polygon"])
+
     out = {
         "venue": {
             "name": flatten_lang(venue["name"]),
@@ -121,7 +187,7 @@ def build():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(out, indent=2))
     print(f"Wrote {OUT}")
-    print(f"  galleries: {len(galleries)}")
+    print(f"  galleries: {len(galleries)} ({with_poly} with polygon)")
     print(f"  amenities: {len(amenities)}")
     print(f"  floors:    {len(floors)}")
 

@@ -4,8 +4,10 @@ from pathlib import Path
 from typing import List, Optional
 
 import httpx
+import shapely
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from shapely.geometry import shape
 
 from .models import (
     Amenity,
@@ -94,6 +96,11 @@ AMENITIES = [Amenity(**a) for a in DATA["amenities"]]
 FLOORS = [Floor(**f) for f in DATA["floors"]]
 GALLERIES_BY_NUMBER = {g.number: g for g in GALLERIES}
 AMENITY_TYPES_AVAILABLE = sorted({a.type for a in AMENITIES})
+
+# Spatial index for point-in-polygon /locate.
+_poly_galleries = [g for g in GALLERIES if g.polygon]
+_poly_geoms = [shape(g.polygon) for g in _poly_galleries]
+POLYGON_TREE = shapely.STRtree(_poly_geoms) if _poly_geoms else None
 
 
 def haversine_m(lat1, lon1, lat2, lon2):
@@ -247,14 +254,15 @@ def nearby(
     "/locate",
     response_model=LocateResponse,
     tags=["spatial"],
-    summary='"Which gallery am I in?" — nearest gallery on a floor',
+    summary='"Which gallery am I in?" — point-in-polygon on a floor',
     description=(
-        "Returns the single nearest gallery to (lat, lon) on the given floor. "
-        "Ideal for a PWA pushing live GPS updates: the user gets a current-gallery card.\n\n"
-        "**Accuracy caveat:** this is nearest-centroid, not polygon containment. If the "
-        "user is standing in a corridor between two galleries, you'll get whichever "
-        "centroid is closer — which may feel wrong. Gallery polygons are on the roadmap "
-        "(see TODO.md)."
+        "Returns the gallery containing (lat, lon) on the given floor.\n\n"
+        "**Method:** tries real point-in-polygon against the gallery's outline first. "
+        "If the point lies inside a gallery's polygon, the response has `method: \"polygon\"`. "
+        "If the point is outside every polygon (e.g. the user is in a corridor), falls back "
+        "to nearest-centroid and returns `method: \"nearest-centroid\"`.\n\n"
+        "The PWA should treat `polygon` results as trustworthy and `nearest-centroid` as a "
+        "best-guess fallback."
     ),
     responses={404: {"description": "No galleries on that floor (try `2` or `3`)."}},
 )
@@ -266,9 +274,25 @@ def locate(
     on_floor = [g for g in GALLERIES if g.floor == floor]
     if not on_floor:
         raise HTTPException(404, f"No Asian Art galleries on floor '{floor}'. Try '2' or '3'.")
+
+    if POLYGON_TREE is not None:
+        pt = shapely.Point(lon, lat)
+        idxs = POLYGON_TREE.query(pt, predicate="within")
+        for i in idxs:
+            g = _poly_galleries[int(i)]
+            if g.floor == floor:
+                d = haversine_m(lat, lon, g.lat, g.lon)
+                return LocateResponse(
+                    gallery=g.model_copy(update={"distance_m": round(d, 1)}),
+                    method="polygon",
+                )
+
     best = min(on_floor, key=lambda g: haversine_m(lat, lon, g.lat, g.lon))
     d = haversine_m(lat, lon, best.lat, best.lon)
-    return LocateResponse(gallery=best.model_copy(update={"distance_m": round(d, 1)}))
+    return LocateResponse(
+        gallery=best.model_copy(update={"distance_m": round(d, 1)}),
+        method="nearest-centroid",
+    )
 
 
 @app.get(
