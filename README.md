@@ -13,6 +13,11 @@ uvicorn app.main:app --reload
 
 Swagger UI at http://127.0.0.1:8000/docs
 
+**For PWA consumers:** see [CONSUMERS.md](CONSUMERS.md) for integration snippets,
+data shapes, and gotchas.
+
+**Live API:** https://met-asian-art-api.onrender.com — [/docs](https://met-asian-art-api.onrender.com/docs)
+
 ## Endpoints
 
 | Method | Path | Purpose |
