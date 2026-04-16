@@ -168,6 +168,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 8px;
+  pointer-events: none;
 }
 
 .correction-prompt[hidden] {
@@ -179,6 +180,7 @@ html, body {
 }
 
 .correction-prompt button {
+  pointer-events: auto;
   background: transparent;
   border: none;
   color: #5f6368;

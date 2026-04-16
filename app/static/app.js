@@ -112,8 +112,11 @@ function onPolygonClick(e) {
 
   if (awaitingCorrection) {
     setResolvedGallery(gallery, "user-tap");
+    if (gallery.floor !== activeFloor) setFloor(gallery.floor);
     awaitingCorrection = false;
     hideCorrectionPrompt();
+    infoWindow.close();
+    setStatus(`Set to Gallery ${gallery.number}: ${gallery.name}`, 2000);
     return;
   }
 
@@ -340,6 +343,7 @@ function renderFloor(floor) {
     const marker = new google.maps.Marker({
       position: { lat: g.lat, lng: g.lon },
       map,
+      clickable: false,
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: 3,
