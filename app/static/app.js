@@ -16,6 +16,11 @@ let routeState = null;
 let routePolyline = null;
 let pickingMode = null;
 let pendingRouteTarget = null;
+// Curated tours
+let ALL_TOURS = [];
+let activeTour = null;
+let tourPolylines = [];
+let tourMarkers = [];
 
 window.initMap = async function () {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -53,6 +58,13 @@ window.initMap = async function () {
       setStatus(`Tap a gallery to set ${chip.dataset.role}`);
     });
   });
+  document.getElementById("tours-btn").addEventListener("click", openTourDrawer);
+  document.getElementById("tour-drawer-close").addEventListener("click", closeTourDrawer);
+  document.getElementById("tour-backdrop").addEventListener("click", closeTourDrawer);
+  document.getElementById("tour-bar-close").addEventListener("click", clearActiveTour);
+  document.getElementById("tour-sheet-collapse").addEventListener("click", () => {
+    document.getElementById("tour-sheet").classList.toggle("collapsed");
+  });
 
   setStatus("Loading galleries…");
   try {
@@ -67,6 +79,8 @@ window.initMap = async function () {
 
   renderFloor(activeFloor);
   setStatus("");
+
+  loadTours();
 };
 
 function polygonStyle(feature) {
@@ -74,31 +88,17 @@ function polygonStyle(feature) {
   const isResolved = num === resolvedGalleryNumber;
   const isRouteTo = routeState && routeState.to.number === num;
   const isRouteFrom = routeState && routeState.from.number === num && !isResolved;
+  const inTour = !!(activeTour && activeTour.stops.some((s) => s.gallery === num));
   if (isRouteTo) {
-    return {
-      fillColor: "#ea4335",
-      fillOpacity: 0.45,
-      strokeColor: "#ea4335",
-      strokeWeight: 2,
-      clickable: true,
-    };
+    return { fillColor: "#ea4335", fillOpacity: 0.45, strokeColor: "#ea4335", strokeWeight: 2, clickable: true };
   }
   if (isResolved || isRouteFrom) {
-    return {
-      fillColor: "#0f9d58",
-      fillOpacity: 0.45,
-      strokeColor: "#0f9d58",
-      strokeWeight: 2,
-      clickable: true,
-    };
+    return { fillColor: "#0f9d58", fillOpacity: 0.45, strokeColor: "#0f9d58", strokeWeight: 2, clickable: true };
   }
-  return {
-    fillColor: "#1a73e8",
-    fillOpacity: 0.25,
-    strokeColor: "#1a73e8",
-    strokeWeight: 2,
-    clickable: true,
-  };
+  if (inTour) {
+    return { fillColor: "#b8321c", fillOpacity: 0.32, strokeColor: "#b8321c", strokeWeight: 2, clickable: true };
+  }
+  return { fillColor: "#1a73e8", fillOpacity: 0.25, strokeColor: "#1a73e8", strokeWeight: 2, clickable: true };
 }
 
 function refreshPolygonStyle() {
@@ -355,6 +355,9 @@ function renderFloor(floor) {
     });
     centroidMarkers.push(marker);
   }
+
+  renderTourOverlays();
+  if (activeTour) renderTourSheet();
 }
 
 function getMockCoords() {
@@ -529,4 +532,353 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
   }[c]));
+}
+
+// ---------- Curated tours ----------
+
+async function loadTours() {
+  try {
+    const res = await fetch("tours.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    ALL_TOURS = await res.json();
+    renderTourList();
+  } catch (err) {
+    console.warn("tours.json not available", err);
+    document.getElementById("tours-btn").style.display = "none";
+  }
+}
+
+function renderTourList() {
+  const container = document.getElementById("tour-list");
+  container.innerHTML = ALL_TOURS.map((t) => `
+    <button class="tour-card" data-tour-id="${escapeHtml(t.id)}" type="button">
+      <div class="tour-card-meta">
+        <span class="tour-card-duration">${t.duration_min} min</span>
+        <span class="tour-card-stops">${t.stops.length} stops</span>
+      </div>
+      <div class="tour-card-title">${escapeHtml(t.title)}</div>
+      <div class="tour-card-summary">${escapeHtml(t.summary || "")}</div>
+    </button>
+  `).join("");
+  container.querySelectorAll(".tour-card").forEach((el) => {
+    el.addEventListener("click", () => activateTour(el.dataset.tourId));
+  });
+}
+
+function openTourDrawer() {
+  const drawer = document.getElementById("tour-drawer");
+  const backdrop = document.getElementById("tour-backdrop");
+  drawer.hidden = false;
+  backdrop.hidden = false;
+  requestAnimationFrame(() => {
+    drawer.classList.add("open");
+    backdrop.classList.add("visible");
+  });
+}
+
+function closeTourDrawer() {
+  const drawer = document.getElementById("tour-drawer");
+  const backdrop = document.getElementById("tour-backdrop");
+  drawer.classList.remove("open");
+  backdrop.classList.remove("visible");
+  setTimeout(() => {
+    drawer.hidden = true;
+    backdrop.hidden = true;
+  }, 220);
+}
+
+async function activateTour(id) {
+  const t = ALL_TOURS.find((x) => x.id === id);
+  if (!t) return;
+  activeTour = t;
+  closeTourDrawer();
+
+  // Fetch /route for every consecutive stop pair in parallel (once per tour).
+  // The upstream field holds Living Map's real polyline; extractRoutePath
+  // (shared with the gallery-to-gallery route feature) pulls it out of the
+  // nested GeoJSON LineString so the path follows corridors instead of
+  // crossing walls.
+  if (!t._resolvedSegments) {
+    setStatus("Building tour route…");
+    const pairs = [];
+    for (let i = 0; i < t.stops.length - 1; i++) {
+      pairs.push([t.stops[i].gallery, t.stops[i + 1].gallery]);
+    }
+    t._resolvedSegments = await Promise.all(
+      pairs.map(([a, b]) =>
+        fetch("/route", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ from_gallery: a, to_gallery: b }),
+        })
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null)
+      )
+    );
+    setStatus("");
+    if (activeTour !== t) return; // user cleared the tour mid-fetch
+  }
+
+  const galleries = new Map(ALL_GALLERIES.map((g) => [g.number, g]));
+  const firstStop = t.stops[0] && galleries.get(t.stops[0].gallery);
+  if (firstStop && firstStop.floor !== activeFloor) {
+    setFloor(firstStop.floor);
+  } else {
+    renderTourOverlays();
+  }
+  refreshPolygonStyle();
+  renderTourBar();
+  renderTourSheet();
+  if (firstStop) map.panTo({ lat: firstStop.lat, lng: firstStop.lon });
+}
+
+function clearActiveTour() {
+  activeTour = null;
+  clearTourOverlays();
+  refreshPolygonStyle();
+  document.getElementById("tour-bar").hidden = true;
+  const sheet = document.getElementById("tour-sheet");
+  sheet.hidden = true;
+  sheet.classList.remove("collapsed");
+  infoWindow.close();
+}
+
+function clearTourOverlays() {
+  tourPolylines.forEach((p) => p.setMap(null));
+  tourPolylines = [];
+  tourMarkers.forEach((m) => m.setMap(null));
+  tourMarkers = [];
+}
+
+function renderTourOverlays() {
+  clearTourOverlays();
+  if (!activeTour) return;
+
+  const galleries = new Map(ALL_GALLERIES.map((g) => [g.number, g]));
+  const resolved = activeTour._resolvedSegments || [];
+
+  // Draw a polyline per segment. Only same-floor segments are drawn —
+  // cross-floor hops are represented by markers appearing on each floor as
+  // the user toggles the floor picker, not by a line across walls.
+  //
+  // Each underlying GeoJSON LineString inside the upstream response is
+  // drawn as its own polyline. Concatenating MultiLineStrings into one
+  // flat point list creates "jumps" between disjoint pieces that look
+  // like scribbles on the map.
+  for (let i = 0; i < activeTour.stops.length - 1; i++) {
+    const segRes = resolved[i];
+    if (!segRes) continue;
+    const fromG = galleries.get(activeTour.stops[i].gallery);
+    const toG = galleries.get(activeTour.stops[i + 1].gallery);
+    if (!fromG || !toG) continue;
+    if (fromG.floor !== activeFloor || toG.floor !== activeFloor) continue;
+
+    let lineStrings = extractTourLineStrings(segRes);
+    if (!lineStrings.length) {
+      // Fallback: steps filtered to current floor (same shape as
+      // extractRoutePath's fallback). Gives at least a straight line.
+      const stepPath = (segRes.steps || [])
+        .filter((s) => s.lat != null && s.lon != null && s.floor === activeFloor)
+        .map((s) => ({ lat: s.lat, lng: s.lon }));
+      if (stepPath.length >= 2) lineStrings = [stepPath];
+    }
+
+    for (const ls of lineStrings) {
+      if (ls.length < 2) continue;
+      const pl = new google.maps.Polyline({
+        path: ls,
+        geodesic: false,
+        strokeColor: "#b8321c",
+        strokeOpacity: 0.85,
+        strokeWeight: 4,
+        map,
+        zIndex: 2,
+      });
+      tourPolylines.push(pl);
+    }
+  }
+
+  // Numbered stop markers (only stops on the current floor).
+  activeTour.stops.forEach((stop, i) => {
+    const g = galleries.get(stop.gallery);
+    if (!g || g.floor !== activeFloor) return;
+    const marker = new google.maps.Marker({
+      position: { lat: g.lat, lng: g.lon },
+      map,
+      label: { text: String(i + 1), color: "white", fontSize: "12px", fontWeight: "700" },
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 14,
+        fillColor: "#b8321c",
+        fillOpacity: 1,
+        strokeColor: "white",
+        strokeWeight: 2,
+      },
+      zIndex: 10,
+      title: `${i + 1}. ${stop.artwork.title}`,
+    });
+    marker.addListener("click", () => openStopInfoWindow(stop, i + 1));
+    tourMarkers.push(marker);
+  });
+}
+
+// Walks a /route upstream response and returns one point-array per
+// GeoJSON LineString. Unlike extractFromUpstream (which flattens everything
+// into a single continuous list and joins disjoint pieces), this keeps each
+// piece separate so we can draw them as independent polylines.
+function extractTourLineStrings(segRes) {
+  if (!segRes || !segRes.upstream || typeof segRes.upstream !== "object") return [];
+  const out = [];
+  const visit = (obj) => {
+    if (!obj || typeof obj !== "object") return;
+    if (obj.type === "LineString" && Array.isArray(obj.coordinates)) {
+      out.push(obj.coordinates.map(([lon, lat]) => ({ lat, lng: lon })));
+      return;
+    }
+    if (obj.type === "MultiLineString" && Array.isArray(obj.coordinates)) {
+      for (const line of obj.coordinates) {
+        out.push(line.map(([lon, lat]) => ({ lat, lng: lon })));
+      }
+      return;
+    }
+    for (const k of Object.keys(obj)) visit(obj[k]);
+  };
+  visit(segRes.upstream);
+  return out;
+}
+
+function openStopInfoWindow(stop, num) {
+  const a = stop.artwork;
+  const imgHtml = a.image_url ? `<img src="${escapeHtml(a.image_url)}" alt="">` : "";
+  const metaBits = [a.date, a.medium].filter(Boolean).map((x) => escapeHtml(x)).join(" · ");
+  const link = a.object_url
+    ? `<a class="iw-link" href="${escapeHtml(a.object_url)}" target="_blank" rel="noopener">View on metmuseum.org →</a>`
+    : "";
+  const noteHtml = stop.note ? `<div class="iw-note">${escapeHtml(stop.note)}</div>` : "";
+  infoWindow.setContent(`
+    <div class="iw iw-stop">
+      <div class="iw-stop-header">
+        <span class="iw-stop-num">${num}</span>
+        <span class="iw-stop-gallery">Gallery ${stop.gallery}</span>
+      </div>
+      <div class="iw-title">${escapeHtml(a.title)}</div>
+      <div class="iw-artist">${escapeHtml(a.artist)}</div>
+      ${imgHtml}
+      ${metaBits ? `<div class="iw-meta">${metaBits}</div>` : ""}
+      ${noteHtml}
+      ${link}
+    </div>
+  `);
+  const g = ALL_GALLERIES.find((x) => x.number === stop.gallery);
+  if (g) {
+    infoWindow.setPosition({ lat: g.lat, lng: g.lon });
+    infoWindow.open(map);
+  }
+}
+
+function renderTourSheet() {
+  const sheet = document.getElementById("tour-sheet");
+  if (!activeTour) { sheet.hidden = true; return; }
+
+  const galleries = new Map(ALL_GALLERIES.map((g) => [g.number, g]));
+  const floors = new Set(activeTour.stops.map((s) => {
+    const g = galleries.get(s.gallery);
+    return g ? g.floor : null;
+  }).filter(Boolean));
+
+  sheet.querySelector(".tour-sheet-title").textContent = activeTour.title;
+  sheet.querySelector(".tour-sheet-meta").textContent =
+    `${activeTour.stops.length} stops · ${activeTour.duration_min} min` +
+    (floors.size > 1 ? ` · Floors ${[...floors].sort().join(" & ")}` : "");
+
+  const stopsEl = document.getElementById("tour-sheet-stops");
+  const resolved = activeTour._resolvedSegments || [];
+  const parts = [];
+  activeTour.stops.forEach((stop, i) => {
+    parts.push(renderStopLi(stop, i, galleries));
+    if (i < activeTour.stops.length - 1) {
+      parts.push(renderSegmentLi(resolved[i]));
+    }
+  });
+  stopsEl.innerHTML = parts.join("");
+  stopsEl.querySelectorAll(".tour-sheet-stop").forEach((el) => {
+    el.addEventListener("click", () => {
+      const idx = parseInt(el.dataset.stopIndex, 10);
+      goToStop(idx);
+    });
+  });
+
+  sheet.hidden = false;
+}
+
+function renderStopLi(stop, i, galleries) {
+  const g = galleries.get(stop.gallery);
+  const offFloor = g && g.floor !== activeFloor;
+  const a = stop.artwork;
+  const thumb = a.image_url
+    ? `<img class="tour-sheet-stop-thumb" src="${escapeHtml(a.image_url)}" alt="" loading="lazy">`
+    : `<div class="tour-sheet-stop-thumb"></div>`;
+  const floorHint = offFloor && g ? `<div class="tour-sheet-floor-hint">Floor ${g.floor}</div>` : "";
+  return `
+    <li class="tour-sheet-stop ${offFloor ? "off-floor" : ""}" data-stop-index="${i}">
+      <span class="tour-sheet-stop-num">${i + 1}</span>
+      ${thumb}
+      <div class="tour-sheet-stop-body">
+        <div class="tour-sheet-stop-title">${escapeHtml(a.title)}</div>
+        <div class="tour-sheet-stop-sub">G${stop.gallery} · ${escapeHtml(a.artist)}</div>
+        ${floorHint}
+      </div>
+    </li>
+  `;
+}
+
+// Connector between two stop cards — shows walking distance plus any
+// lift/stairs instruction from the cached /route response. "Start at …" and
+// "Arrive at …" are filtered out because those endpoints are the adjacent
+// stop cards.
+function renderSegmentLi(segRes) {
+  if (!segRes) return `<li class="tour-sheet-segment"><div class="tour-sheet-seg-connector"></div><div class="tour-sheet-seg-body"><span class="tour-sheet-seg-muted">Directions unavailable</span></div></li>`;
+
+  const dist = Math.round(segRes.distance_m || 0);
+  const extraSteps = (segRes.steps || [])
+    .map((s) => s && s.instruction)
+    .filter((ins) => ins && !/^(Start at|Arrive at) /i.test(ins));
+  const extraHtml = extraSteps
+    .map((ins) => `<div class="tour-sheet-seg-extra">${escapeHtml(ins)}</div>`)
+    .join("");
+
+  return `
+    <li class="tour-sheet-segment">
+      <div class="tour-sheet-seg-connector"></div>
+      <div class="tour-sheet-seg-body">
+        <div class="tour-sheet-seg-walk">↓ Walk ~${dist} m</div>
+        ${extraHtml}
+      </div>
+    </li>
+  `;
+}
+
+function goToStop(idx) {
+  if (!activeTour) return;
+  const stop = activeTour.stops[idx];
+  if (!stop) return;
+  const g = ALL_GALLERIES.find((x) => x.number === stop.gallery);
+  if (!g) return;
+  if (g.floor !== activeFloor) setFloor(g.floor);
+  map.panTo({ lat: g.lat, lng: g.lon });
+  openStopInfoWindow(stop, idx + 1);
+}
+
+function renderTourBar() {
+  const bar = document.getElementById("tour-bar");
+  if (!activeTour) { bar.hidden = true; return; }
+  const floorMix = new Set(activeTour.stops.map((s) => {
+    const g = ALL_GALLERIES.find((x) => x.number === s.gallery);
+    return g ? g.floor : null;
+  }));
+  const spansFloors = floorMix.size > 1;
+  bar.querySelector(".tour-bar-title").textContent = activeTour.title;
+  bar.querySelector(".tour-bar-progress").textContent =
+    `${activeTour.stops.length} stops · ${activeTour.duration_min} min${spansFloors ? " · includes a lift ride" : ""}`;
+  bar.hidden = false;
 }
