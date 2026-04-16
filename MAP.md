@@ -10,11 +10,11 @@ See [`PLAN.md`](PLAN.md) for the full design rationale (basemap choice, floor au
 
 - **Step 1** — shell + polygon overlay. Floor picker with human labels, Google Maps roadmap at zoom 19, polygons via `map.data.addGeoJson`, red centroid markers, InfoWindow with number / name / image on click.
 - **Step 2** — "Where am I?" + floor auto-detect. Locate FAB (bottom-right), parallel `/locate` calls for floors 2 and 3, winner picked by `method: polygon` (or smaller `distance_m`), blue dot + accuracy ring, green highlight on resolved polygon, you-are-here chip, tap-to-correct prompt when `distance_m > 30`.
+- **Step 4** — gallery-to-gallery routing. "Route here" button in each InfoWindow → editable From/To bottom sheet → `POST /route` (proxies Living Map's `v2/route`) → dense blue polyline along real corridors + human-readable step list. Cross-floor routes include a "Take the lift from Floor X to Floor Y" step; switching floors redraws the polyline to the active floor's segment.
 
 **Not yet wired up:**
 
-- **Step 3** — nearest amenity with corridor-respecting routes (`/nearest-amenity` → `/locate` on amenity → `POST /route`). Icon row for toilet / lift / restaurant / shop.
-- **Step 4** — full gallery-to-gallery route UI with "Route here" button in each InfoWindow + editable bottom sheet.
+- **Step 3** — nearest amenity with corridor-respecting routes (`/nearest-amenity` → `/locate` on amenity → `POST /route`). Icon row for toilet / lift / restaurant / shop. Deferred.
 - **Step 5** — client-side search over the cached `/galleries` array + curated chips (Buddha, jade, tea ceremony, samurai, calligraphy).
 - **Step 6** — PWA `manifest.json` + icons so iOS / Android "Add to Home Screen" installs as a standalone app.
 
@@ -49,6 +49,14 @@ Pass `?mock=lat,lng` on the URL to bypass the browser's Geolocation API and inje
 
 Then tap the blue locate FAB. The mock coord feeds `/locate` for floors 2 and 3 in parallel, same as real GPS.
 
+### Testing routes
+
+After locating yourself somewhere, tap any other gallery polygon → "Route here" in the InfoWindow. The bottom sheet shows distance + steps; the blue polyline draws on the map.
+
+- **Same-floor route** — drop in Gallery 206, route to 216. Expected: ~93 m, 4 steps, polyline follows corridors (not diagonal).
+  http://localhost:8000/map/?mock=40.779504915,-73.962624073
+- **Cross-floor route** — drop in Gallery 206 (floor 2), switch the floor picker to 3, tap Gallery 253, "Route here". Expected: 126 m · Floors 2 → 3, 6 steps including "Take the lift from Floor 2 to Floor 3". Toggling the floor picker 2↔3 redraws the polyline to the active floor's segment.
+
 ## File layout
 
 ```
@@ -63,8 +71,9 @@ app/
 ## Known issues
 
 - **Gallery 206's polygon renders as a triangle** instead of the actual room shape. Bug in the scraped Living Map data, not the PWA. Fix belongs in `data/asian_art.json` / `scrape.py`.
-- **Steps 3–6 not yet wired up** — see status above.
+- **Steps 3, 5, 6 not yet wired up** — see status above.
 - **API key is committed to the repo** for hackathon convenience. It's referrer-restricted to `localhost/*` and `met-asian-art-api.onrender.com/*` so the blast radius is small for the hackathon window. Rotate it after.
+- **Routing depends on Living Map being reachable.** `/route` proxies `https://map-api.prod.livingmap.com/v2/route`. If upstream is down the response falls back to a minimal Start / (optional lift) / Arrive list with `upstream: null` and straight-line distance — the UI still works, but the polyline won't follow corridors.
 
 ## How to modify
 
@@ -72,11 +81,14 @@ app/
 |---|---|
 | Floor picker labels | `#floor-picker` in `index.html` |
 | Polygon fill / stroke color | `polygonStyle()` in `app.js` |
-| Resolved-gallery highlight color | Same — bump the `isResolved` branch |
+| Resolved / route-from / route-to polygon colors | `polygonStyle()` in `app.js` (3-way branch) |
 | User marker color / size | `drawUserPosition()` in `app.js` |
 | Tap-to-correct distance threshold | `AUTO_CORRECT_THRESHOLD_M` const in `app.js` |
 | InfoWindow content | `onPolygonClick()` in `app.js` |
 | You-are-here chip text | `renderYouChip()` in `app.js` |
+| Route polyline style | `drawRoutePolyline()` in `app.js` |
+| Route sheet layout | `#route-sheet` in `index.html` + `.route-*` rules in `style.css` |
+| Transition labels ("Take the lift") | `TRANSITION_LABELS` in `app/main.py` |
 
 Adding a new UI element: put DOM in `index.html`, styles in `style.css`, behavior in `app.js`. No framework, no build — save and reload and it's live. Hard-reload (`Cmd+Shift+R`) if the browser cached the old HTML/JS.
 

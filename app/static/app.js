@@ -12,6 +12,11 @@ let accuracyCircle = null;
 let resolvedGalleryNumber = null;
 let awaitingCorrection = false;
 
+let routeState = null;
+let routePolyline = null;
+let pickingMode = null;
+let pendingRouteTarget = null;
+
 window.initMap = async function () {
   map = new google.maps.Map(document.getElementById("map"), {
     center: CENTER,
@@ -39,6 +44,16 @@ window.initMap = async function () {
     hideCorrectionPrompt();
   });
 
+  document.getElementById("route-close").addEventListener("click", closeRouteSheet);
+  document.querySelectorAll(".route-chip").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      document.querySelectorAll(".route-chip").forEach((c) => c.classList.remove("picking"));
+      chip.classList.add("picking");
+      pickingMode = chip.dataset.role === "from" ? "route-from" : "route-to";
+      setStatus(`Tap a gallery to set ${chip.dataset.role}`);
+    });
+  });
+
   setStatus("Loading galleries…");
   try {
     const res = await fetch("/galleries");
@@ -55,11 +70,32 @@ window.initMap = async function () {
 };
 
 function polygonStyle(feature) {
-  const isResolved = feature.getProperty("number") === resolvedGalleryNumber;
+  const num = feature.getProperty("number");
+  const isResolved = num === resolvedGalleryNumber;
+  const isRouteTo = routeState && routeState.to.number === num;
+  const isRouteFrom = routeState && routeState.from.number === num && !isResolved;
+  if (isRouteTo) {
+    return {
+      fillColor: "#ea4335",
+      fillOpacity: 0.45,
+      strokeColor: "#ea4335",
+      strokeWeight: 2,
+      clickable: true,
+    };
+  }
+  if (isResolved || isRouteFrom) {
+    return {
+      fillColor: "#0f9d58",
+      fillOpacity: 0.45,
+      strokeColor: "#0f9d58",
+      strokeWeight: 2,
+      clickable: true,
+    };
+  }
   return {
-    fillColor: isResolved ? "#0f9d58" : "#1a73e8",
-    fillOpacity: isResolved ? 0.45 : 0.25,
-    strokeColor: isResolved ? "#0f9d58" : "#1a73e8",
+    fillColor: "#1a73e8",
+    fillOpacity: 0.25,
+    strokeColor: "#1a73e8",
     strokeWeight: 2,
     clickable: true,
   };
@@ -71,28 +107,198 @@ function refreshPolygonStyle() {
 
 function onPolygonClick(e) {
   const num = e.feature.getProperty("number");
+  const gallery = ALL_GALLERIES.find((x) => x.number === num);
+  if (!gallery) return;
+
   if (awaitingCorrection) {
-    const g = ALL_GALLERIES.find((x) => x.number === num);
-    if (g) {
-      setResolvedGallery(g, "user-tap");
-      awaitingCorrection = false;
-      hideCorrectionPrompt();
-    }
+    setResolvedGallery(gallery, "user-tap");
+    awaitingCorrection = false;
+    hideCorrectionPrompt();
     return;
   }
+
+  if (pickingMode === "route-from" && routeState) {
+    clearPickingUI();
+    computeRoute(gallery, routeState.to);
+    return;
+  }
+  if (pickingMode === "route-to" && routeState) {
+    clearPickingUI();
+    computeRoute(routeState.from, gallery);
+    return;
+  }
+  if (pickingMode === "route-new-from" && pendingRouteTarget) {
+    const target = pendingRouteTarget;
+    pendingRouteTarget = null;
+    clearPickingUI();
+    setResolvedGallery(gallery, "user-tap");
+    computeRoute(gallery, target);
+    return;
+  }
+
   const name = e.feature.getProperty("name");
   const summary = e.feature.getProperty("summary");
   const img = e.feature.getProperty("image_url");
   const imgHtml = img ? `<img src="${img}" alt="">` : "";
+  const isHere = resolvedGalleryNumber === num;
+  const isRouteEndpoint =
+    routeState && (routeState.from.number === num || routeState.to.number === num);
+  const actionHtml = isHere
+    ? `<div class="iw-note">You're here</div>`
+    : isRouteEndpoint
+    ? `<div class="iw-note">Already on the route</div>`
+    : `<button class="iw-route-btn" onclick="window.routeToGallery(${num})">Route here</button>`;
   infoWindow.setContent(`
     <div class="iw">
       <div class="iw-title">${num} — ${escapeHtml(name)}</div>
       ${imgHtml}
       <div class="iw-summary">${escapeHtml(summary || "")}</div>
+      ${actionHtml}
     </div>
   `);
   infoWindow.setPosition(e.latLng);
   infoWindow.open(map);
+}
+
+function clearPickingUI() {
+  pickingMode = null;
+  document.querySelectorAll(".route-chip").forEach((c) => c.classList.remove("picking"));
+  setStatus("");
+}
+
+window.routeToGallery = async function (targetNum) {
+  infoWindow.close();
+  const target = ALL_GALLERIES.find((g) => g.number === targetNum);
+  if (!target) return;
+
+  if (!resolvedGalleryNumber) {
+    pendingRouteTarget = target;
+    pickingMode = "route-new-from";
+    setStatus("Tap your starting gallery");
+    return;
+  }
+  const from = ALL_GALLERIES.find((g) => g.number === resolvedGalleryNumber);
+  await computeRoute(from, target);
+};
+
+async function computeRoute(from, to) {
+  if (from.number === to.number) {
+    setStatus("Start and destination are the same gallery.", 3000);
+    return;
+  }
+  setStatus("Finding route…");
+  try {
+    const res = await fetch("/route", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ from_gallery: from.number, to_gallery: to.number }),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const route = await res.json();
+    routeState = {
+      from,
+      to,
+      distance_m: route.distance_m,
+      steps: route.steps || [],
+      upstream: route.upstream,
+    };
+    drawRoutePolyline();
+    renderRouteSheet();
+    setStatus("");
+
+    if (from.floor !== activeFloor && from.floor === routeState.from.floor) {
+      setFloor(from.floor);
+    }
+  } catch (err) {
+    console.error("Route failed", err);
+    setStatus("Couldn't compute route.", 4000);
+  }
+}
+
+function drawRoutePolyline() {
+  if (routePolyline) {
+    routePolyline.setMap(null);
+    routePolyline = null;
+  }
+  if (!routeState) return;
+  const path = extractRoutePath(routeState);
+  if (path.length < 2) return;
+  routePolyline = new google.maps.Polyline({
+    path,
+    geodesic: false,
+    strokeColor: "#1a73e8",
+    strokeOpacity: 0.9,
+    strokeWeight: 5,
+    map,
+  });
+}
+
+function extractRoutePath(rs) {
+  if (rs.upstream && typeof rs.upstream === "object") {
+    const pts = extractFromUpstream(rs.upstream);
+    if (pts.length >= 2) return pts;
+  }
+  return (rs.steps || [])
+    .filter((s) => s.lat != null && s.lon != null && s.floor === activeFloor)
+    .map((s) => ({ lat: s.lat, lng: s.lon }));
+}
+
+function extractFromUpstream(up) {
+  const pts = [];
+  const visit = (obj) => {
+    if (!obj || typeof obj !== "object") return;
+    if (obj.type === "LineString" && Array.isArray(obj.coordinates)) {
+      for (const [lon, lat] of obj.coordinates) pts.push({ lat, lng: lon });
+      return;
+    }
+    if (obj.type === "MultiLineString" && Array.isArray(obj.coordinates)) {
+      for (const line of obj.coordinates) {
+        for (const [lon, lat] of line) pts.push({ lat, lng: lon });
+      }
+      return;
+    }
+    for (const k of Object.keys(obj)) visit(obj[k]);
+  };
+  visit(up);
+  return pts;
+}
+
+function renderRouteSheet() {
+  const sheet = document.getElementById("route-sheet");
+  const fromText = document.querySelector("#route-from .route-chip-text");
+  const toText = document.querySelector("#route-to .route-chip-text");
+  const dist = document.getElementById("route-distance");
+  const stepsEl = document.getElementById("route-steps");
+
+  fromText.textContent = `${routeState.from.number} — ${routeState.from.name}`;
+  toText.textContent = `${routeState.to.number} — ${routeState.to.name}`;
+
+  const crossFloor = routeState.from.floor !== routeState.to.floor;
+  dist.textContent = crossFloor
+    ? `${Math.round(routeState.distance_m)} m · Floors ${routeState.from.floor} → ${routeState.to.floor}`
+    : `${Math.round(routeState.distance_m)} m`;
+
+  stepsEl.innerHTML = routeState.steps
+    .map((s) => `<li>${escapeHtml(s.instruction)}</li>`)
+    .join("");
+
+  sheet.hidden = false;
+  document.getElementById("you-chip").classList.remove("visible");
+  refreshPolygonStyle();
+}
+
+function closeRouteSheet() {
+  const sheet = document.getElementById("route-sheet");
+  sheet.hidden = true;
+  if (routePolyline) {
+    routePolyline.setMap(null);
+    routePolyline = null;
+  }
+  routeState = null;
+  clearPickingUI();
+  if (resolvedGalleryNumber) {
+    document.getElementById("you-chip").classList.add("visible");
+  }
 }
 
 function setFloor(floor) {
@@ -105,6 +311,7 @@ function setFloor(floor) {
   });
   renderFloor(floor);
   infoWindow.close();
+  if (routeState) drawRoutePolyline();
 }
 
 function renderFloor(floor) {

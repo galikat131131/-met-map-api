@@ -31,6 +31,22 @@
     <button id="correction-dismiss" aria-label="Dismiss">✕</button>
   </div>
 
+  <div id="route-sheet" class="route-sheet" hidden>
+    <button class="route-close" id="route-close" aria-label="Close route">✕</button>
+    <div class="route-chips">
+      <button class="route-chip" id="route-from" data-role="from">
+        <span class="route-chip-label">From</span>
+        <span class="route-chip-text"></span>
+      </button>
+      <button class="route-chip" id="route-to" data-role="to">
+        <span class="route-chip-label">To</span>
+        <span class="route-chip-text"></span>
+      </button>
+    </div>
+    <div class="route-distance" id="route-distance"></div>
+    <ol class="route-steps" id="route-steps"></ol>
+  </div>
+
   <div id="status" class="status" aria-live="polite"></div>
 
   <script src="app.js"></script>

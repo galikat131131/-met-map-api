@@ -69,11 +69,21 @@ async function routeTo(fromNumber, toNumber) {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ from_gallery: fromNumber, to_gallery: toNumber }),
   });
-  const { distance_m, steps, upstream } = await res.json();
-  // Prefer `upstream` (Living Map polyline) when present; fall back to `steps`.
-  return { distance_m, steps, polyline: upstream };
+  return res.json();
+  // {
+  //   from_gallery, to_gallery: Gallery,
+  //   distance_m: number,                    // total walking distance, meters
+  //   steps: [{ instruction, lat?, lon?, floor? }],
+  //     //  "Start at Gallery 206: ..."
+  //     //  "Head straight (12 m)"
+  //     //  "Take the lift from Floor 2 to Floor 3"
+  //     //  "Arrive at Gallery 253: ..."
+  //   upstream: object | null,               // raw Living Map v2/route response
+  // }
 }
 ```
+
+For the on-map polyline, use `upstream.segments[].routeGeoJson[]` — each feature's `geometry.coordinates` is a dense `[lon,lat][]` polyline following real corridors, tagged with `properties.floorNumber` so you can filter to the currently-displayed floor. When `upstream` is null (upstream unreachable), fall back to drawing a line through `steps[].{lat,lon}`.
 
 ### 4. Nearest restroom
 
@@ -145,7 +155,7 @@ async function search(q) {
 - **Floor must come from the UI.** Every `/locate`, `/nearby`, and most `/nearest-amenity` calls require `floor=`. GPS will not tell you.
 - **Indoor GPS is noisy** (20–50 m error). `/locate` now does real point-in-polygon containment (`method: "polygon"`) when possible, falling back to nearest-centroid (`method: "nearest-centroid"`) when the point lies in a corridor or outside the building. Treat `polygon` results as trustworthy.
 - **Free tier cold start.** If the API has been idle for 15 min, the first request takes ~30 s. Run `./keepalive.sh` locally or set up [UptimeRobot](https://uptimerobot.com) with a 5 min HTTP check.
-- **`/route` fallback.** The `steps` array always works; the `upstream` polyline depends on Living Map's routing service being reachable and may be `null`.
+- **`/route` proxies Living Map's `v2/route` engine.** The response is reshaped into a flat `steps[]` list (including cross-floor "Take the lift" instructions) plus the raw `upstream` payload for the dense polyline. If Living Map is unreachable, you still get a minimal `steps[]` (Start → optional lift → Arrive) with `upstream: null` and straight-line distance.
 - **Dataset is a snapshot.** Re-run `scrape.py` to refresh it.
 
 ---

@@ -43,9 +43,11 @@ to wire up the remaining steps.
   and pass it as `?floor=` to `/locate` and `/nearby`.
 - **Indoor GPS is noisy** (20–50 m error inside a stone building). Treat
   `/locate` as a best-guess, not ground truth.
-- `/route` runs a local fallback (straight-line + floor change step) and also
-  attempts to proxy Living Map's upstream `/route` endpoint. If `upstream` is
-  non-null in the response, use those polyline coords for a smoother path.
+- `/route` proxies Living Map's `v2/route` engine — the response includes a
+  flat `steps[]` list (with cross-floor "Take the lift" instructions) plus
+  the raw `upstream` payload whose `segments[].routeGeoJson[]` features give
+  you a dense corridor-following polyline. If upstream is unreachable, you
+  get a minimal Start / optional lift / Arrive fallback with `upstream: null`.
 - CORS is `*` — lock it down to your PWA origin before real users hit it.
 
 ## Deploy to Fly.io

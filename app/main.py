@@ -21,7 +21,7 @@ from .models import (
 )
 
 DATA_PATH = Path(__file__).parent.parent / "data" / "asian_art.json"
-LIVINGMAP_BASE = "https://map-api.prod.livingmap.com/v1/maps/the_met"
+LIVINGMAP_ROUTE_URL = "https://map-api.prod.livingmap.com/v2/route"
 
 API_DESCRIPTION = """
 A read-only REST API covering the **Metropolitan Museum of Art's Asian Art wing**
@@ -111,6 +111,55 @@ def haversine_m(lat1, lon1, lat2, lon2):
     dlam = math.radians(lon2 - lon1)
     a = math.sin(dphi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(dlam / 2) ** 2
     return 2 * R * math.asin(math.sqrt(a))
+
+
+TRANSITION_LABELS = {
+    "lift": "Take the lift",
+    "escalator": "Take the escalator",
+    "stairs": "Take the stairs",
+    "steps": "Go up/down steps",
+}
+
+
+def _steps_from_upstream(upstream: dict, start: Gallery, end: Gallery) -> List[RouteStep]:
+    """Flatten Living Map's segments[].routeGeoJson[] into human-readable steps.
+
+    Upstream features fall into three shapes: ones with `directions` text
+    ("Head straight"), ones with `transition_mode` (lift / escalator / stairs),
+    and structural filler. We emit a step for the first two, tagged with the
+    feature's starting coord and floor so the UI can filter by active floor."""
+    steps: List[RouteStep] = [RouteStep(
+        instruction=f"Start at Gallery {start.number}: {start.name}",
+        lat=start.lat, lon=start.lon, floor=start.floor,
+    )]
+    for segment in upstream.get("segments", []):
+        for feature in segment.get("routeGeoJson", []):
+            props = feature.get("properties", {}) or {}
+            coords = (feature.get("geometry") or {}).get("coordinates") or []
+            lat = lon = None
+            if coords:
+                lon, lat = coords[0][0], coords[0][1]
+            floor_num = props.get("floorNumber")
+            floor = str(floor_num) if floor_num is not None else None
+
+            text = props.get("directions")
+            if text:
+                length = props.get("length")
+                instruction = f"{text} ({int(length)} m)" if length else text
+                steps.append(RouteStep(instruction=instruction, lat=lat, lon=lon, floor=floor))
+                continue
+
+            transition = props.get("transition_mode")
+            if transition and transition != "steps":
+                label = TRANSITION_LABELS.get(transition, transition.replace("_", " ").title())
+                if start.floor != end.floor and transition == "lift":
+                    label = f"Take the lift from Floor {start.floor} to Floor {end.floor}"
+                steps.append(RouteStep(instruction=label, lat=lat, lon=lon, floor=floor))
+    steps.append(RouteStep(
+        instruction=f"Arrive at Gallery {end.number}: {end.name}",
+        lat=end.lat, lon=end.lon, floor=end.floor,
+    ))
+    return steps
 
 
 @app.get(
@@ -336,12 +385,13 @@ def nearest_amenity(
     tags=["routing"],
     summary="Route between two galleries",
     description=(
-        "Given two gallery numbers, returns a list of steps to walk between them plus "
-        "the straight-line distance. If the galleries are on different floors, a "
-        '"take a lift or stairs" step is inserted.\n\n'
-        "The endpoint also transparently attempts to call Living Map's upstream routing "
-        "API — if that succeeds, the full polyline is returned in `upstream` and you can "
-        "render a smoother path. If `upstream` is `null`, fall back to the `steps` list."
+        "Given two gallery numbers, proxies Living Map's routing engine "
+        "(`POST /v2/route`) and reshapes the response for PWA consumers.\n\n"
+        "`upstream` is the raw Living Map payload — its `segments[].routeGeoJson` "
+        "features contain the dense polyline (use these for rendering a smooth path "
+        "on the map). `steps` is a flattened, human-readable direction list.\n\n"
+        "If the upstream call fails, a minimal Start/Arrive fallback is returned "
+        "with straight-line distance and `upstream: null`."
     ),
     responses={404: {"description": "One or both gallery numbers aren't in the Asian Art range."}},
 )
@@ -352,40 +402,46 @@ def route(req: RouteRequest):
         missing = [n for n, g in [(req.from_gallery, start), (req.to_gallery, end)] if g is None]
         raise HTTPException(404, f"Gallery not in Asian Art range: {missing}")
 
-    steps: List[RouteStep] = [
-        RouteStep(
-            instruction=f"Start at Gallery {start.number}: {start.name}",
-            lat=start.lat, lon=start.lon, floor=start.floor,
-        )
-    ]
-    if start.floor != end.floor:
-        steps.append(RouteStep(
-            instruction=f"Take a lift or stairs from Floor {start.floor} to Floor {end.floor}",
-            floor=end.floor,
-        ))
-    steps.append(RouteStep(
-        instruction=f"Arrive at Gallery {end.number}: {end.name}",
-        lat=end.lat, lon=end.lon, floor=end.floor,
-    ))
-
-    distance_m = haversine_m(start.lat, start.lon, end.lat, end.lon)
-
     upstream = None
     try:
-        with httpx.Client(timeout=5) as client:
+        with httpx.Client(timeout=8) as client:
             r = client.post(
-                f"{LIVINGMAP_BASE}/route",
-                json={"start": {"feature_id": start.id}, "end": {"feature_id": end.id}},
+                LIVINGMAP_ROUTE_URL,
+                json={
+                    "from": {"lmId": start.id},
+                    "to": {"lmId": end.id},
+                    "project": "the_met",
+                },
             )
             if r.status_code < 400:
                 upstream = r.json()
     except httpx.HTTPError:
         pass
 
+    if upstream:
+        meta = (upstream.get("routeMetadata") or [{}])[0]
+        distance_m = round((meta.get("totalLength") or 0) * 1000, 1)
+        steps = _steps_from_upstream(upstream, start, end)
+    else:
+        steps = [RouteStep(
+            instruction=f"Start at Gallery {start.number}: {start.name}",
+            lat=start.lat, lon=start.lon, floor=start.floor,
+        )]
+        if start.floor != end.floor:
+            steps.append(RouteStep(
+                instruction=f"Take a lift or stairs from Floor {start.floor} to Floor {end.floor}",
+                floor=end.floor,
+            ))
+        steps.append(RouteStep(
+            instruction=f"Arrive at Gallery {end.number}: {end.name}",
+            lat=end.lat, lon=end.lon, floor=end.floor,
+        ))
+        distance_m = round(haversine_m(start.lat, start.lon, end.lat, end.lon), 1)
+
     return RouteResponse(
         from_gallery=start,
         to_gallery=end,
-        distance_m=round(distance_m, 1),
+        distance_m=distance_m,
         steps=steps,
         upstream=upstream,
     )

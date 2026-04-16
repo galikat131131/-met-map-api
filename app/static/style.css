@@ -187,6 +187,125 @@ html, body {
   padding: 4px 8px;
 }
 
+.iw-route-btn {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.iw-route-btn:active { background: #1557b0; }
+
+.iw-note {
+  margin-top: 10px;
+  padding: 7px 10px;
+  background: #e6f4ea;
+  color: #137333;
+  border-radius: 6px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.route-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 11;
+  background: white;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
+  padding: 18px 16px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  max-height: 50vh;
+  overflow-y: auto;
+  font-size: 13px;
+}
+
+.route-sheet[hidden] { display: none; }
+
+.route-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #5f6368;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+.route-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.route-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #f1f3f4;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
+  color: #202124;
+}
+
+.route-chip.picking {
+  background: #fef7e0;
+  border-color: #f9ab00;
+}
+
+.route-chip-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #5f6368;
+  width: 30px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.route-chip-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.route-distance {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 12px 0 6px;
+  color: #202124;
+}
+
+.route-steps {
+  list-style: decimal inside;
+  padding: 0;
+  margin: 0;
+}
+
+.route-steps li {
+  padding: 7px 0;
+  border-bottom: 1px solid #f1f3f4;
+  color: #3c4043;
+}
+
+.route-steps li:last-child { border-bottom: none; }
+
 .iw {
   max-width: 260px;
   font-size: 14px;
