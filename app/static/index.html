@@ -27,6 +27,42 @@
     </svg>
   </button>
 
+  <button id="tours-btn" class="fab fab-left" aria-label="Curated tours">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4zm0 2.2 6 3v4.8c0 3.9-2.6 7.6-6 8-3.4-.4-6-4.1-6-8V7.2l6-3zM11 7v4H7v2h4v4h2v-4h4v-2h-4V7h-2z"/>
+    </svg>
+  </button>
+
+  <div id="tour-bar" class="tour-bar" hidden>
+    <div class="tour-bar-body">
+      <div class="tour-bar-title"></div>
+      <div class="tour-bar-progress"></div>
+    </div>
+    <button id="tour-bar-close" aria-label="Clear tour">✕</button>
+  </div>
+
+  <div id="tour-backdrop" class="tour-backdrop" hidden></div>
+  <div id="tour-drawer" class="tour-drawer" role="dialog" aria-labelledby="tour-drawer-title" hidden>
+    <div class="tour-drawer-handle"></div>
+    <div class="tour-drawer-header">
+      <h2 id="tour-drawer-title">Curated tours</h2>
+      <button id="tour-drawer-close" aria-label="Close">✕</button>
+    </div>
+    <div id="tour-list" class="tour-list"></div>
+  </div>
+
+  <div id="tour-sheet" class="tour-sheet" hidden>
+    <div class="tour-sheet-handle"></div>
+    <div class="tour-sheet-header">
+      <div>
+        <div class="tour-sheet-title"></div>
+        <div class="tour-sheet-meta"></div>
+      </div>
+      <button id="tour-sheet-collapse" aria-label="Minimize">⌄</button>
+    </div>
+    <ol id="tour-sheet-stops" class="tour-sheet-stops"></ol>
+  </div>
+
   <div id="you-chip" class="you-chip" role="status" aria-live="polite"></div>
 
   <div id="correction-prompt" class="correction-prompt" hidden>

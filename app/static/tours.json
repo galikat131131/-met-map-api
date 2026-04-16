@@ -1,0 +1,1364 @@
+[
+  {
+    "id": "speed-15",
+    "title": "Asian Art in 15 Minutes",
+    "summary": "Speed-walk the essentials: a handful of icons across the wing.",
+    "duration_min": 15,
+    "stops": [
+      {
+        "gallery": 200,
+        "artwork": {
+          "object_id": 42229,
+          "title": "Vase",
+          "artist": "China",
+          "date": "1713\u201322",
+          "medium": "Porcelain with peach-bloom glaze (Jingdezhen ware)",
+          "culture": "China",
+          "classification": "Ceramics",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP246426.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/42229"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 220,
+        "artwork": {
+          "object_id": 856282,
+          "title": "Table screen with landscape",
+          "artist": "China",
+          "date": "second half 15th century",
+          "medium": "Cloisonn\u00e9 enamel, wood frame and stand",
+          "culture": "China",
+          "classification": "Cloisonn\u00e9",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-24553-001.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/856282"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 236,
+        "artwork": {
+          "object_id": 38198,
+          "title": "Standing Buddha Offering Protection",
+          "artist": "India (Uttar Pradesh, Mathura)",
+          "date": "late 5th century",
+          "medium": "Red sandstone",
+          "culture": "India (Uttar Pradesh, Mathura)",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT237.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38198"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 243,
+        "artwork": {
+          "object_id": 65576,
+          "title": "Pichhwai for the Festival of Cows",
+          "artist": "India, Deccan, Aurangabad (?)",
+          "date": "late 18th century",
+          "medium": "Painted and printed gold and silver leaf and opaque watercolor on indigo-dyed cotton",
+          "culture": "India, Deccan, Aurangabad (?)",
+          "classification": "Textiles-Painted and Printed",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP156677.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/65576"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 253,
+        "artwork": {
+          "object_id": 38332,
+          "title": "Seated Avalokiteshvara, the Buddha of Infinite Compassion",
+          "artist": "Tibet or Mongolia",
+          "date": "17th century",
+          "medium": "Gilt copper alloy",
+          "culture": "Tibet or Mongolia",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP170265.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38332"
+        },
+        "note": ""
+      }
+    ],
+    "segments": [
+      {
+        "from_gallery": 200,
+        "to_gallery": 220,
+        "from_floor": "2",
+        "to_floor": "3",
+        "distance_m": 153.6,
+        "floor_change": true,
+        "path": [
+          {
+            "lat": 40.779262161,
+            "lng": -73.963184305
+          },
+          {
+            "lat": 40.780369319,
+            "lng": -73.96209342
+          }
+        ]
+      },
+      {
+        "from_gallery": 220,
+        "to_gallery": 236,
+        "from_floor": "3",
+        "to_floor": "2",
+        "distance_m": 78.4,
+        "floor_change": true,
+        "path": [
+          {
+            "lat": 40.780369319,
+            "lng": -73.96209342
+          },
+          {
+            "lat": 40.779690488,
+            "lng": -73.962345353
+          }
+        ]
+      },
+      {
+        "from_gallery": 236,
+        "to_gallery": 243,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 38.5,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779690488,
+            "lng": -73.962345353
+          },
+          {
+            "lat": 40.779913706,
+            "lng": -73.961995156
+          }
+        ]
+      },
+      {
+        "from_gallery": 243,
+        "to_gallery": 253,
+        "from_floor": "2",
+        "to_floor": "3",
+        "distance_m": 16.9,
+        "floor_change": true,
+        "path": [
+          {
+            "lat": 40.779913706,
+            "lng": -73.961995156
+          },
+          {
+            "lat": 40.780064764,
+            "lng": -73.961979045
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "highlights-1h",
+    "title": "Highlights in an Hour",
+    "summary": "Thirteen must-see works from China, Japan, Korea, and South Asia.",
+    "duration_min": 60,
+    "stops": [
+      {
+        "gallery": 200,
+        "artwork": {
+          "object_id": 42229,
+          "title": "Vase",
+          "artist": "China",
+          "date": "1713\u201322",
+          "medium": "Porcelain with peach-bloom glaze (Jingdezhen ware)",
+          "culture": "China",
+          "classification": "Ceramics",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP246426.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/42229"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 204,
+        "artwork": {
+          "object_id": 37557,
+          "title": "Bottle with Birds and Peony Scroll",
+          "artist": "Vietnam",
+          "date": "15th century",
+          "medium": "Stoneware painted with cobalt blue under transparent glaze",
+          "culture": "Vietnam",
+          "classification": "Ceramics",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT6789.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/37557"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 208,
+        "artwork": {
+          "object_id": 42163,
+          "title": "Buddha, probably Amitabha",
+          "artist": "China",
+          "date": "early 7th century",
+          "medium": "Dry lacquer with polychrome pigment and gilding",
+          "culture": "China",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-15581-004.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/42163"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 220,
+        "artwork": {
+          "object_id": 856282,
+          "title": "Table screen with landscape",
+          "artist": "China",
+          "date": "second half 15th century",
+          "medium": "Cloisonn\u00e9 enamel, wood frame and stand",
+          "culture": "China",
+          "classification": "Cloisonn\u00e9",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-24553-001.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/856282"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 224,
+        "artwork": {
+          "object_id": 76084,
+          "title": "The Bodhisattva Jiz\u014d",
+          "artist": "Intan",
+          "date": "1291",
+          "medium": "Japanese cypress wood (hinoki) with polychrome pigments, gold paint (kindei), cut gold leaf (kirikane), and rock-crystal eyes",
+          "culture": "Japan",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-14364-001.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/76084"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 233,
+        "artwork": {
+          "object_id": 50325,
+          "title": "Rafter finial in the shape of a dragon\u2019s head and wind chime",
+          "artist": "Korea",
+          "date": "10th century",
+          "medium": "Gilt bronze",
+          "culture": "Korea",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT4423.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/50325"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 236,
+        "artwork": {
+          "object_id": 38198,
+          "title": "Standing Buddha Offering Protection",
+          "artist": "India (Uttar Pradesh, Mathura)",
+          "date": "late 5th century",
+          "medium": "Red sandstone",
+          "culture": "India (Uttar Pradesh, Mathura)",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT237.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38198"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 239,
+        "artwork": {
+          "object_id": 38133,
+          "title": "Enthroned Vishnu",
+          "artist": "India",
+          "date": "second half of the 8th\u2013early 9th century",
+          "medium": "Granulite",
+          "culture": "India",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT5240.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38133"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 241,
+        "artwork": {
+          "object_id": 38517,
+          "title": "Standing Vishnu as Keshava",
+          "artist": "Dasoja of Balligrama",
+          "date": "first quarter of the 12th century",
+          "medium": "Stone",
+          "culture": "India (Karnataka, probably Belur)",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT5252.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38517"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 243,
+        "artwork": {
+          "object_id": 65576,
+          "title": "Pichhwai for the Festival of Cows",
+          "artist": "India, Deccan, Aurangabad (?)",
+          "date": "late 18th century",
+          "medium": "Painted and printed gold and silver leaf and opaque watercolor on indigo-dyed cotton",
+          "culture": "India, Deccan, Aurangabad (?)",
+          "classification": "Textiles-Painted and Printed",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP156677.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/65576"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 246,
+        "artwork": {
+          "object_id": 42641,
+          "title": "Standing Four-Armed Avalokiteshvara, the Bodhisattva of Infinite Compassion",
+          "artist": "Northeast Thailand",
+          "date": "8th\u2013early 9th century",
+          "medium": "Bronze inlaid with obsidian(?)",
+          "culture": "Northeast Thailand",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP311704.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/42641"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 250,
+        "artwork": {
+          "object_id": 38318,
+          "title": "Crowned Buddha",
+          "artist": "Burma",
+          "date": "ca. 13th\u2013early 14th century",
+          "medium": "Wood with lacquer and gilt",
+          "culture": "Burma",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/1986_207.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38318"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 253,
+        "artwork": {
+          "object_id": 38332,
+          "title": "Seated Avalokiteshvara, the Buddha of Infinite Compassion",
+          "artist": "Tibet or Mongolia",
+          "date": "17th century",
+          "medium": "Gilt copper alloy",
+          "culture": "Tibet or Mongolia",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP170265.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38332"
+        },
+        "note": ""
+      }
+    ],
+    "segments": [
+      {
+        "from_gallery": 200,
+        "to_gallery": 204,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 40.6,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779262161,
+            "lng": -73.963184305
+          },
+          {
+            "lat": 40.779134944,
+            "lng": -73.962731959
+          }
+        ]
+      },
+      {
+        "from_gallery": 204,
+        "to_gallery": 208,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 68.6,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779134944,
+            "lng": -73.962731959
+          },
+          {
+            "lat": 40.779721287,
+            "lng": -73.962478484
+          }
+        ]
+      },
+      {
+        "from_gallery": 208,
+        "to_gallery": 220,
+        "from_floor": "2",
+        "to_floor": "3",
+        "distance_m": 79.0,
+        "floor_change": true,
+        "path": [
+          {
+            "lat": 40.779721287,
+            "lng": -73.962478484
+          },
+          {
+            "lat": 40.780369319,
+            "lng": -73.96209342
+          }
+        ]
+      },
+      {
+        "from_gallery": 220,
+        "to_gallery": 224,
+        "from_floor": "3",
+        "to_floor": "2",
+        "distance_m": 48.8,
+        "floor_change": true,
+        "path": [
+          {
+            "lat": 40.780369319,
+            "lng": -73.96209342
+          },
+          {
+            "lat": 40.780153923,
+            "lng": -73.962598275
+          }
+        ]
+      },
+      {
+        "from_gallery": 224,
+        "to_gallery": 233,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 61.5,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.780153923,
+            "lng": -73.962598275
+          },
+          {
+            "lat": 40.779601942,
+            "lng": -73.962554258
+          }
+        ]
+      },
+      {
+        "from_gallery": 233,
+        "to_gallery": 236,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 20.2,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779601942,
+            "lng": -73.962554258
+          },
+          {
+            "lat": 40.779690488,
+            "lng": -73.962345353
+          }
+        ]
+      },
+      {
+        "from_gallery": 236,
+        "to_gallery": 239,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 26.4,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779690488,
+            "lng": -73.962345353
+          },
+          {
+            "lat": 40.779898381,
+            "lng": -73.962193753
+          }
+        ]
+      },
+      {
+        "from_gallery": 239,
+        "to_gallery": 241,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 11.0,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779898381,
+            "lng": -73.962193753
+          },
+          {
+            "lat": 40.779923533,
+            "lng": -73.962067714
+          }
+        ]
+      },
+      {
+        "from_gallery": 241,
+        "to_gallery": 243,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 6.2,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779923533,
+            "lng": -73.962067714
+          },
+          {
+            "lat": 40.779913706,
+            "lng": -73.961995156
+          }
+        ]
+      },
+      {
+        "from_gallery": 243,
+        "to_gallery": 246,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 22.2,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779913706,
+            "lng": -73.961995156
+          },
+          {
+            "lat": 40.780109477,
+            "lng": -73.961944863
+          }
+        ]
+      },
+      {
+        "from_gallery": 246,
+        "to_gallery": 250,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 22.5,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.780109477,
+            "lng": -73.961944863
+          },
+          {
+            "lat": 40.78027289,
+            "lng": -73.961787896
+          }
+        ]
+      },
+      {
+        "from_gallery": 250,
+        "to_gallery": 253,
+        "from_floor": "2",
+        "to_floor": "3",
+        "distance_m": 28.2,
+        "floor_change": true,
+        "path": [
+          {
+            "lat": 40.78027289,
+            "lng": -73.961787896
+          },
+          {
+            "lat": 40.780064764,
+            "lng": -73.961979045
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deep-2h",
+    "title": "Comprehensive Asian Art Tour",
+    "summary": "Every gallery highlight on display. Plan two hours.",
+    "duration_min": 120,
+    "stops": [
+      {
+        "gallery": 200,
+        "artwork": {
+          "object_id": 42229,
+          "title": "Vase",
+          "artist": "China",
+          "date": "1713\u201322",
+          "medium": "Porcelain with peach-bloom glaze (Jingdezhen ware)",
+          "culture": "China",
+          "classification": "Ceramics",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP246426.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/42229"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 202,
+        "artwork": {
+          "object_id": 39666,
+          "title": "Jar with dragon",
+          "artist": "China",
+          "date": "early 15th century",
+          "medium": "Porcelain painted with cobalt blue under transparent glaze (Jingdezhen ware)",
+          "culture": "China",
+          "classification": "Ceramics",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-32251-001.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/39666"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 206,
+        "artwork": {
+          "object_id": 42716,
+          "title": "Buddha of Medicine Bhaishajyaguru (Yaoshi fo)",
+          "artist": "China",
+          "date": "ca. 1319",
+          "medium": "Water-based pigment over foundation of clay mixed with straw",
+          "culture": "China",
+          "classification": "Paintings",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT227320.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/42716"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 207,
+        "artwork": {
+          "object_id": 42183,
+          "title": "Dish in the shape of a leaf",
+          "artist": "China",
+          "date": "late 7th\u2013early 8th century",
+          "medium": "Silver with parcel gilding",
+          "culture": "China",
+          "classification": "Metalwork",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP100673.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/42183"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 208,
+        "artwork": {
+          "object_id": 42163,
+          "title": "Buddha, probably Amitabha",
+          "artist": "China",
+          "date": "early 7th century",
+          "medium": "Dry lacquer with polychrome pigment and gilding",
+          "culture": "China",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-15581-004.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/42163"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 215,
+        "artwork": {
+          "object_id": 910543,
+          "title": "Woman at her dressing table",
+          "artist": "Leng Mei",
+          "date": "early 18th century",
+          "medium": "Hanging scroll; ink and color on silk",
+          "culture": "China",
+          "classification": "Paintings",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-34237-002.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/910543"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 220,
+        "artwork": {
+          "object_id": 856282,
+          "title": "Table screen with landscape",
+          "artist": "China",
+          "date": "second half 15th century",
+          "medium": "Cloisonn\u00e9 enamel, wood frame and stand",
+          "culture": "China",
+          "classification": "Cloisonn\u00e9",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-24553-001.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/856282"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 223,
+        "artwork": {
+          "object_id": 50342,
+          "title": "Small Dish (Kozara) with Three Jars",
+          "artist": "Japan",
+          "date": "1680\u201390s",
+          "medium": "Porcelain with cobalt blue under transparent glaze and polychrome enamels over the glaze (Hizen ware, Nabeshima type)",
+          "culture": "Japan",
+          "classification": "Ceramics",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP222421.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/50342"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 224,
+        "artwork": {
+          "object_id": 76084,
+          "title": "The Bodhisattva Jiz\u014d",
+          "artist": "Intan",
+          "date": "1291",
+          "medium": "Japanese cypress wood (hinoki) with polychrome pigments, gold paint (kindei), cut gold leaf (kirikane), and rock-crystal eyes",
+          "culture": "Japan",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-14364-001.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/76084"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 233,
+        "artwork": {
+          "object_id": 50325,
+          "title": "Rafter finial in the shape of a dragon\u2019s head and wind chime",
+          "artist": "Korea",
+          "date": "10th century",
+          "medium": "Gilt bronze",
+          "culture": "Korea",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT4423.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/50325"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 234,
+        "artwork": {
+          "object_id": 38518,
+          "title": "Goddess who bestows riches, probably Sri Lakshmi",
+          "artist": "India, Chandraketugarh, West Bengal",
+          "date": "1st century BCE",
+          "medium": "Molded terracotta",
+          "culture": "India, Chandraketugarh, West Bengal",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/h1_1990.281.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38518"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 235,
+        "artwork": {
+          "object_id": 38648,
+          "title": "Torso of a Bodhisattva",
+          "artist": "Sahri-Bahlol Workshop",
+          "date": "ca. 5th century",
+          "medium": "Schist",
+          "culture": "Pakistan (ancient region of Gandhara, mondern Peshawar region)",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT235.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38648"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 237,
+        "artwork": {
+          "object_id": 38435,
+          "title": "Diadem with Kinnaris (Half-Bird, Half-Female Creatures)",
+          "artist": "India (Jammu & Kashmir, ancient kingdom of Kashmir)",
+          "date": "9th\u201310th century",
+          "medium": "Gold inset with garnet",
+          "culture": "India (Jammu & Kashmir, ancient kingdom of Kashmir)",
+          "classification": "Jewelry",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-14791-023.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38435"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 238,
+        "artwork": {
+          "object_id": 719420,
+          "title": "Goddess Durga Slaying the Demon Mahisha",
+          "artist": "Eastern India, Bihar, probably Gaya district",
+          "date": "second half of the 9th century",
+          "medium": "Schist",
+          "culture": "Eastern India, Bihar, probably Gaya district",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-12769-001.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/719420"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 239,
+        "artwork": {
+          "object_id": 38133,
+          "title": "Enthroned Vishnu",
+          "artist": "India",
+          "date": "second half of the 8th\u2013early 9th century",
+          "medium": "Granulite",
+          "culture": "India",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT5240.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38133"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 241,
+        "artwork": {
+          "object_id": 38517,
+          "title": "Standing Vishnu as Keshava",
+          "artist": "Dasoja of Balligrama",
+          "date": "first quarter of the 12th century",
+          "medium": "Stone",
+          "culture": "India (Karnataka, probably Belur)",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DT5252.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38517"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 242,
+        "artwork": {
+          "object_id": 889442,
+          "title": "Jewel casket",
+          "artist": "Sri Lanka, Kandy",
+          "date": "mid-17th century",
+          "medium": "Ivory with silver gilt mounts, gilded metal lining, finial with garnet in gold setting",
+          "culture": "Sri Lanka, Kandy",
+          "classification": "Ivories",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP-29788-001.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/889442"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 243,
+        "artwork": {
+          "object_id": 65576,
+          "title": "Pichhwai for the Festival of Cows",
+          "artist": "India, Deccan, Aurangabad (?)",
+          "date": "late 18th century",
+          "medium": "Painted and printed gold and silver leaf and opaque watercolor on indigo-dyed cotton",
+          "culture": "India, Deccan, Aurangabad (?)",
+          "classification": "Textiles-Painted and Printed",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP156677.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/65576"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 244,
+        "artwork": {
+          "object_id": 37747,
+          "title": "Box for Betel Leaves",
+          "artist": "Indonesia (Sulawesi)",
+          "date": "ca. 500 BCE\u2013300 CE",
+          "medium": "Bronze",
+          "culture": "Indonesia (Sulawesi)",
+          "classification": "Metalwork",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP228215.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/37747"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 246,
+        "artwork": {
+          "object_id": 42641,
+          "title": "Standing Four-Armed Avalokiteshvara, the Bodhisattva of Infinite Compassion",
+          "artist": "Northeast Thailand",
+          "date": "8th\u2013early 9th century",
+          "medium": "Bronze inlaid with obsidian(?)",
+          "culture": "Northeast Thailand",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP311704.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/42641"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 247,
+        "artwork": {
+          "object_id": 72498,
+          "title": "Enthroned Buddha Attended by the Bodhisattvas Avalokiteshvara and Vajrapani",
+          "artist": "Indonesia (Java)",
+          "date": "second half of the 10th century",
+          "medium": "Bronze",
+          "culture": "Indonesia (Java)",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/ASA501.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/72498"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 249,
+        "artwork": {
+          "object_id": 38905,
+          "title": "Head of Shiva (lingakosha)",
+          "artist": "Vietnam (Champa, probably Quang Nam Province)",
+          "date": "late 9th\u201310th century",
+          "medium": "Gold and silver repouss\u00e9",
+          "culture": "Vietnam (Champa, probably Quang Nam Province)",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP291638.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38905"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 252,
+        "artwork": {
+          "object_id": 677426,
+          "title": "Vishnu",
+          "artist": "Nepal (Kathmandu Valley)",
+          "date": "dated  August 12, 1105",
+          "medium": "Copper alloy with gilding",
+          "culture": "Nepal (Kathmandu Valley)",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP702339.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/677426"
+        },
+        "note": ""
+      },
+      {
+        "gallery": 253,
+        "artwork": {
+          "object_id": 38332,
+          "title": "Seated Avalokiteshvara, the Buddha of Infinite Compassion",
+          "artist": "Tibet or Mongolia",
+          "date": "17th century",
+          "medium": "Gilt copper alloy",
+          "culture": "Tibet or Mongolia",
+          "classification": "Sculpture",
+          "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP170265.jpg",
+          "object_url": "https://www.metmuseum.org/art/collection/search/38332"
+        },
+        "note": ""
+      }
+    ],
+    "segments": [
+      {
+        "from_gallery": 200,
+        "to_gallery": 202,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 17.4,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779262161,
+            "lng": -73.963184305
+          },
+          {
+            "lat": 40.779239302,
+            "lng": -73.962979541
+          }
+        ]
+      },
+      {
+        "from_gallery": 202,
+        "to_gallery": 206,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 42.0,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779239302,
+            "lng": -73.962979541
+          },
+          {
+            "lat": 40.779504915,
+            "lng": -73.962624073
+          }
+        ]
+      },
+      {
+        "from_gallery": 206,
+        "to_gallery": 207,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 34.6,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779504915,
+            "lng": -73.962624073
+          },
+          {
+            "lat": 40.779808578,
+            "lng": -73.962536865
+          }
+        ]
+      },
+      {
+        "from_gallery": 207,
+        "to_gallery": 208,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 10.9,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779808578,
+            "lng": -73.962536865
+          },
+          {
+            "lat": 40.779721287,
+            "lng": -73.962478484
+          }
+        ]
+      },
+      {
+        "from_gallery": 208,
+        "to_gallery": 215,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 61.6,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779721287,
+            "lng": -73.962478484
+          },
+          {
+            "lat": 40.780148237,
+            "lng": -73.962011552
+          }
+        ]
+      },
+      {
+        "from_gallery": 215,
+        "to_gallery": 220,
+        "from_floor": "2",
+        "to_floor": "3",
+        "distance_m": 25.5,
+        "floor_change": true,
+        "path": [
+          {
+            "lat": 40.780148237,
+            "lng": -73.962011552
+          },
+          {
+            "lat": 40.780369319,
+            "lng": -73.96209342
+          }
+        ]
+      },
+      {
+        "from_gallery": 220,
+        "to_gallery": 223,
+        "from_floor": "3",
+        "to_floor": "2",
+        "distance_m": 44.9,
+        "floor_change": true,
+        "path": [
+          {
+            "lat": 40.780369319,
+            "lng": -73.96209342
+          },
+          {
+            "lat": 40.780106867,
+            "lng": -73.962499034
+          }
+        ]
+      },
+      {
+        "from_gallery": 223,
+        "to_gallery": 224,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 9.9,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.780106867,
+            "lng": -73.962499034
+          },
+          {
+            "lat": 40.780153923,
+            "lng": -73.962598275
+          }
+        ]
+      },
+      {
+        "from_gallery": 224,
+        "to_gallery": 233,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 61.5,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.780153923,
+            "lng": -73.962598275
+          },
+          {
+            "lat": 40.779601942,
+            "lng": -73.962554258
+          }
+        ]
+      },
+      {
+        "from_gallery": 233,
+        "to_gallery": 234,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 11.0,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779601942,
+            "lng": -73.962554258
+          },
+          {
+            "lat": 40.77953248,
+            "lng": -73.962460574
+          }
+        ]
+      },
+      {
+        "from_gallery": 234,
+        "to_gallery": 235,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 9.3,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.77953248,
+            "lng": -73.962460574
+          },
+          {
+            "lat": 40.779605905,
+            "lng": -73.962407032
+          }
+        ]
+      },
+      {
+        "from_gallery": 235,
+        "to_gallery": 237,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 19.6,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779605905,
+            "lng": -73.962407032
+          },
+          {
+            "lat": 40.779760304,
+            "lng": -73.962294441
+          }
+        ]
+      },
+      {
+        "from_gallery": 237,
+        "to_gallery": 238,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 6.7,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779760304,
+            "lng": -73.962294441
+          },
+          {
+            "lat": 40.779813175,
+            "lng": -73.962255887
+          }
+        ]
+      },
+      {
+        "from_gallery": 238,
+        "to_gallery": 239,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 10.8,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779813175,
+            "lng": -73.962255887
+          },
+          {
+            "lat": 40.779898381,
+            "lng": -73.962193753
+          }
+        ]
+      },
+      {
+        "from_gallery": 239,
+        "to_gallery": 241,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 11.0,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779898381,
+            "lng": -73.962193753
+          },
+          {
+            "lat": 40.779923533,
+            "lng": -73.962067714
+          }
+        ]
+      },
+      {
+        "from_gallery": 241,
+        "to_gallery": 242,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 7.1,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779923533,
+            "lng": -73.962067714
+          },
+          {
+            "lat": 40.779867294,
+            "lng": -73.962029001
+          }
+        ]
+      },
+      {
+        "from_gallery": 242,
+        "to_gallery": 243,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 5.9,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779867294,
+            "lng": -73.962029001
+          },
+          {
+            "lat": 40.779913706,
+            "lng": -73.961995156
+          }
+        ]
+      },
+      {
+        "from_gallery": 243,
+        "to_gallery": 244,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 9.6,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779913706,
+            "lng": -73.961995156
+          },
+          {
+            "lat": 40.779996135,
+            "lng": -73.962027516
+          }
+        ]
+      },
+      {
+        "from_gallery": 244,
+        "to_gallery": 246,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 14.4,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.779996135,
+            "lng": -73.962027516
+          },
+          {
+            "lat": 40.780109477,
+            "lng": -73.961944863
+          }
+        ]
+      },
+      {
+        "from_gallery": 246,
+        "to_gallery": 247,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 9.0,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.780109477,
+            "lng": -73.961944863
+          },
+          {
+            "lat": 40.78003077,
+            "lng": -73.961922535
+          }
+        ]
+      },
+      {
+        "from_gallery": 247,
+        "to_gallery": 249,
+        "from_floor": "2",
+        "to_floor": "2",
+        "distance_m": 20.2,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.78003077,
+            "lng": -73.961922535
+          },
+          {
+            "lat": 40.780199747,
+            "lng": -73.961833947
+          }
+        ]
+      },
+      {
+        "from_gallery": 249,
+        "to_gallery": 252,
+        "from_floor": "2",
+        "to_floor": "3",
+        "distance_m": 17.4,
+        "floor_change": true,
+        "path": [
+          {
+            "lat": 40.780199747,
+            "lng": -73.961833947
+          },
+          {
+            "lat": 40.780052854,
+            "lng": -73.96190643
+          }
+        ]
+      },
+      {
+        "from_gallery": 252,
+        "to_gallery": 253,
+        "from_floor": "3",
+        "to_floor": "3",
+        "distance_m": 6.3,
+        "floor_change": false,
+        "path": [
+          {
+            "lat": 40.780052854,
+            "lng": -73.96190643
+          },
+          {
+            "lat": 40.780064764,
+            "lng": -73.961979045
+          }
+        ]
+      }
+    ]
+  }
+]
