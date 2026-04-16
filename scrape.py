@@ -9,6 +9,8 @@ from pathlib import Path
 import httpx
 import mapbox_vector_tile
 import mercantile
+from shapely.geometry import mapping, shape
+from shapely.ops import unary_union
 
 BASE = "https://map-api.prod.livingmap.com/v1/maps/the_met"
 TILE_BASE = "https://prod.cdn.livingmap.com/tiles/the_met"
@@ -66,14 +68,18 @@ def _tile_coord_transformer(tile):
 
 
 def fetch_polygons(galleries):
-    """For each gallery in the input list, attach a polygon key by fetching MVTs."""
+    """For each gallery, fetch all MVT fragments across tiles and union them.
+
+    Galleries that straddle tile boundaries have one clipped fragment per tile.
+    Taking only the first fragment (the previous behavior) gave gallery 206 a
+    triangle — the rest of the room was in the neighbor tile."""
     lats = [g["lat"] for g in galleries]
     lons = [g["lon"] for g in galleries]
     north, south = max(lats) + 0.0005, min(lats) - 0.0005
     east, west = max(lons) + 0.0005, min(lons) - 0.0005
 
     want = {g["id"] for g in galleries}
-    polys = {}
+    fragments: dict = {}
 
     tiles = list(mercantile.tiles(west, south, east, north, TILE_ZOOM))
     with httpx.Client(timeout=30) as client:
@@ -88,18 +94,21 @@ def fetch_polygons(galleries):
             walk = _tile_coord_transformer(t)
             for f in layer.get("features", []):
                 p = f["properties"]
-                if p.get("type") != "gallery":
+                if p.get("type") != "gallery" or p.get("lm_id") not in want:
                     continue
-                if p.get("lm_id") not in want:
+                geom = f["geometry"]
+                if geom["type"] not in ("Polygon", "MultiPolygon"):
                     continue
-                if f["geometry"]["type"] not in ("Polygon", "MultiPolygon"):
-                    continue
-                if p["lm_id"] in polys:
-                    continue
-                polys[p["lm_id"]] = {
-                    "type": f["geometry"]["type"],
-                    "coordinates": walk(f["geometry"]["coordinates"], extent),
-                }
+                fragments.setdefault(p["lm_id"], []).append({
+                    "type": geom["type"],
+                    "coordinates": walk(geom["coordinates"], extent),
+                })
+
+    polys = {}
+    for lm_id, parts in fragments.items():
+        shapes = [shape(p).buffer(0) for p in parts]
+        merged = unary_union(shapes) if len(shapes) > 1 else shapes[0]
+        polys[lm_id] = mapping(merged)
     return polys
 
 
