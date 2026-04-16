@@ -11,12 +11,12 @@ See [`PLAN.md`](PLAN.md) for the full design rationale (basemap choice, floor au
 - **Step 1** — shell + polygon overlay. Floor picker with human labels, Google Maps roadmap at zoom 19, polygons via `map.data.addGeoJson`, red centroid markers, InfoWindow with number / name / image on click.
 - **Step 2** — "Where am I?" + floor auto-detect. Locate FAB (bottom-right), parallel `/locate` calls for floors 2 and 3, winner picked by `method: polygon` (or smaller `distance_m`), blue dot + accuracy ring, green highlight on resolved polygon, you-are-here chip, tap-to-correct prompt when `distance_m > 30`.
 - **Step 4** — gallery-to-gallery routing. "Route here" button in each InfoWindow → editable From/To bottom sheet → `POST /route` (proxies Living Map's `v2/route`) → dense blue polyline along real corridors + human-readable step list. Cross-floor routes include a "Take the lift from Floor X to Floor Y" step; switching floors redraws the polyline to the active floor's segment.
+- **Step 6** — PWA installability. `manifest.json` + 180/192/512 PNG icons. "Add to Home Screen" installs as a standalone app (no browser chrome). No service worker — intentional (see PLAN.md "Offline scope").
 
 **Not yet wired up:**
 
 - **Step 3** — nearest amenity with corridor-respecting routes (`/nearest-amenity` → `/locate` on amenity → `POST /route`). Icon row for toilet / lift / restaurant / shop. Deferred.
 - **Step 5** — client-side search over the cached `/galleries` array + curated chips (Buddha, jade, tea ceremony, samurai, calligraphy).
-- **Step 6** — PWA `manifest.json` + icons so iOS / Android "Add to Home Screen" installs as a standalone app.
 
 ## Setup
 
