@@ -569,6 +569,26 @@ html, body {
 }
 .tour-sheet-stop.off-floor .tour-sheet-stop-num { background: #bdc1c6; }
 .tour-sheet-stop.off-floor .tour-sheet-stop-title { color: #5f6368; }
+
+/* "You are here" lead-in card */
+.tour-sheet-you .tour-sheet-stop-title { color: #1a73e8; font-weight: 600; }
+.tour-sheet-you-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #4285F4;
+  box-shadow: 0 0 0 3px rgba(66,133,244,0.25);
+  flex-shrink: 0;
+  margin: 6px 5px 0 5px;
+}
+.tour-sheet-you-thumb {
+  background: #e8f0fe;
+  display: flex; align-items: center; justify-content: center;
+  color: #1a73e8; font-size: 20px;
+  background-image:
+    radial-gradient(circle at center, #4285F4 25%, transparent 26%),
+    radial-gradient(circle at center, rgba(66,133,244,0.18) 50%, transparent 51%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
 .tour-sheet-floor-hint {
   font-size: 10px; color: #ea8600;
   margin-top: 2px; font-weight: 500;

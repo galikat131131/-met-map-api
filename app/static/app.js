@@ -481,6 +481,11 @@ function setResolvedGallery(gallery, method) {
   resolvedGalleryNumber = gallery.number;
   refreshPolygonStyle();
   renderYouChip(gallery, method);
+  // If a tour is already running, re-personalize now that we know where
+  // the user is.
+  if (activeTour && activeTour._personalizedFrom !== gallery.number) {
+    activateTour(activeTour.id);
+  }
 }
 
 function renderYouChip(gallery, method) {
@@ -593,30 +598,83 @@ async function activateTour(id) {
   activeTour = t;
   closeTourDrawer();
 
-  // Fetch /route for every consecutive stop pair in parallel (once per tour).
-  // The upstream field holds Living Map's real polyline; extractRoutePath
-  // (shared with the gallery-to-gallery route feature) pulls it out of the
-  // nested GeoJSON LineString so the path follows corridors instead of
-  // crossing walls.
-  if (!t._resolvedSegments) {
+  // Personalize the stop order from the user's resolved gallery, if any.
+  // _originalStops is the curator's original ordering; we reorder a copy
+  // each activation so (a) we don't mutate the shared tour data and
+  // (b) re-activating from a different gallery re-personalizes.
+  if (!t._originalStops) t._originalStops = t.stops.slice();
+  const prevFrom = t._personalizedFrom || null;
+  const nextFrom = resolvedGalleryNumber || null;
+  t._personalizedFrom = nextFrom;
+  t.stops = nextFrom
+    ? personalizeStops(t._originalStops, nextFrom)
+    : t._originalStops.slice();
+  if (prevFrom !== nextFrom) {
+    t._resolvedSegments = null; // stop order changed → invalidate cache
+  }
+
+  // Two caches, invalidated independently:
+  //   _resolvedSegments  — /route per consecutive stop pair (N-1 items);
+  //                        invalidated when stop order changes.
+  //   _userStartSegment  — /route from user's gallery to stop 1;
+  //                        invalidated when _personalizedFrom changes.
+  //
+  // extractRoutePath pulls Living Map's upstream GeoJSON LineString so
+  // paths follow corridors rather than crossing walls.
+  const fetchRoute = (a, b) =>
+    fetch("/route", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ from_gallery: a, to_gallery: b }),
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null);
+
+  const needUserStart =
+    !!t._personalizedFrom && t._personalizedFrom !== t.stops[0].gallery;
+  const userStartFresh = t._userStartCachedFor === t._personalizedFrom;
+  const needInterStopFetch = !t._resolvedSegments;
+  const needUserStartFetch = needUserStart && !userStartFresh;
+
+  if (needInterStopFetch || needUserStartFetch) {
     setStatus("Building tour route…");
-    const pairs = [];
-    for (let i = 0; i < t.stops.length - 1; i++) {
-      pairs.push([t.stops[i].gallery, t.stops[i + 1].gallery]);
+    const jobs = [];
+    if (needInterStopFetch) {
+      for (let i = 0; i < t.stops.length - 1; i++) {
+        jobs.push({
+          kind: "inter",
+          idx: i,
+          promise: fetchRoute(t.stops[i].gallery, t.stops[i + 1].gallery),
+        });
+      }
     }
-    t._resolvedSegments = await Promise.all(
-      pairs.map(([a, b]) =>
-        fetch("/route", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ from_gallery: a, to_gallery: b }),
-        })
-          .then((r) => (r.ok ? r.json() : null))
-          .catch(() => null)
-      )
-    );
+    if (needUserStartFetch) {
+      jobs.push({
+        kind: "user",
+        promise: fetchRoute(t._personalizedFrom, t.stops[0].gallery),
+      });
+    }
+    const settled = await Promise.all(jobs.map((j) => j.promise));
     setStatus("");
     if (activeTour !== t) return; // user cleared the tour mid-fetch
+
+    if (needInterStopFetch) {
+      const inter = new Array(t.stops.length - 1);
+      jobs.forEach((j, k) => {
+        if (j.kind === "inter") inter[j.idx] = settled[k];
+      });
+      t._resolvedSegments = inter;
+    }
+    if (needUserStartFetch) {
+      const userIdx = jobs.findIndex((j) => j.kind === "user");
+      t._userStartSegment = settled[userIdx];
+      t._userStartCachedFor = t._personalizedFrom;
+    }
+  }
+
+  if (!needUserStart) {
+    t._userStartSegment = null;
+    t._userStartCachedFor = null;
   }
 
   const galleries = new Map(ALL_GALLERIES.map((g) => [g.number, g]));
@@ -656,6 +714,40 @@ function renderTourOverlays() {
 
   const galleries = new Map(ALL_GALLERIES.map((g) => [g.number, g]));
   const resolved = activeTour._resolvedSegments || [];
+
+  // User → stop 1 segment (if we have it and the endpoints are on the
+  // current floor). Drawn first so numbered-stop markers paint on top.
+  if (activeTour._userStartSegment && activeTour._personalizedFrom) {
+    const fromG = galleries.get(activeTour._personalizedFrom);
+    const toG = galleries.get(activeTour.stops[0].gallery);
+    if (fromG && toG && fromG.floor === activeFloor && toG.floor === activeFloor) {
+      let lineStrings = extractTourLineStrings(activeTour._userStartSegment);
+      if (!lineStrings.length) {
+        const stepPath = (activeTour._userStartSegment.steps || [])
+          .filter((s) => s.lat != null && s.lon != null && s.floor === activeFloor)
+          .map((s) => ({ lat: s.lat, lng: s.lon }));
+        if (stepPath.length >= 2) lineStrings = [stepPath];
+      }
+      for (const ls of lineStrings) {
+        if (ls.length < 2) continue;
+        const pl = new google.maps.Polyline({
+          path: ls,
+          geodesic: false,
+          strokeColor: "#4285F4",
+          strokeOpacity: 0,
+          strokeWeight: 4,
+          icons: [{
+            icon: { path: "M 0,-1 0,1", strokeOpacity: 0.9, scale: 3, strokeColor: "#4285F4" },
+            offset: "0",
+            repeat: "10px",
+          }],
+          map,
+          zIndex: 2,
+        });
+        tourPolylines.push(pl);
+      }
+    }
+  }
 
   // Draw a polyline per segment. Only same-floor segments are drawn —
   // cross-floor hops are represented by markers appearing on each floor as
@@ -720,6 +812,40 @@ function renderTourOverlays() {
     marker.addListener("click", () => openStopInfoWindow(stop, i + 1));
     tourMarkers.push(marker);
   });
+}
+
+// Greedy nearest-neighbor ordering of stops starting from a given gallery.
+// Floor changes get a penalty so same-floor stops are preferred before a
+// lift ride. Returns a new array; doesn't mutate inputs.
+function personalizeStops(originalStops, startGalleryNumber) {
+  const galleries = new Map(ALL_GALLERIES.map((g) => [g.number, g]));
+  const start = galleries.get(startGalleryNumber);
+  if (!start) return originalStops.slice();
+
+  const remaining = originalStops.slice();
+  const ordered = [];
+  let cur = { lat: start.lat, lng: start.lon, floor: start.floor };
+
+  const FLOOR_PENALTY_M = 100;
+
+  while (remaining.length) {
+    let bestIdx = 0;
+    let bestCost = Infinity;
+    for (let i = 0; i < remaining.length; i++) {
+      const g = galleries.get(remaining[i].gallery);
+      if (!g) continue;
+      const dy = (g.lat - cur.lat) * 111000; // deg → metres (rough)
+      const dx = (g.lon - cur.lng) * 85000;  // cos(40.78°) ≈ 0.76
+      let cost = Math.hypot(dy, dx);
+      if (g.floor !== cur.floor) cost += FLOOR_PENALTY_M;
+      if (cost < bestCost) { bestCost = cost; bestIdx = i; }
+    }
+    const next = remaining.splice(bestIdx, 1)[0];
+    ordered.push(next);
+    const g = galleries.get(next.gallery);
+    cur = { lat: g.lat, lng: g.lon, floor: g.floor };
+  }
+  return ordered;
 }
 
 // Walks a /route upstream response and returns one point-array per
@@ -787,13 +913,33 @@ function renderTourSheet() {
   }).filter(Boolean));
 
   sheet.querySelector(".tour-sheet-title").textContent = activeTour.title;
+  const personalized = activeTour._personalizedFrom
+    ? ` · From Gallery ${activeTour._personalizedFrom}`
+    : "";
   sheet.querySelector(".tour-sheet-meta").textContent =
     `${activeTour.stops.length} stops · ${activeTour.duration_min} min` +
-    (floors.size > 1 ? ` · Floors ${[...floors].sort().join(" & ")}` : "");
+    (floors.size > 1 ? ` · Floors ${[...floors].sort().join(" & ")}` : "") +
+    personalized;
 
   const stopsEl = document.getElementById("tour-sheet-stops");
   const resolved = activeTour._resolvedSegments || [];
   const parts = [];
+
+  // "You are here" lead-in: render whenever the tour was personalized and
+  // the user isn't already at stop 1. The connector row falls back to
+  // "Directions unavailable" if the /route fetch was missing.
+  const showYou =
+    !!activeTour._personalizedFrom &&
+    activeTour.stops.length > 0 &&
+    activeTour._personalizedFrom !== activeTour.stops[0].gallery;
+  if (showYou) {
+    const youG = galleries.get(activeTour._personalizedFrom);
+    if (youG) {
+      parts.push(renderYouStartLi(youG));
+      parts.push(renderSegmentLi(activeTour._userStartSegment));
+    }
+  }
+
   activeTour.stops.forEach((stop, i) => {
     parts.push(renderStopLi(stop, i, galleries));
     if (i < activeTour.stops.length - 1) {
@@ -804,11 +950,35 @@ function renderTourSheet() {
   stopsEl.querySelectorAll(".tour-sheet-stop").forEach((el) => {
     el.addEventListener("click", () => {
       const idx = parseInt(el.dataset.stopIndex, 10);
-      goToStop(idx);
+      if (Number.isFinite(idx)) goToStop(idx);
     });
+  });
+  const youLi = stopsEl.querySelector(".tour-sheet-you");
+  if (youLi) youLi.addEventListener("click", () => {
+    const g = galleries.get(activeTour._personalizedFrom);
+    if (g) {
+      if (g.floor !== activeFloor) setFloor(g.floor);
+      map.panTo({ lat: g.lat, lng: g.lon });
+    }
   });
 
   sheet.hidden = false;
+}
+
+function renderYouStartLi(gallery) {
+  const offFloor = gallery.floor !== activeFloor;
+  const floorHint = offFloor ? `<div class="tour-sheet-floor-hint">Floor ${gallery.floor}</div>` : "";
+  return `
+    <li class="tour-sheet-stop tour-sheet-you ${offFloor ? "off-floor" : ""}">
+      <span class="tour-sheet-you-dot" aria-hidden="true"></span>
+      <div class="tour-sheet-stop-thumb tour-sheet-you-thumb" aria-hidden="true"></div>
+      <div class="tour-sheet-stop-body">
+        <div class="tour-sheet-stop-title">You are here</div>
+        <div class="tour-sheet-stop-sub">G${gallery.number} · ${escapeHtml(gallery.name)}</div>
+        ${floorHint}
+      </div>
+    </li>
+  `;
 }
 
 function renderStopLi(stop, i, galleries) {
