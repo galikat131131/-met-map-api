@@ -7,6 +7,7 @@ import httpx
 import shapely
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from shapely.geometry import shape
 
 from .models import (
@@ -404,3 +405,6 @@ def amenity_types():
     for a in AMENITIES:
         types[a.type] = types.get(a.type, 0) + 1
     return types
+
+
+app.mount("/map", StaticFiles(directory="app/static", html=True), name="map")

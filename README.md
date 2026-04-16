@@ -16,6 +16,10 @@ Swagger UI at http://127.0.0.1:8000/docs
 **For PWA consumers:** see [CONSUMERS.md](CONSUMERS.md) for integration snippets,
 data shapes, and gotchas.
 
+**For the embedded PWA at `/map/`** (hackathon co-collaborators): see
+[MAP.md](MAP.md) — setup, mock-location URL params, current status, and how
+to wire up the remaining steps.
+
 **Live API:** https://met-asian-art-api.onrender.com — [/docs](https://met-asian-art-api.onrender.com/docs)
 
 ## Endpoints

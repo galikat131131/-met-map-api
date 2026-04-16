@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Met Asian Art Map</title>
+  <base href="/map/">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#1a73e8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="map"></div>
+
+  <div id="floor-picker" class="floor-picker" role="tablist" aria-label="Floor">
+    <button data-floor="2" class="active" role="tab" aria-selected="true">Floor 2 — Chinese, Japanese, Korean</button>
+    <button data-floor="3" role="tab" aria-selected="false">Floor 3 — Treasury, Jade</button>
+  </div>
+
+  <button id="locate-btn" class="fab" aria-label="Locate me">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+      <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm8.94 3A9 9 0 0 0 13 3.06V1h-2v2.06A9 9 0 0 0 3.06 11H1v2h2.06A9 9 0 0 0 11 20.94V23h2v-2.06A9 9 0 0 0 20.94 13H23v-2h-2.06zM12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/>
+    </svg>
+  </button>
+
+  <div id="you-chip" class="you-chip" role="status" aria-live="polite"></div>
+
+  <div id="correction-prompt" class="correction-prompt" hidden>
+    <span>Can't pinpoint you — tap the gallery you're in</span>
+    <button id="correction-dismiss" aria-label="Dismiss">✕</button>
+  </div>
+
+  <div id="status" class="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Ixtxbx46OLusW3VtsN8W8atLMCuBjqE&callback=initMap&v=weekly&loading=async">
+  </script>
+</body>
+</html>
