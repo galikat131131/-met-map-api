@@ -6,4 +6,5 @@ venv/
 .env
 .DS_Store
 data/features_raw.json
+data/transitions.jsonl
 .pytest_cache/

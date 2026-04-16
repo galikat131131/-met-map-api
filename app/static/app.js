@@ -11,6 +11,8 @@ let userMarker = null;
 let accuracyCircle = null;
 let resolvedGalleryNumber = null;
 let awaitingCorrection = false;
+let lastFix = null;
+let locateWatcher = null;
 
 let routeState = null;
 let routePolyline = null;
@@ -43,7 +45,7 @@ window.initMap = async function () {
     btn.addEventListener("click", () => setFloor(btn.dataset.floor));
   });
 
-  document.getElementById("locate-btn").addEventListener("click", locate);
+  document.getElementById("locate-btn").addEventListener("click", recenterOnUser);
   document.getElementById("correction-dismiss").addEventListener("click", () => {
     awaitingCorrection = false;
     hideCorrectionPrompt();
@@ -81,6 +83,10 @@ window.initMap = async function () {
   setStatus("");
 
   loadTours();
+  if (window.__heatmap) window.__heatmap.init();
+  if (window.__heatmapView) window.__heatmapView.init(map, activeFloor);
+
+  startLocationWatch();
 };
 
 function polygonStyle(feature) {
@@ -98,12 +104,17 @@ function polygonStyle(feature) {
   if (inTour) {
     return { fillColor: "#b8321c", fillOpacity: 0.32, strokeColor: "#b8321c", strokeWeight: 2, clickable: true };
   }
+  if (window.__heatmapView && window.__heatmapView.isActive()) {
+    const heat = window.__heatmapView.styleOverride(feature);
+    if (heat) return heat;
+  }
   return { fillColor: "#1a73e8", fillOpacity: 0.25, strokeColor: "#1a73e8", strokeWeight: 2, clickable: true };
 }
 
 function refreshPolygonStyle() {
   map.data.setStyle(polygonStyle);
 }
+window.refreshPolygonStyle = refreshPolygonStyle;
 
 function onPolygonClick(e) {
   const num = e.feature.getProperty("number");
@@ -315,6 +326,7 @@ function setFloor(floor) {
   renderFloor(floor);
   infoWindow.close();
   if (routeState) drawRoutePolyline();
+  if (window.__heatmapView) window.__heatmapView.onFloorChange(floor);
 }
 
 function renderFloor(floor) {
@@ -368,44 +380,50 @@ function getMockCoords() {
   return null;
 }
 
-async function locate() {
+function startLocationWatch() {
   const btn = document.getElementById("locate-btn");
   const mock = getMockCoords();
 
-  if (!mock && !("geolocation" in navigator)) {
-    setStatus("Geolocation isn't available on this device.", 4000);
+  if (mock) {
+    applyFix(mock.lat, mock.lng, mock.accuracy);
+    return;
+  }
+  if (!("geolocation" in navigator)) {
+    setStatus("Geolocation isn't available on this device. Tap the gallery you're in.", 5000);
     return;
   }
 
   btn.classList.add("loading");
-  setStatus(mock ? "Using mock coords…" : "Finding you…");
+  setStatus("Finding you…");
 
-  let lat, lng, accuracy;
-  if (mock) {
-    ({ lat, lng, accuracy } = mock);
-  } else {
-    let pos;
-    try {
-      pos = await new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject, {
-          enableHighAccuracy: true,
-          timeout: 12000,
-          maximumAge: 10000,
-        });
-      });
-    } catch (err) {
+  locateWatcher = navigator.geolocation.watchPosition(
+    (pos) => {
       btn.classList.remove("loading");
-      const msg = err.code === 1
-        ? "Location permission denied."
-        : err.code === 3
-        ? "Location timed out. Try again outdoors or near a window."
-        : "Couldn't get your location.";
-      setStatus(msg, 5000);
-      return;
-    }
-    ({ latitude: lat, longitude: lng, accuracy } = pos.coords);
-  }
+      setStatus("");
+      applyFix(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy);
+    },
+    (err) => {
+      btn.classList.remove("loading");
+      if (err.code === 1) {
+        setStatus("Location permission denied. Tap the gallery you're in.", 5000);
+      } else if (err.code === 3) {
+        setStatus("Location timed out. Try again near a window.", 5000);
+      } else {
+        setStatus("Couldn't get your location.", 4000);
+      }
+    },
+    { enableHighAccuracy: true, maximumAge: 5000, timeout: 15000 }
+  );
+}
+
+async function applyFix(lat, lng, accuracy) {
+  const prev = lastFix;
+  lastFix = { lat, lng, accuracy };
   drawUserPosition(lat, lng, accuracy);
+
+  if (!prev) map.panTo({ lat, lng });
+
+  if (prev && haversineM(prev.lat, prev.lng, lat, lng) < 5) return;
 
   let winner;
   try {
@@ -415,27 +433,39 @@ async function locate() {
     ]);
     winner = pickWinner(r2, r3);
   } catch (err) {
-    btn.classList.remove("loading");
     console.error("Failed to resolve gallery", err);
-    setStatus("Couldn't match you to a gallery.", 4000);
     return;
   }
 
-  btn.classList.remove("loading");
   const resolvedFloor = winner.gallery.floor;
-  if (resolvedFloor !== activeFloor) {
-    setFloor(resolvedFloor);
-  }
-
+  if (resolvedFloor !== activeFloor) setFloor(resolvedFloor);
   setResolvedGallery(winner.gallery, winner.method);
-  map.panTo({ lat, lng });
+  if (window.__heatmap) window.__heatmap.onLocate(winner);
 
   if (winner.method !== "polygon" && winner.gallery.distance_m > AUTO_CORRECT_THRESHOLD_M) {
     showCorrectionPrompt();
   } else {
     hideCorrectionPrompt();
   }
-  setStatus("");
+}
+
+function recenterOnUser() {
+  if (!lastFix) {
+    setStatus("Finding you…", 3000);
+    return;
+  }
+  map.panTo({ lat: lastFix.lat, lng: lastFix.lng });
+}
+
+function haversineM(lat1, lng1, lat2, lng2) {
+  const R = 6371000;
+  const toRad = (d) => (d * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
 }
 
 function pickWinner(r2, r3) {
@@ -555,7 +585,7 @@ async function loadTours() {
 
 function renderTourList() {
   const container = document.getElementById("tour-list");
-  container.innerHTML = ALL_TOURS.map((t) => `
+  const curatedCards = ALL_TOURS.map((t) => `
     <button class="tour-card" data-tour-id="${escapeHtml(t.id)}" type="button">
       <div class="tour-card-meta">
         <span class="tour-card-duration">${t.duration_min} min</span>
@@ -565,9 +595,25 @@ function renderTourList() {
       <div class="tour-card-summary">${escapeHtml(t.summary || "")}</div>
     </button>
   `).join("");
-  container.querySelectorAll(".tour-card").forEach((el) => {
+  // Dynamic "Quiet Corners" card: fetches /recommendations/quiet-route on tap.
+  // Kept distinct from the static curated list because it rebuilds each
+  // activation based on the user's current gallery + live visit counts.
+  const quietCard = `
+    <button class="tour-card tour-card-live" data-live-tour="quiet-corners" type="button">
+      <div class="tour-card-meta">
+        <span class="tour-card-duration tour-card-live-badge">Live</span>
+        <span class="tour-card-stops">Underappreciated rooms</span>
+      </div>
+      <div class="tour-card-title">Quiet Corners</div>
+      <div class="tour-card-summary">A fresh walk through the least-visited galleries near you.</div>
+    </button>
+  `;
+  container.innerHTML = curatedCards + quietCard;
+  container.querySelectorAll(".tour-card[data-tour-id]").forEach((el) => {
     el.addEventListener("click", () => activateTour(el.dataset.tourId));
   });
+  const liveEl = container.querySelector('.tour-card[data-live-tour="quiet-corners"]');
+  if (liveEl) liveEl.addEventListener("click", activateQuietCorners);
 }
 
 function openTourDrawer() {
@@ -592,8 +638,10 @@ function closeTourDrawer() {
   }, 220);
 }
 
-async function activateTour(id) {
-  const t = ALL_TOURS.find((x) => x.id === id);
+async function activateTour(idOrTour) {
+  const t = typeof idOrTour === "string"
+    ? ALL_TOURS.find((x) => x.id === idOrTour)
+    : idOrTour;
   if (!t) return;
   activeTour = t;
   closeTourDrawer();
@@ -606,7 +654,10 @@ async function activateTour(id) {
   const prevFrom = t._personalizedFrom || null;
   const nextFrom = resolvedGalleryNumber || null;
   t._personalizedFrom = nextFrom;
-  t.stops = nextFrom
+  // `preservePath` tours (e.g. Quiet Corners) come with a pre-computed walk
+  // that we must not reshuffle; personalizeStops is a greedy nearest-neighbor
+  // reorder that would undo that.
+  t.stops = nextFrom && !t.preservePath
     ? personalizeStops(t._originalStops, nextFrom)
     : t._originalStops.slice();
   if (prevFrom !== nextFrom) {
@@ -688,6 +739,66 @@ async function activateTour(id) {
   renderTourBar();
   renderTourSheet();
   if (firstStop) map.panTo({ lat: firstStop.lat, lng: firstStop.lon });
+}
+
+// "Quiet Corners" tour: dynamically built from /recommendations/quiet-route.
+// Hands the synthesized tour off to activateTour so it reuses the same
+// route-fetching, caching, "You are here" lead-in, and rendering pipeline
+// as the curated highlight tours. The `preservePath: true` flag stops
+// activateTour from greedy-reordering our adjacency walk.
+async function activateQuietCorners() {
+  const from = resolvedGalleryNumber || 200;
+  setStatus("Finding quiet galleries…");
+  let data;
+  try {
+    const r = await fetch(`/recommendations/quiet-route?from_gallery=${from}&length=5`);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    data = await r.json();
+  } catch (err) {
+    console.warn("quiet-route fetch failed", err);
+    setStatus("Couldn't build quiet route");
+    setTimeout(() => setStatus(""), 2000);
+    return;
+  }
+  if (!data.stops || !data.stops.length) {
+    setStatus("No quiet route found from here");
+    setTimeout(() => setStatus(""), 2000);
+    return;
+  }
+
+  // Synthesize tour-shaped stops. No per-stop artwork exists for a dynamic
+  // route, so artwork carries gallery info + visit stats — enough for the
+  // existing sheet/info-window UI to render something meaningful.
+  const galleries = new Map(ALL_GALLERIES.map((g) => [g.number, g]));
+  const stops = data.stops.map((s) => {
+    const g = galleries.get(s.gallery.number) || s.gallery;
+    const visitsLabel = s.visits === 0
+      ? "No visits logged yet"
+      : `${s.visits} visitor${s.visits === 1 ? "" : "s"} so far`;
+    return {
+      gallery: s.gallery.number,
+      artwork: {
+        title: g.name || s.gallery.name,
+        artist: `${visitsLabel} · rank ${s.popularity_rank}`,
+        image_url: g.image_url || s.gallery.image_url || "",
+        date: "",
+        medium: s.gallery.summary || "",
+        object_url: "",
+      },
+      note: "",
+    };
+  });
+
+  const tour = {
+    id: "quiet-corners-live",
+    title: "Quiet Corners",
+    summary: `${stops.length} under-visited galleries`,
+    duration_min: Math.max(10, stops.length * 3),
+    stops,
+    preservePath: true,
+  };
+
+  await activateTour(tour);
 }
 
 function clearActiveTour() {

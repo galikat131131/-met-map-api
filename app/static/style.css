@@ -452,6 +452,12 @@ html, body {
 .tour-card-summary {
   color: #5f6368; font-size: 12px; line-height: 1.35;
 }
+/* Live (dynamic) tour card — e.g. the quiet-corners recommendation. */
+.tour-card-live { border-color: #1a73e8; }
+.tour-card-live:active { background: #e8f0fe; border-color: #1a73e8; }
+.tour-card-live-badge {
+  background: #1a73e8;
+}
 
 /* Enriched InfoWindow for tour stops */
 .iw-stop { max-width: 240px; }
@@ -628,3 +634,111 @@ html, body {
   font-size: 11px; font-weight: 500;
 }
 .tour-sheet-seg-muted { color: #9aa0a6; font-style: italic; }
+
+.consent-banner {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  z-index: 20;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #202124;
+}
+
+.consent-banner[hidden] { display: none; }
+
+.consent-text {
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.consent-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.consent-btn {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.consent-no {
+  background: white;
+  color: #5f6368;
+  border-color: #dadce0;
+}
+
+.consent-yes {
+  background: #1a73e8;
+  color: white;
+}
+
+.consent-yes:active { background: #1557b0; }
+
+/* ---------- Heat map overlay ---------- */
+
+.heatmap-toggle {
+  right: calc(76px + env(safe-area-inset-right));
+  color: #d93025;
+}
+.heatmap-toggle:active { background: #fdecea; }
+.heatmap-toggle.active {
+  background: #d93025;
+  color: white;
+}
+.heatmap-toggle.active:active { background: #b1251e; }
+
+.heatmap-legend {
+  position: absolute;
+  top: calc(68px + env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #5f6368;
+  max-width: calc(100vw - 24px);
+  white-space: nowrap;
+}
+
+.heatmap-legend[hidden] { display: none; }
+
+.heatmap-legend-gradient {
+  width: 70px;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    hsl(220, 72%, 56%),
+    hsl(146, 72%, 46%),
+    hsl(48, 90%, 52%),
+    hsl(0, 80%, 46%)
+  );
+  flex-shrink: 0;
+}
+
+.heatmap-legend-count {
+  border-left: 1px solid #e8eaed;
+  padding-left: 8px;
+  margin-left: 2px;
+  color: #3c4043;
+  font-weight: 500;
+}
+
+.heatmap-legend-count:empty { display: none; }

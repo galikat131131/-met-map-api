@@ -70,3 +70,41 @@ class RouteResponse(BaseModel):
     distance_m: float
     steps: List[RouteStep]
     upstream: Optional[dict] = Field(None, description="Raw Living Map response if proxy succeeded, else null.")
+
+
+class TransitionRequest(BaseModel):
+    session_id: str = Field(..., min_length=8, max_length=64, description="Anonymous per-visit UUID from the client's sessionStorage.")
+    from_gallery: int = Field(..., description="Gallery number the user just left.")
+    to_gallery: int = Field(..., description="Gallery number the user just entered.")
+    floor_from: Optional[str] = None
+    floor_to: Optional[str] = None
+    client_ts: Optional[int] = Field(None, description="Client-side ms epoch when the transition was observed.")
+    locate_method: Optional[str] = Field(None, description='"polygon" or "nearest-centroid" from the /locate call that resolved the new gallery.')
+
+
+class EdgeCount(BaseModel):
+    from_gallery: int
+    to_gallery: int
+    count: int
+
+
+class GalleryVisitCount(BaseModel):
+    gallery: int
+    visits: int
+
+
+class QuietRouteStop(BaseModel):
+    gallery: Gallery
+    visits: int = Field(..., description="Recorded visit count from transitions. 0 means no one has walked there in the tracked dataset yet.")
+    popularity_rank: int = Field(..., description="1 = most-visited gallery in the wing; higher = quieter.")
+
+
+class QuietRouteResponse(BaseModel):
+    from_gallery: Gallery
+    stops: List[QuietRouteStop] = Field(
+        ...,
+        description="Ordered walk through the adjacency graph, biased toward under-visited rooms. Does NOT include the starting gallery.",
+    )
+    total_distance_m: float = Field(..., description="Straight-line sum of centroid-to-centroid distances. A proxy for walking distance.")
+    avg_visits_per_stop: float = Field(..., description="Average visit count across the recommended stops. Compare to the wing-wide average shown in `baseline_avg_visits`.")
+    baseline_avg_visits: float = Field(..., description="Average visit count across all galleries that have been visited at least once. Lets the client say 'these stops see ~X% less traffic than average'.")

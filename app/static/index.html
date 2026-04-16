@@ -27,6 +27,19 @@
     </svg>
   </button>
 
+  <button id="heatmap-toggle" class="fab heatmap-toggle" aria-label="Toggle heat map" aria-pressed="false" title="Show popular routes">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+      <path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
+    </svg>
+  </button>
+
+  <div id="heatmap-legend" class="heatmap-legend" hidden>
+    <span class="heatmap-legend-label">Quiet</span>
+    <div class="heatmap-legend-gradient" aria-hidden="true"></div>
+    <span class="heatmap-legend-label">Busy</span>
+    <span class="heatmap-legend-count"></span>
+  </div>
+
   <button id="tours-btn" class="fab fab-left" aria-label="Curated tours">
     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
       <path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4zm0 2.2 6 3v4.8c0 3.9-2.6 7.6-6 8-3.4-.4-6-4.1-6-8V7.2l6-3zM11 7v4H7v2h4v4h2v-4h4v-2h-4V7h-2z"/>
@@ -88,7 +101,17 @@
 
   <div id="status" class="status" aria-live="polite"></div>
 
+  <div id="consent-banner" class="consent-banner" hidden>
+    <div class="consent-text">Help improve route suggestions? Your anonymous path through the galleries will be recorded — no login, no identity stored.</div>
+    <div class="consent-actions">
+      <button id="consent-no" class="consent-btn consent-no">No thanks</button>
+      <button id="consent-yes" class="consent-btn consent-yes">Sure</button>
+    </div>
+  </div>
+
   <script src="app.js"></script>
+  <script src="tracking.js"></script>
+  <script src="heatmap-view.js"></script>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Ixtxbx46OLusW3VtsN8W8atLMCuBjqE&callback=initMap&v=weekly&loading=async">
   </script>
