@@ -85,9 +85,9 @@ ARCHETYPES = [
 # Floor-3 is genuinely under-visited in the real Asian Art wing (upstairs from
 # the main floor, easy to miss). Model it as a per-session decision: most
 # visitors never go up; those who do usually head back down soon after.
-PROB_SESSION_VISITS_FLOOR_3 = 0.18   # chance a session ever goes upstairs
-PROB_GO_UP_PER_STEP = 0.10           # per-step chance of climbing, once decided
-PROB_COME_BACK_DOWN = 0.45           # per-step chance of returning to floor 2
+PROB_SESSION_VISITS_FLOOR_3 = 0.08   # chance a session ever goes upstairs (real wing is easy to miss)
+PROB_GO_UP_PER_STEP = 0.08           # per-step chance of climbing, once decided
+PROB_COME_BACK_DOWN = 0.55           # per-step chance of returning to floor 2
 
 
 def haversine_m(a: dict, b: dict) -> float:

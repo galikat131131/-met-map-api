@@ -616,40 +616,106 @@ def _gallery_visit_counts() -> dict[int, int]:
     return dict(counts)
 
 
+def _edge_counts() -> dict[tuple[int, int], int]:
+    """Undirected edge counts. A->B and B->A collapse to the same key (min, max)
+    because the physical passage is the same — we want the rarest *doorway*,
+    not the rarest direction of travel."""
+    counts: Counter = Counter()
+    for t in _read_transitions():
+        a, b = t["from_gallery"], t["to_gallery"]
+        counts[(min(a, b), max(a, b))] += 1
+    return dict(counts)
+
+
 def _quiet_walk(
     start: Gallery,
     length: int,
     adjacency: dict[int, list[int]],
-    visits: dict[int, int],
+    edges: dict[tuple[int, int], int],
     rng: random.Random,
     floor: Optional[str] = None,
 ) -> list[Gallery]:
-    """Weighted random walk on the adjacency graph; neighbor weight ∝
-    1/(visits+1)^1.5 so quiet rooms are strongly preferred but heavily-visited
-    galleries can still be chosen when they're the only neighbor. We never
-    revisit a gallery within a single recommendation — the point is to show
-    the user new rooms."""
+    """Weighted random walk biased toward rare transitions.
+
+    Weight per candidate = 1/(edge_count+1)^1.5, where edge_count is the
+    number of recorded visitor transitions between the current room and
+    the candidate (undirected). Doorways few people use rise to the top.
+
+    The first step additionally prefers nearby rooms so the tour begins
+    with whatever quiet space is closest to the user — no long marches
+    before the first stop.
+
+    Cross-floor candidates (only offered when `floor` isn't pinned)
+    represent taking the lift: every open gallery on the *other* floor is
+    in the pool at CROSS_FLOOR_PENALTY × weight. Without this branch,
+    Floor 3 is unreachable — the adjacency cache only stores within-floor
+    edges.
+    """
+    CROSS_FLOOR_PENALTY = 0.6
+    FIRST_STEP_PROXIMITY_SCALE_M = 25.0  # smaller = sharper preference for nearby rooms on step 1
     path: list[Gallery] = []
     visited: set[int] = {start.number}
     current = start
-    for _ in range(length):
-        neighbors = adjacency.get(current.number, [])
-        pool = []
-        for n in neighbors:
-            if n in visited:
-                continue
-            g = GALLERIES_BY_NUMBER.get(n)
-            if g is None or g.is_closed:
-                continue
-            if floor is not None and g.floor != floor:
-                continue
-            pool.append(g)
+
+    def edge_weight(a: int, b: int) -> float:
+        key = (min(a, b), max(a, b))
+        return 1.0 / ((edges.get(key, 0) + 1) ** 1.5)
+
+    # When floor isn't pinned, guarantee at least one Floor 3 stop: the wing's
+    # upstairs is genuinely part of "quiet corners" IRL (Tibet/Nepal/Korea), and
+    # with only 3 open F3 rooms vs 44 F2 rooms a purely-weighted walk picks F3
+    # too rarely (~1-in-3 tours) to feel reliable.
+    f3_open = [g for g in GALLERIES if g.floor == "3" and not g.is_closed]
+    must_inject_f3 = floor is None and length >= 2 and f3_open and start.floor != "3"
+
+    for step_i in range(length):
+        steps_left_after_this = length - 1 - step_i
+        has_visited_f3 = any(g.floor == "3" for g in path)
+        force_f3_now = (
+            must_inject_f3
+            and not has_visited_f3
+            and current.floor != "3"
+            and steps_left_after_this <= 1  # last chance — next step is terminal or this one is
+        )
+
+        pool: list[Gallery] = []
+        weights: list[float] = []
+        if force_f3_now:
+            # Restrict pool to open F3 rooms; weight by edge rarity so we still
+            # head for an under-used doorway on the way up.
+            for g in f3_open:
+                if g.number in visited:
+                    continue
+                pool.append(g)
+                weights.append(edge_weight(current.number, g.number))
+        else:
+            for n in adjacency.get(current.number, []):
+                if n in visited:
+                    continue
+                g = GALLERIES_BY_NUMBER.get(n)
+                if g is None or g.is_closed:
+                    continue
+                if floor is not None and g.floor != floor:
+                    continue
+                pool.append(g)
+                weights.append(edge_weight(current.number, g.number))
+            if floor is None:
+                for g in GALLERIES:
+                    if g.is_closed or g.number in visited or g.floor == current.floor:
+                        continue
+                    pool.append(g)
+                    weights.append(CROSS_FLOOR_PENALTY * edge_weight(current.number, g.number))
+
         if not pool:
             break
-        weights = []
-        for g in pool:
-            v = visits.get(g.number, 0)
-            weights.append(1.0 / ((v + 1) ** 1.5))
+        if step_i == 0 and not force_f3_now:
+            # Bias the opener toward proximity so the tour starts with whatever
+            # quiet room is physically closest to the visitor.
+            scaled = []
+            for g, w in zip(pool, weights):
+                d = haversine_m(current.lat, current.lon, g.lat, g.lon)
+                scaled.append(w / (1.0 + d / FIRST_STEP_PROXIMITY_SCALE_M))
+            weights = scaled
         nxt = rng.choices(pool, weights=weights, k=1)[0]
         path.append(nxt)
         visited.add(nxt.number)
@@ -664,12 +730,13 @@ def _quiet_walk(
     summary="Suggest a walk through under-visited galleries",
     description=(
         "Given a starting gallery, walks the adjacency graph biasing toward "
-        "rooms with low recorded visit counts. Intended for visitors who've "
-        "seen the highlights and want to explore the quieter corners of the "
-        "wing.\n\n"
-        "Neighbors are weighted by `1/(visits+1)^1.5`, so zero-visit galleries "
-        "dominate when they're reachable. The walk never revisits a gallery "
-        "and stops early if the adjacency dead-ends.\n\n"
+        "rarely-traversed *transitions* between rooms — doorways that few "
+        "visitors pass through. Intended for visitors who've seen the "
+        "highlights and want the quieter corners of the wing.\n\n"
+        "Weight per candidate = `1/(edge_count+1)^1.5` (edge_count is undirected, "
+        "collapsing A→B and B→A). The first step additionally prefers nearby "
+        "rooms so the tour starts close to the visitor. The walk never revisits "
+        "a gallery and stops early if the adjacency dead-ends.\n\n"
         "Set `floor` to pin the walk to a single level. Results are stochastic "
         "— refreshing produces a different suggestion."
     ),
@@ -694,8 +761,9 @@ def recommend_quiet_route(
         )
 
     visits = _gallery_visit_counts()
+    edges = _edge_counts()
     rng = random.Random()  # fresh randomness per request
-    stops_gs = _quiet_walk(start, length, adjacency, visits, rng, floor)
+    stops_gs = _quiet_walk(start, length, adjacency, edges, rng, floor)
 
     # Popularity rank: 1 = most-visited. Galleries with zero visits share the
     # last rank so the UI can say "one of the quietest rooms".

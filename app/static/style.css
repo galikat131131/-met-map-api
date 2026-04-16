@@ -497,7 +497,7 @@ html, body {
   border-radius: 16px 16px 0 0;
   box-shadow: 0 -2px 12px rgba(0,0,0,0.15);
   padding: 8px 16px calc(12px + env(safe-area-inset-bottom));
-  max-height: 55vh;
+  max-height: 40vh;
   overflow-y: auto;
   font-size: 13px;
   transition: transform 0.22s ease-out, max-height 0.22s ease-out;
@@ -513,6 +513,7 @@ html, body {
 .tour-sheet-handle {
   width: 40px; height: 4px; background: #dadce0;
   border-radius: 2px; margin: 4px auto 8px;
+  cursor: pointer;
 }
 .tour-sheet-header {
   display: flex; align-items: flex-start; justify-content: space-between;

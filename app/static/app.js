@@ -64,9 +64,10 @@ window.initMap = async function () {
   document.getElementById("tour-drawer-close").addEventListener("click", closeTourDrawer);
   document.getElementById("tour-backdrop").addEventListener("click", closeTourDrawer);
   document.getElementById("tour-bar-close").addEventListener("click", clearActiveTour);
-  document.getElementById("tour-sheet-collapse").addEventListener("click", () => {
+  const toggleTourSheet = () =>
     document.getElementById("tour-sheet").classList.toggle("collapsed");
-  });
+  document.getElementById("tour-sheet-collapse").addEventListener("click", toggleTourSheet);
+  document.querySelector(".tour-sheet-handle").addEventListener("click", toggleTourSheet);
 
   setStatus("Loading galleries…");
   try {
